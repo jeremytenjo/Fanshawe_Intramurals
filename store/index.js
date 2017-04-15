@@ -7,7 +7,8 @@ const store = new Vuex.Store({
         userDataTeamMates: '',
         contentId: '',
         fromID: '',
-        inboxSubject: ''
+        inboxSubject: '',
+        urlPage: ''
     },
     mutations: {
         set(state, val) {
@@ -32,6 +33,9 @@ const store = new Vuex.Store({
         },
         setinboxSubject(state, val) {
             state.inboxSubject = val
+        },
+        setUrlPage(state, val) {
+            state.urlPage = val
         }
 
     }

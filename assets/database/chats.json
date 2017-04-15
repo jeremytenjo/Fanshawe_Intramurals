@@ -1,0 +1,42 @@
+{ 
+    "_id" : ObjectId("58c3706f83e0930e34bf79f0"), 
+    "status" : "false", 
+    "message" : "Hello Team", 
+    "user" : ObjectId("58c3657183e0930e34bf79d8"), 
+    "date" : ISODate("2017-03-11T03:24:25.141+0000"), 
+    "team" : ObjectId("58de5b9cbf8cb60d000af8bb")
+}
+{ 
+    "_id" : ObjectId("58c5b3fdb6c7521f84c3d478"), 
+    "message" : "Ready forr the game", 
+    "__v" : NumberInt(0), 
+    "team" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "user" : ObjectId("58c366a983e0930e34bf79d9"), 
+    "date" : ISODate("2017-04-10T21:40:59.209+0000")
+}
+{ 
+    "_id" : ObjectId("58c5dafe5cf4132fb8a13ba2"), 
+    "message" : "Are you coming Dominic?", 
+    "__v" : NumberInt(0), 
+    "team" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "user" : ObjectId("58c3672983e0930e34bf79db"), 
+    "date" : ISODate("2017-04-10T21:40:59.209+0000")
+}
+{ 
+    "_id" : ObjectId("58c5db128cd7743070145307"), 
+    "message" : "Yes", 
+    "__v" : NumberInt(0), 
+    "team" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "user" : ObjectId("58e93beb53da742bdc4a2020"), 
+    "date" : ISODate("2017-04-10T21:40:59.209+0000")
+}
+{ 
+    "_id" : ObjectId("58f248afd2cd880a4c9cf54a"), 
+    "__v" : NumberInt(0), 
+    "message" : "Welcome", 
+    "team" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "date" : ISODate("2017-04-15T16:22:07.231+0000"), 
+    "user" : [
+        ObjectId("58c3657183e0930e34bf79d8")
+    ]
+}

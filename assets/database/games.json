@@ -1,0 +1,60 @@
+{ 
+    "_id" : ObjectId("58c36e6383e0930e34bf79e6"), 
+    "tournament" : ObjectId("58c3689f83e0930e34bf79dc"), 
+    "teamOne" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "teamTwo" : ObjectId("58debca4420761383c43947a"), 
+    "date" : ISODate("2017-03-11T03:24:25.141+0000"), 
+    "location" : "GYM 3", 
+    "user" : ObjectId("58c36e9883e0930e34bf79ef"), 
+    "notes" : "A long description", 
+    "stage" : "Group", 
+    "group" : NumberInt(1), 
+    "scoreTeamOne" : "5", 
+    "scoreTeamTwo" : "2", 
+    "dateString" : "March 11, 2017"
+}
+{ 
+    "_id" : ObjectId("58e2983e8617d72090e30e56"), 
+    "tournament" : ObjectId("58c3689f83e0930e34bf79dc"), 
+    "teamOne" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "teamTwo" : ObjectId("58debc6f9942b0318ccc7e3d"), 
+    "date" : ISODate("2017-03-11T03:24:25.141+0000"), 
+    "location" : "GYM 2", 
+    "user" : ObjectId("58c36e9883e0930e34bf79ef"), 
+    "notes" : "A long description", 
+    "stage" : "Group", 
+    "group" : NumberInt(1), 
+    "scoreTeamOne" : "3", 
+    "scoreTeamTwo" : "1", 
+    "dateString" : "March 11, 2017"
+}
+{ 
+    "_id" : ObjectId("58e29c188617d72090e30e5a"), 
+    "tournament" : ObjectId("58c3689f83e0930e34bf79dc"), 
+    "teamOne" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "teamTwo" : ObjectId("58e64cfd8617d71d2c87d2b2"), 
+    "date" : ISODate("2017-05-11T03:24:25.141+0000"), 
+    "location" : "GYM 1", 
+    "user" : ObjectId("58c36e9883e0930e34bf79ef"), 
+    "notes" : "A long description", 
+    "stage" : "Group", 
+    "group" : NumberInt(1), 
+    "scoreTeamOne" : "3", 
+    "scoreTeamTwo" : "2", 
+    "dateString" : "May 11, 2017"
+}
+{ 
+    "_id" : ObjectId("58e2a7148617d72090e30e5b"), 
+    "tournament" : ObjectId("58c3689f83e0930e34bf79dc"), 
+    "teamOne" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "teamTwo" : ObjectId("58e6a5c28617d71d2c87d2bc"), 
+    "date" : ISODate("2017-05-11T05:24:25.141+0000"), 
+    "location" : "GYM 2", 
+    "user" : ObjectId("58c36e9883e0930e34bf79ef"), 
+    "notes" : "A long description", 
+    "stage" : "Group", 
+    "group" : NumberInt(1), 
+    "scoreTeamOne" : "2", 
+    "scoreTeamTwo" : "3", 
+    "dateString" : "May 11, 2017"
+}

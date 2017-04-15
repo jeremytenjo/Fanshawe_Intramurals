@@ -44,7 +44,7 @@ io.on('connection', function(socket) {
 var Users = require('./models/Users.js');
 
 // database setup
-mongoose.connect('mongodb://localhost/intrachamps_db', function(err) {
+mongoose.connect('mongodb://localhost/fanshaweIntramurals_db', function(err) {
     if (err) {
         console.log('error connecting Yo!', err);
     } else {

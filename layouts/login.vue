@@ -96,7 +96,7 @@ export default {
                     self.$store.commit('set_userDataTeamMates', response.data);
                 })
 
-                self.$router.push('/fixtures');
+                self.$router.push('/cms');
             }
 
         }
