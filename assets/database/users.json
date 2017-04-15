@@ -1,0 +1,210 @@
+{ 
+    "_id" : ObjectId("58c3657183e0930e34bf79d8"), 
+    "fname" : "Jeremy", 
+    "lname" : "Tenjo", 
+    "type" : "admin", 
+    "email" : "jeremy@gmail.com", 
+    "password" : "$2a$10$eAWlHu9vLM58jYpuYAuWaOKy.4q/oekAlSxETs02RerIfKisEbhQK", 
+    "photo" : "profile11492058552895.png", 
+    "notification" : true, 
+    "gender" : "Male", 
+    "team" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "tournaments" : [
+
+    ], 
+    "social" : [
+
+    ], 
+    "__v" : NumberInt(1), 
+    "number" : NumberInt(2147483644), 
+    "schedule" : [
+        "time2", 
+        "time3"
+    ]
+}
+{ 
+    "_id" : ObjectId("58c366a983e0930e34bf79d9"), 
+    "fname" : "Archer", 
+    "lname" : "Stern", 
+    "type" : "student", 
+    "email" : "archer@gmail.com", 
+    "password" : "pass", 
+    "photo" : "47224964-profile-pictures1491679559362.jpg", 
+    "notification" : true, 
+    "gender" : "Male", 
+    "tournaments" : [
+
+    ], 
+    "team" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "number" : NumberInt(2147483647)
+}
+{ 
+    "_id" : ObjectId("58c366ca83e0930e34bf79da"), 
+    "fname" : "Natalia", 
+    "lname" : "Tenjo", 
+    "type" : "student", 
+    "email" : "natalia@gmail.com", 
+    "password" : "pass", 
+    "photo" : "images1491679581910.jpg", 
+    "notification" : true, 
+    "gender" : "Female", 
+    "tournaments" : [
+
+    ], 
+    "team" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "number" : NumberInt(2147483647)
+}
+{ 
+    "_id" : ObjectId("58c3672983e0930e34bf79db"), 
+    "fname" : "Dominic", 
+    "lname" : "Loco", 
+    "type" : "student", 
+    "email" : "dominic@gmail.com", 
+    "password" : "pass", 
+    "photo" : "images (1)1491679593076.jpg", 
+    "notification" : true, 
+    "gender" : "Male", 
+    "tournaments" : [
+
+    ], 
+    "team" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "number" : NumberInt(2147483647)
+}
+{ 
+    "_id" : ObjectId("58d86f7e83e09312209e9fa1"), 
+    "fname" : "Jerold", 
+    "photo" : "download1491679616037.jpg", 
+    "lname" : "Tenjo", 
+    "type" : "student", 
+    "team" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "email" : "jerold@gmail.com", 
+    "password" : "pass", 
+    "notification" : true, 
+    "number" : NumberInt(2147483647)
+}
+{ 
+    "_id" : ObjectId("58e93bd453da742bdc4a201c"), 
+    "fname" : "Jerold", 
+    "photo" : "download1491679616037.jpg", 
+    "lname" : "Tenjo", 
+    "type" : "student", 
+    "team" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "email" : "jerold@gmail.com", 
+    "password" : "pass", 
+    "notification" : true, 
+    "number" : NumberInt(2147483647)
+}
+{ 
+    "_id" : ObjectId("58e93bd753da742bdc4a201d"), 
+    "fname" : "Jerold", 
+    "photo" : "download1491679616037.jpg", 
+    "lname" : "Tenjo", 
+    "type" : "student", 
+    "team" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "email" : "jerold@gmail.com", 
+    "password" : "pass", 
+    "notification" : true, 
+    "number" : NumberInt(2147483647)
+}
+{ 
+    "_id" : ObjectId("58e93bda53da742bdc4a201e"), 
+    "fname" : "Jerold", 
+    "photo" : "download1491679616037.jpg", 
+    "lname" : "Tenjo", 
+    "type" : "student", 
+    "team" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "email" : "jerold@gmail.com", 
+    "password" : "pass", 
+    "notification" : true, 
+    "number" : NumberInt(2147483647)
+}
+{ 
+    "_id" : ObjectId("58e93bdd53da742bdc4a201f"), 
+    "fname" : "Jerold", 
+    "photo" : "download1491679616037.jpg", 
+    "lname" : "Tenjo", 
+    "type" : "student", 
+    "team" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "email" : "jerold@gmail.com", 
+    "password" : "pass", 
+    "notification" : true, 
+    "number" : NumberInt(2147483647)
+}
+{ 
+    "_id" : ObjectId("58e93beb53da742bdc4a2020"), 
+    "fname" : "Jerold", 
+    "photo" : "download1491679616037.jpg", 
+    "lname" : "Tenjo", 
+    "type" : "student", 
+    "team" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "email" : "jerold@gmail.com", 
+    "password" : "pass", 
+    "notification" : true, 
+    "number" : NumberInt(2147483647)
+}
+{ 
+    "_id" : ObjectId("58e93bee53da742bdc4a2021"), 
+    "fname" : "Jerold", 
+    "photo" : "download1491679616037.jpg", 
+    "lname" : "Tenjo", 
+    "type" : "student", 
+    "team" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "email" : "jerold@gmail.com", 
+    "password" : "pass", 
+    "notification" : true, 
+    "number" : NumberInt(2147483647)
+}
+{ 
+    "_id" : ObjectId("58e93bf153da742bdc4a2022"), 
+    "fname" : "Jerold", 
+    "photo" : "download1491679616037.jpg", 
+    "lname" : "Tenjo", 
+    "type" : "student", 
+    "team" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "email" : "jerold@gmail.com", 
+    "password" : "pass", 
+    "notification" : true, 
+    "number" : NumberInt(2147483647)
+}
+{ 
+    "_id" : ObjectId("58ee9e8cb1a49724dc0cec45"), 
+    "__v" : NumberInt(0), 
+    "photo" : "default_user_logo.png", 
+    "fname" : "Ana", 
+    "lname" : "Kasparian", 
+    "email" : "anna@gmail.com", 
+    "password" : "$2a$10$pmb.1YOu2ZA9/t5R8Rk3u.0Am10xfjLGV/bcki/c3MbibNMBxPYda", 
+    "type" : "student", 
+    "notification" : true, 
+    "social" : [
+
+    ], 
+    "tournaments" : [
+
+    ], 
+    "team" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "number" : NumberInt(2147483647)
+}
+{ 
+    "_id" : ObjectId("58eeff1cecaaf82e4c3bbc00"), 
+    "__v" : NumberInt(0), 
+    "photo" : "default_user_logo.png", 
+    "fname" : "d", 
+    "lname" : "d", 
+    "email" : "jeremy@gmail.com", 
+    "password" : "$2a$10$ho.bx/8R3c.dt8bWaKyzOOESBQWwyxaaaaeCF4oKJN4glK6rSMkWq", 
+    "type" : "student", 
+    "notification" : true, 
+    "social" : [
+
+    ], 
+    "tournaments" : [
+
+    ], 
+    "team" : [
+
+    ], 
+    "schedule" : [
+
+    ]
+}
