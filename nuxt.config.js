@@ -36,11 +36,6 @@ module.exports = {
                 rel: 'stylesheet',
                 type: 'link',
                 href: 'https://fonts.googleapis.com/icon?family=Material+Icons'
-            },
-            {
-                rel: 'stylesheet',
-                type: 'link',
-                href: 'https://unpkg.com/vue-multiselect@2.0.0-beta.14/dist/vue-multiselect.min.css'
             }
         ],
         script: [{

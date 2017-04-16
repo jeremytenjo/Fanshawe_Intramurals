@@ -42,15 +42,18 @@
   <div id="playersList">
 
     <div class="playerItem" v-for="item in playerList" :key="item.key">
-      <img src="~assets/img/default_user_logo.png" alt="team logo">
+      <img :src="'userPhotos/' + item.photo" alt="team logo">
       <p>{{item.fname}} {{item.lname}}</p>
     </div>
 
 
   </div>
+
+  <!-- Player Add -->
   <!-- <div>
-  <label for="typo__label">Add Players</label>
-  <select name="player" form="formContent" v-model="selectInputsPlayer" id="playerInputs" multiple></select>
+    <label class="typo__label">Simple select / dropdown</label>
+    <multiselect v-model="value" :options="options" :multiple="true" :close-on-select="false" :clear-on-select="false" :hide-selected="true" placeholder="Pick some" label="name" track-by="name"></multiselect>
+    <pre class="language-json"><code>{{ value  }}</code></pre>
   </div> -->
 
 </div>
@@ -72,10 +75,10 @@
 
 <script>
 import axios from '~plugins/axios';
-// import Multiselect from 'vue-multiselect'
 
 export default {
     middleware: 'auth',
+
     data() {
         return {
             itemInfo: '',
@@ -126,7 +129,7 @@ export default {
             })
 
             //set players
-            console.log(response.data[0]._id);
+            // console.log(response.data[0]._id);
             //player list
             axios.post('/api/users/teamMatesCMS', {
                 id: response.data[0]._id
@@ -134,6 +137,31 @@ export default {
                 self.playerList = mates.data;
             })
 
+            self.selectInputsPlayer = [{
+                    name: 'Vue.js',
+                    language: 'JavaScript'
+                },
+                {
+                    name: 'Adonis',
+                    language: 'JavaScript'
+                },
+                {
+                    name: 'Rails',
+                    language: 'Ruby'
+                },
+                {
+                    name: 'Sinatra',
+                    language: 'Ruby'
+                },
+                {
+                    name: 'Laravel',
+                    language: 'PHP'
+                },
+                {
+                    name: 'Phoenix',
+                    language: 'Elixir'
+                }
+            ]
             // axios.post('/api/users/getAll').then(function(result) {
             //   // console.log(result);
             //   bundle2 += '<option disabled value="">Hold Control to select</option>';
@@ -160,6 +188,7 @@ export default {
             this.$store.commit('setContentID', id);
             // console.log(this.$store.state.contentId);
             var w = window.innerWidth,
+                self = this,
                 bundle = {};
 
             if (w <= 600) {
@@ -173,17 +202,14 @@ export default {
             }).then(function(response) {
                 // console.log(response.data[0]);
                 var progilePhoto = document.querySelector('#progilePhoto'),
-                    // itemInfo = response.data,
-
                     file = document.querySelector('#file'),
                     profilePicture = document.querySelector('#profilePicture'),
                     name = document.querySelector('#name').value = response.data[0].name;
 
-
-                //set profile pictures
+                //load profile pictures
                 profilePicture.src = '/teamLogos/' + response.data[0].file;
 
-                //set sport
+                //load sport
                 axios.post('/api/tournaments/getAll').then(function(sport) {
                     bundle += '<option disabled value="">Please select one</option>';
                     for (var i = 0; i < sport.data.length; i++) {
@@ -193,9 +219,14 @@ export default {
                     }
                 })
 
+                //load players
+                axios.post('/api/users/teamMatesCMS', {
+                    id: response.data[0]._id
+                }).then(function(mates) {
+                    self.playerList = mates.data;
+                })
+
             })
-
-
         },
         hideDetails() {
             var w = window.innerWidth;
@@ -414,6 +445,7 @@ html {
         width: 35px;
         margin-left: 0;
         float: left;
+        border-radius: 50%;
     }
     p {
         padding-top: 8px;
