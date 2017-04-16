@@ -2,19 +2,28 @@
 <div>
     <img src="~assets/img/searchIcon.png" id="searchIcon" ref="searchIcon" alt="search icon" @click="searchOpen" />
     <div id="searchBox">
-        <input type="text" name="searchInput" placeholder="Search..." id="searchInput" @keyup="resultsOpen">
+        <input type="text" name="searchInput" placeholder="Search..." id="searchInput" v-model="char" @keyup="resultsOpen">
         <img src="~assets/img/closeIcon.png" alt="close icon" id="closeIcon" @click="closeResults" />
     </div>
 
     <div id="resultList">
         <img src="~assets/img/triangle.svg" alt="search icon" class="navTriangleSearch" />
+
         <p id="noReultsWarn">No Results Found</p>
         <div id="resultCon">
 
-            <div id="userResults" class="resultContainer"></div>
+            <div id="userResults" class="resultContainer" v-if="dataUsers != ''">
+                <div>
+                    <p class="resultsTitles">Users:</p>
+                    <div class="resultBox" v-for="user in dataUsers">
+                        <p class="resultTitle" @click="resultClick">{{ user.fname }} {{ user.lname }}</p>
+                        <img :src="'userPhotos/' + user.photo" alt="user icon" class="resultImg" />
+                    </div>
+                </div>
+            </div>
 
-            <div id="teamsResults" class="resultContainer">
-                <div v-if="dataTeams != 'false'">
+            <div id="teamsResults" class="resultContainer" v-if="dataTeams != ''">
+                <div>
                     <p class="resultsTitles">Teams:</p>
                     <div class="resultBox" v-for="team in dataTeams">
                         <p class="resultTitle" @click="resultClick">{{ team.name }}</p>
@@ -23,7 +32,15 @@
                 </div>
             </div>
 
-            <div id="tournamentsResults" class="resultContainer"></div>
+            <div id="tournamentsResults" class="resultContainer" v-if="dataTournaments != ''">
+                <div>
+                    <p class="resultsTitles">Tournaments:</p>
+                    <div class="resultBox" v-for="item in dataTournaments">
+                        <p class="resultTitle" @click="resultClick">{{ item.sport }}</p>
+                        <img :src="'tournamentIcons/' + item.icon" alt="user icon" class="resultImg" />
+                    </div>
+                </div>
+            </div>
 
 
         </div>
@@ -55,8 +72,8 @@ export default {
             dataTeams,
             dataTournaments,
             mq,
-            value;
-        self = this;
+            value,
+            self = this;
 
 
         if (matchMedia) {
@@ -79,11 +96,31 @@ export default {
     },
     data() {
         return {
-            dataTeams: 'false'
+            dataTeams: '',
+            dataUsers: [],
+            dataTournaments: '',
+            char: ''
         }
     },
     methods: {
         searchOpen() {
+            var searchIcon = document.querySelector('#searchIcon'),
+                searchInput = document.querySelector('#searchIcon'),
+                resultList = document.querySelector('#resultList'),
+                closeIcon = document.querySelector('#closeIcon'),
+                inboxBox = document.querySelector('#inboxBox'),
+                addIcon = document.querySelector('#addIcon'),
+                resultCon = document.querySelector('#resultCon'),
+                teamsResults = document.querySelector('#resultCon'),
+                resultBox = document.querySelector('#resultCon'),
+                tournamentsResults = document.querySelector('#resultCon'),
+                noReultsWarn = document.querySelector('#noReultsWarn'),
+                dataUsers,
+                dataTeams,
+                dataTournaments,
+                mq,
+                value,
+                self = this;
             if (toggle === true) {
                 if (window.matchMedia("(max-width: 400px)")) {
                     var pageTitle = document.querySelector('#pageTitle');
@@ -127,8 +164,26 @@ export default {
 
             }
         },
-        resultsOpen(value) {
-            var self = this;
+        resultsOpen() {
+            var searchIcon = document.querySelector('#searchIcon'),
+                searchInput = document.querySelector('#searchIcon'),
+                resultList = document.querySelector('#resultList'),
+                closeIcon = document.querySelector('#closeIcon'),
+                inboxBox = document.querySelector('#inboxBox'),
+                addIcon = document.querySelector('#addIcon'),
+                resultCon = document.querySelector('#resultCon'),
+                teamsResults = document.querySelector('#resultCon'),
+                userResults = document.querySelector('#userResults'),
+                resultBox = document.querySelector('#resultCon'),
+                tournamentsResults = document.querySelector('#resultCon'),
+                noReultsWarn = document.querySelector('#noReultsWarn'),
+                dataUsers,
+                dataTeams,
+                dataTournaments,
+                mq,
+                value,
+                self = this;
+
             // console.log(this.dataTeams);
             // this.dataTeams = 'true';
             // console.log(this.dataTeams);
@@ -140,7 +195,9 @@ export default {
             }
 
             //get value
-            value = searchInput.value;
+            // value = searchInput.value;
+            value = self.char;
+            // console.log(self.char);
             if (value != '') {
                 // console.log(value);
                 axios.post('/api/search/find', {
@@ -149,10 +206,17 @@ export default {
                     var dataUsers,
                         dataTeams,
                         dataTournaments;
+                    console.log(response.data);
 
                     dataUsers = response.data.users;
                     dataTeams = response.data.teams;
                     dataTournaments = response.data.tournaments;
+
+                    self.dataUsers = response.data.users;
+                    self.dataTeams = response.data.teams;
+                    self.dataTournaments = response.data.tournaments;
+
+
                     // console.log(dataUsers.length, dataTeams.length, dataTournaments.length);
 
                     //if not results
@@ -161,72 +225,6 @@ export default {
                         teamsResults.style.display = 'none';
                         tournamentsResults.style.display = 'none';
                         noReultsWarn.style.display = 'block';
-
-                    } else {
-                        var userBuild = '',
-                            teamBuild = '',
-                            tournamentBuild = '';
-
-                        //manager USER data
-                        if (dataUsers.length != 0) {
-
-                            for (var i = 0; i < dataUsers.length; i++) {
-                                if (i === 0) {
-                                    userBuild += '<p class="resultsTitles">Users:</p>';
-                                }
-                                userBuild += '<div class="resultBox"> <p class="resultTitle">' + dataUsers[i].fname + ' ' + dataUsers[i].lname + '</p> <img src="userPhotos/' + dataUsers[i].photo +
-                                    '" alt="user icon" class="resultImg"/> </div>';
-                            }
-
-                            userResults.style.display = 'block';
-                            noReultsWarn.style.display = 'none';
-                            userResults.innerHTML = userBuild;
-                        } else {
-                            userResults.style.display = 'none';
-                        }
-
-                        //manager TEAM data
-                        if (dataTeams.length != 0) {
-                            // console.log(dataTeams);
-                            // console.log(self.dataTeams);
-                            self.dataTeams = dataTeams;
-                            // console.log(self.dataTeams);
-
-                            //
-                            // for (var i = 0; i < dataTeams.length; i++) {
-                            //     if (i === 0) {
-                            //         teamBuild += '<p class="resultsTitles">Teams:</p>';
-                            //     }
-                            //     teamBuild += '<div class="resultBox" > <p class="resultTitle" v-on:click="resultClick">' + dataTeams[i].name + '</p> <img src="teamLogos/' + dataTeams[i].file +
-                            //         '" alt="user icon" class="resultImg"/> </div>';
-                            // }
-                            //
-                            // teamsResults.style.display = 'block';
-                            // noReultsWarn.style.display = 'none';
-                            // teamsResults.innerHTML = teamBuild;
-
-
-                        } else {
-                            teamsResults.style.display = 'none';
-                        }
-
-                        //manager TOURNAMENT data
-                        if (dataTournaments.length != 0) {
-
-                            for (var i = 0; i < dataTournaments.length; i++) {
-                                if (i === 0) {
-                                    tournamentBuild += '<p class="resultsTitles">Tournaments:</p>';
-                                }
-                                tournamentBuild += '<div class="resultBox" > <p class="resultTitle">' + dataTournaments[i].sport + '</p> <img src="tournamentIcons/' + dataTournaments[i].icon +
-                                    '" alt="user icon" class="resultImg"/> </div>';
-                            }
-
-                            tournamentsResults.style.display = 'block';
-                            noReultsWarn.style.display = 'none';
-                            tournamentsResults.innerHTML = tournamentBuild;
-                        } else {
-                            tournamentsResults.style.display = 'none';
-                        }
 
                     }
 
@@ -239,6 +237,24 @@ export default {
             console.log("HERE!");
         },
         closeResults() {
+            var searchIcon = document.querySelector('#searchIcon'),
+                searchInput = document.querySelector('#searchIcon'),
+                resultList = document.querySelector('#resultList'),
+                closeIcon = document.querySelector('#closeIcon'),
+                inboxBox = document.querySelector('#inboxBox'),
+                addIcon = document.querySelector('#addIcon'),
+                resultCon = document.querySelector('#resultCon'),
+                teamsResults = document.querySelector('#resultCon'),
+                resultBox = document.querySelector('#resultCon'),
+                tournamentsResults = document.querySelector('#resultCon'),
+                noReultsWarn = document.querySelector('#noReultsWarn'),
+                dataUsers,
+                dataTeams,
+                dataTournaments,
+                mq,
+                value,
+                self = this;
+
             searchInput.value = '';
             resultList.style.display = 'none';
             closeIcon.style.display = 'none';

@@ -1,5 +1,8 @@
 <template>
 <div id="welcomeContainer">
+    <div id="snackBar">
+        Update Successful
+    </div>
     <div id="welcomeModal">
         <div id="w_modalTop">
             <img src="~assets/img/cancelBlack.svg" alt="" @click="closeModal" id="w_closemodal">
@@ -44,8 +47,11 @@
             </div>
 
         </div>
-        <div id="w_modalBottom" @click="freeAgent">
+        <div id="w_modalBottom">
+          <div @click="freeAgent()">
             <v-btn outline class="blue-grey-text">Free Agent</v-btn>
+
+          </div>
         </div>
     </div>
 
@@ -139,26 +145,62 @@ export default {
     methods: {
         openModal(sportId) {
             // console.log("HERE!" + sportId);
-            var self = this;
-            welcomeModal.style.display = 'grid';
+            var self = this,
+                w = window.innerWidth,
+                snackBar = document.querySelector('#snackBar');
 
-            //Get Tournmanet Information
-            axios.post('/api/tournaments/getOne', {
-                data: sportId
-            }).then(function(response) {
-                // console.log(response.data[0]);
-                self.tournamentOne = response.data[0];
+            //set selected tournaments id
 
-            })
-            //Get Tournmanet teams
-            axios.post('/api/tournaments/teams', {
-                data: sportId
-            }).then(function(response) {
-                // console.log(response.data);
-                self.teamList = '';
-                self.teamList = response.data;
 
-            })
+
+            //if not registered show alert
+            // console.log(self.userData);
+            if (self.userData === false) {
+
+                //show Error
+                snackBar.innerHTML = 'Sign Up to join a sport'
+                if (w <= 600) {
+                    TweenMax.to('#snackBar', .1, {
+                        bottom: 0
+                    });
+                    TweenMax.to('#snackBar', .3, {
+                        bottom: '-600px',
+                        delay: 2
+                    });
+                } else {
+                    TweenMax.to('#snackBar', .4, {
+                        bottom: 0,
+                        delay: .2
+                    });
+                    TweenMax.to('#snackBar', .4, {
+                        bottom: '-500px',
+                        delay: 4
+                    });
+                }
+            } else {
+
+                //Show MOdal
+                welcomeModal.style.display = 'grid';
+
+                //Get Tournmanet Information
+                axios.post('/api/tournaments/getOne', {
+                    data: sportId
+                }).then(function(response) {
+                    // console.log(response.data[0]);
+                    self.tournamentOne = response.data[0];
+                    self.$store.commit('set_selectedTournament', response.data[0]._id);
+                })
+
+                //Get Tournmanet teams
+                axios.post('/api/tournaments/teams', {
+                    data: sportId
+                }).then(function(response) {
+                    // console.log(response.data);
+                    self.teamList = '';
+                    self.teamList = response.data;
+                })
+            }
+
         },
         closeModal() {
             welcomeModal.style.display = 'none';
@@ -191,7 +233,7 @@ export default {
 
                 //Get players from the same team
                 axios.post('/api/users/teamMates', {
-                    id : response.data.team
+                    id: response.data.team
                 }).then(function(responseee) {
                     // console.log(response.data);
                     self.$store.commit('set_userDataTeamMates', responseee.data);
@@ -205,6 +247,29 @@ export default {
         },
         freeAgent() {
 
+            var bundle = {},
+                self = this;
+
+            // console.log(self.$store.state.selectedTournament);
+
+            bundle.torunament = self.$store.state.selectedTournament;
+            bundle.userId = this.$store.state.userData._id;
+            // console.log(bundle);
+
+            axios.post('/api/users/freeAgent', {
+                data: bundle
+            }).then(function(response) {
+
+                self.$store.commit('set', response.data);
+
+                // Get Users Team Information
+                self.$store.commit('set_userDataTeam', false);
+
+                //Get players from the same team
+                self.$store.commit('set_userDataTeamMates', false);
+
+                self.$router.push('/account');
+            })
         }
     }
 }
@@ -218,6 +283,19 @@ export default {
         margin-left: 10px;
         margin-top: 5px;
     }
+}
+#snackBar {
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 5;
+    left: 50%;
+    bottom: -800px;
 }
 #welcomeModal {
     width: 100%;
@@ -390,6 +468,9 @@ export default {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
 
+    }
+    #snackBar {
+        bottom: -500px;
     }
     #welcomeModal {
         width: 80%;

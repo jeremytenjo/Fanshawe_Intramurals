@@ -4,7 +4,7 @@ var services = require('../services/CRUD.js');
 var model = 'Announcements';
 
 router.post('/annoucements/getOne', function(req, res) {
-  var id = req.body._id;
+    var id = req.body._id;
 
     // console.log(id);
     services.getOne(model, id, function(res) {
@@ -14,9 +14,11 @@ router.post('/annoucements/getOne', function(req, res) {
 })
 
 router.post('/annoucements/getAll', function(req, res) {
-    services.getAll(model, function(res) {
-        console.log(res);
-    });
+    Announ.find().sort({
+        date: -1
+    }).exec(function(err, result) {
+        res.json(result);
+    })
 
 })
 
@@ -31,9 +33,9 @@ router.post('/annoucements/insert', function(req, res) {
 
 router.post('/annoucements/update', function(req, res, next) {
     var data = req.body.data;
-    console.log(data);
+    // console.log(data);
     var id = data._id;
-    console.log(id);
+    // console.log(id);
 
     Announ.findById(id, function(err, result) {
         if (err) {

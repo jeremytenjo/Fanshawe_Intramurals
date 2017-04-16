@@ -10,35 +10,35 @@
       </div>
       <div id="QinnerCon">
         <div id="group1A">
-          <img src="~assets/img/teamLogos/United.png" alt="Qualifieng Team logo" id="group1A_Img">
+          <img src="~assets/img/default_team_logo.png" alt="Qualifieng Team logo" id="group1A_Img">
           <p id="group1A_P">Loading</p>
         </div>
         <div id="group2A">
-          <img src="~assets/img/teamLogos/United.png" alt="Qualifieng Team logo" id="group2A_Img">
+          <img src="~assets/img/default_team_logo.png" alt="Qualifieng Team logo" id="group2A_Img">
           <p id="group2A_P">Loading</p>
         </div>
         <div id="group3A">
-          <img src="~assets/img/teamLogos/United.png" alt="Qualifieng Team logo" id="group3A_Img">
+          <img src="~assets/img/default_team_logo.png" alt="Qualifieng Team logo" id="group3A_Img">
           <p id="group3A_P">Loading</p>
         </div>
         <div id="group4A">
-          <img src="~assets/img/teamLogos/United.png" alt="Qualifieng Team logo" id="group4A_Img">
+          <img src="~assets/img/default_team_logo.png" alt="Qualifieng Team logo" id="group4A_Img">
           <p id="group4A_P">Loading</p>
         </div>
         <div id="group1B">
-          <img src="~assets/img/teamLogos/United.png" alt="Qualifieng Team logo" id="group1B_Img">
+          <img src="~assets/img/default_team_logo.png" alt="Qualifieng Team logo" id="group1B_Img">
           <p id="group1B_P">Loading</p>
         </div>
         <div id="group2B">
-          <img src="~assets/img/teamLogos/United.png" alt="Qualifieng Team logo" id="group2B_Img">
+          <img src="~assets/img/default_team_logo.png" alt="Qualifieng Team logo" id="group2B_Img">
           <p id="group2B_P">Loading</p>
         </div>
         <div id="group3B">
-          <img src="~assets/img/teamLogos/United.png" alt="Qualifieng Team logo" id="group3B_Img">
+          <img src="~assets/img/default_team_logo.png" alt="Qualifieng Team logo" id="group3B_Img">
           <p id="group3B_P">Loading</p>
         </div>
         <div id="group4B">
-          <img src="~assets/img/teamLogos/United.png" alt="Qualifieng Team logo" id="group4B_Img">
+          <img src="~assets/img/default_team_logo.png" alt="Qualifieng Team logo" id="group4B_Img">
           <p id="group4B_P">Loading</p>
         </div>
       </div>

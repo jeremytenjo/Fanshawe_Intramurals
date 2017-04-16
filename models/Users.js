@@ -15,7 +15,7 @@ var User = new Schema({
     schedule: Array,
     team: [{ type: Schema.ObjectId, ref: 'teams' }],
     // team: Schema.ObjectId,
-    tournaments: Array,
+    tournaments: [{ type: Schema.ObjectId, ref: 'tournaments' }],
     social: Array
 }, {
     collection: 'users'

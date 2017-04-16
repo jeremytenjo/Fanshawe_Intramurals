@@ -67,7 +67,7 @@
 <div @click="toWelcome">
 <v-btn outline class="teal--text">Change Sport</v-btn>
 </div>
-<div>
+<div id="a_updateButton">
 <v-btn outline class="red--text"  type="submit">Update</v-btn>
 </div>
   </div>
@@ -130,12 +130,12 @@ export default {
     },
     methods: {
         onSubmit() {
-            // console.log("HERE!");
             var bundle = {},
                 formData = new FormData(),
                 times = [this.$store.state.userData._id],
                 accountInputs = document.querySelectorAll('.accountInputs'),
                 w = window.innerWidth,
+                self = this,
                 snackBar_update = document.querySelector('#snackBar_update'),
                 timesArray = [time1, time2, time3, time4, time5];
 
@@ -182,9 +182,18 @@ export default {
                 profilePhoto.src = '/userPhotos/' + self.$store.state.userData.photo;
                 currentTeam.src = '/teamLogos/' + self.$store.state.userDataTeam[0].file;
                 self.userData = self.$store.state.userData.photo;
-                matesContainer.children[0].src = '/userPhotos/' + self.$store.state.userData.photo;
+                // matesContainer.children[0].src = '/userPhotos/' + self.$store.state.userData.photo;
                 // console.log(matesContainer.children[0]);
             })
+
+
+            // console.log(self);
+
+ 
+
+
+
+
 
 
 

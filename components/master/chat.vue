@@ -92,7 +92,7 @@ export default {
         axios.post('/api/chat/getAll', {
             id: teamID
         }).then(function(response) {
-            console.log(response.data);
+            // console.log(response.data);
             self.messages = response.data;
         })
 
@@ -110,6 +110,7 @@ export default {
     methods: {
         sendMessage() {
             // console.log(chatMessage_input.value);
+
             if (chatMessage_input.value != '') {
                 socket.emit('frontSend', chatMessage_input.value);
                 chatMessage_input.value = '';

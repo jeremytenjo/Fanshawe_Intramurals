@@ -64,7 +64,7 @@ import axios from '~plugins/axios';
 // import Multiselect from 'vue-multiselect'
 
 export default {
-    // middleware: 'auth',
+    middleware: 'auth',
     data() {
         return {
             itemInfo: '',

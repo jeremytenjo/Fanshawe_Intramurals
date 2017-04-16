@@ -8,9 +8,15 @@ const store = new Vuex.Store({
         contentId: '',
         fromID: '',
         inboxSubject: '',
+        selectedTournament: '',
+        clientORcms: '',
         urlPage: ''
+
     },
     mutations: {
+        set_clientORcms(state, val) {
+            state.clientORcms = val
+        },
         set(state, val) {
             state.userData = val
 
@@ -33,6 +39,9 @@ const store = new Vuex.Store({
         },
         setinboxSubject(state, val) {
             state.inboxSubject = val
+        },
+        set_selectedTournament(state, val) {
+            state.selectedTournament = val
         },
         setUrlPage(state, val) {
             state.urlPage = val

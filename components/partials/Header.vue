@@ -1,13 +1,12 @@
 <template>
 <div>
     <header id="header">
-
         <div id="logoCon">
             <img src="~assets/img/dash.png" alt="dash image">
             <p>ntramurals</p>
         </div>
 
-        <h1><p id="teamName">Pick a Team</p></h1>
+        <h1><p id="teamName"></p></h1>
 
         <p id="pageTitle"></p>
         <img src="~assets/img/default_profile.png" alt="Profile Picture" id="profilePhoto" @click="showAccount">
@@ -17,7 +16,7 @@
     <div id="backDrop">
     </div>
     <img src="~assets/img/backArrow.svg" alt="Back icon" id="backIcon" @click="goBack">
-    <img src="~assets/img/teamLogos/United.png" alt="Team Logo" id="teamLogo">
+    <img src="~assets/img/default_team_logo.png" alt="Team Logo" id="teamLogo">
     <my-mates />
 
 </div>
@@ -25,25 +24,29 @@
 
 <script>
 export default {
-
+    data() {
+        return {
+            clientORcms: this.$store.state.clientORcms
+        }
+    },
     mounted() {
-        var profilePhoto = document.querySelector('#profilePhoto');
-        var pageTitle = document.querySelector('#pageTitle');
-        var teamLogo = document.querySelector('#teamLogo');
-        var teamName = document.querySelector('#teamName');
-        var messageContainer = document.querySelector('#messageContainer');
-        var inboxlistContainer = document.querySelector('#inboxlistContainer');
-        var inboxListCon_inner = document.querySelector('#inboxListCon_inner');
-        var to_input = document.querySelector('#to_input');
-        var messageContainer = document.querySelector('#messageContainer');
-        var messageContainer_write = document.querySelector('#messageContainer_write');
-        var urlTitle = window.location.pathname;
+        var profilePhoto = document.querySelector('#profilePhoto'),
+            pageTitle = document.querySelector('#pageTitle'),
+            teamLogo = document.querySelector('#teamLogo'),
+            teamName = document.querySelector('#teamName'),
+            messageContainer = document.querySelector('#messageContainer'),
+            inboxlistContainer = document.querySelector('#inboxlistContainer'),
+            inboxListCon_inner = document.querySelector('#inboxListCon_inner'),
+            to_input = document.querySelector('#to_input'),
+            messageContainer = document.querySelector('#messageContainer'),
+            messageContainer_write = document.querySelector('#messageContainer_write'),
+            urlTitle = window.location.pathname,
+            self = this,
+            mc_account = document.querySelector('#mc_account'),
+            DarkOverlay = document.querySelector('#DarkOverlay');
+
         urlTitle = urlTitle.substring(1);
         urlTitle = urlTitle.charAt(0).toUpperCase() + urlTitle.slice(1);
-        var self = this;
-        var mc_account = document.querySelector('#mc_account');
-        var DarkOverlay = document.querySelector('#DarkOverlay');
-
         (function sddsdd() {
             pageTitle.innerHTML = urlTitle;
         })();
@@ -67,7 +70,6 @@ export default {
             var w = window.innerWidth;
 
             messageInput.value = '';
-            newTo.value = '';
             newSubject.value = '';
             sendMessageCon.value = '';
             backIcon.style.display = 'none';
@@ -76,22 +78,24 @@ export default {
             // inboxListCon_inner.style.display = 'block';
 
             if (w <= 600) {
-              messageContainer.style.display = 'none';
+                messageContainer.style.display = 'none';
 
             }
 
         },
         logout() {
-            this.$store.commit('set', false);
-            // this.$store.commit('set_userDataTeam', false);
-            // this.$store.commit('set_userDataTeamMates', false);
-            this.$router.push('/login');
+            location.reload(true);
+            // this.$store.commit('set', false);
+            // this.$store.commit('set_userDataTeam', '');
+            // this.$store.commit('set_userDataTeamMates', '');
+            // // console.log(this.$store.state);
+            // this.$router.push('/login');
         }
     }
 }
 </script>
 
-<style lang="scss" >
+<style lang="scss" scoped>
 #header {
     background-image: none;
     background-color: red;

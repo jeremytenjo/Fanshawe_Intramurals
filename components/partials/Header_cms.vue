@@ -3,10 +3,8 @@
     <img src="~assets/img/menuIcon.png" alt="menu icon" ref="menuIcon" id="menuIcon" @click="openMenu" />
     <p id="pageTitle"></p>
     <my-seachBox/>
-    <my-nav/>
-    <my-inboxBox/>
-    <p id="logoutBtn" @click="logout">Logout</p>
-
+    <my-inboxBox-cms/>
+    <p id="logoutBtn_cms" @click="logout">Logout</p>
 </div>
 </template>
 
@@ -14,28 +12,46 @@
 export default {
 
     mounted() {
-        var nav = document.querySelector('#nav'),
-            pageTitle = document.querySelector('#pageTitle'),
-            self = this;
+        var nav = document.querySelector('#nav');
+        var pageTitle = document.querySelector('#pageTitle');
+        var addIcon = document.querySelector('#addIcon');
+        var urlTitle = window.location.pathname;
+        urlTitle = urlTitle.substring(1);
+        urlTitle = urlTitle.charAt(0).toUpperCase() + urlTitle.slice(1);
+        var self = this;
+
+        (function sddsdd() {
+            pageTitle.innerHTML = urlTitle;
+            console.log(urlTitle);
+            if (urlTitle === 'Inbox') {
+              addIcon.style.display = 'none';
+            }else {
+              addIcon.style.display = 'block';
+            }
+        })();
+
     },
     methods: {
         openMenu() {
-            var addIcon = document.querySelector('#addIcon');
+            var addIcon = document.querySelector('#addIcon'),
+                nav = document.querySelector('#nav');
 
             if (nav.style.display === 'block') {
                 nav.style.display = 'none';
-                addIcon.style.display = 'block';
+                // addIcon.style.display = 'block';
                 this.$refs.menuIcon.src = require('~assets/img/menuIcon.png');
             } else {
                 this.$refs.menuIcon.src = require('~assets/img/closeIcon.png');
                 nav.style.display = 'block';
-                addIcon.style.display = 'none';
+                // addIcon.style.display = 'none';
             }
         },
         logout() {
             // console.log(self.$nuxt.$router);
-            self.$nuxt.$store.commit('set', false);
-            self.$nuxt.$router.push('/');
+            // self.$nuxt.$store.commit('set', false);
+            // self.$nuxt.$router.push('/');
+            location.reload(true);
+
         }
     }
 }
@@ -80,11 +96,11 @@ export default {
     top: 11px;
 }
 
-#logoutBtn {
+#logoutBtn_cms {
     color: white;
     cursor: pointer;
     position: absolute;
-    right: 50px;
+    right: 20px;
     top: 24px;
     display: none;
 }
@@ -104,7 +120,7 @@ export default {
     #menuIcon {
         top: 23px;
     }
-    #logoutBtn {
+    #logoutBtn_cms {
         display: block;
     }
 }

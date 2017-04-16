@@ -56,7 +56,7 @@ export default {
                 data,
                 id,
                 authUser,
-								userData;
+                userData;
 
             //Validation
             if (email_input === '' && password_input === '') {
@@ -71,9 +71,7 @@ export default {
 
             } else if (lname_input === '') {
                 register_error.innerHTML = '*Please include your Last Name';
-            }
-
-            else if (email_input != '' && password_input != '' && email_input != '' && password_input != '' &&
+            } else if (email_input != '' && password_input != '' && email_input != '' && password_input != '' &&
                 fname_input != '' &&
                 lname_input != '') {
 
@@ -85,30 +83,32 @@ export default {
                 }
 
 
-								for (var i = 0; i < regInputs.length; i++) {
-										formData.append(regInputs[i].name, regInputs[i].value);
-								}
+                for (var i = 0; i < regInputs.length; i++) {
+                    formData.append(regInputs[i].name, regInputs[i].value);
+                }
 
-								for (var value of formData.values()) {
-								    console.log(value);
-								}
+								//show bundle data
+                // for (var value of formData.values()) {
+                //     console.log(value);
+                // }
 
                 // console.log(data);
                 axios.post('/api/users/register', formData)
                     .then(function(response) {
-                   console.log(response.data);
-									 userData = response.data;
-									 // console.log(userData);
-									 redirect(self, userData);
+                        // console.log(response.data);
+                        userData = response.data[0];
+                        // console.log(userData);
+                        redirect(self, userData);
                     })
                     .catch(function(error) {
                         console.log(error);
                     });
 
                 function redirect(self, userData) {
-                    // console.log(self.$store);
-										self.$store.commit('set', userData);
-                    // console.log(self.$store.state.authUser);
+                  // console.log(self);
+
+                    self.$store.commit('set', userData);
+                    // console.log(self.$store.state.userData);
                     self.$router.push('/welcome');
                 }
 
@@ -120,13 +120,13 @@ export default {
 
 <style lang="scss">
 .question {
-  text-align: center;
-	bottom: 70px;
-	left: 0;
-	right: 0;
-	margin: auto;
-	font-size: 12px;
-	padding-bottom: 100px;
+    text-align: center;
+    bottom: 70px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    font-size: 12px;
+    padding-bottom: 100px;
 
 }
 #myForm {
@@ -144,8 +144,8 @@ export default {
     position: fixed;
     bottom: 0;
     height: 50px;
-		font-weight: bold;
-		z-index: 4;
+    font-weight: bold;
+    z-index: 4;
 
 }
 #registerLogo {
@@ -187,15 +187,15 @@ export default {
     grid-column-gap: 20px;
 }
 @media (min-width: 600px) {
-	.question {
-	  text-align: center;
-		position: absolute;
-		bottom: 10px;
-		left: 0;
-		right: 0;
-		margin: auto;
-		font-size: 12px;
-	}
+    .question {
+        text-align: center;
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        font-size: 12px;
+    }
     #fnamelname {
         display: grid;
         grid-template-columns: repeat(2, 1fr);

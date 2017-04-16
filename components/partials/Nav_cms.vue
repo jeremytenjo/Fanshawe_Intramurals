@@ -3,7 +3,7 @@
     <img src="~assets/img/triangle.svg" alt="search icon" class="navTriangle" />
     <v-row class="navCons">
         <v-col xs4="xs4" class="navItem" @click="closeMenu('Teams')">
-            <router-link to="/cms/teams">
+            <router-link to="/teams">
                 <div class="navImgText">
                     <img src="~assets/img/team.svg" alt="search icon" class="navImg1" />
                     <p class="navText">Teams</p>
@@ -30,7 +30,7 @@
 
     <v-row class="navCons">
         <v-col xs4="xs4" class="navItem" @click="closeMenu('Inbox')">
-            <router-link to="/inbox">
+            <router-link to="/inbox_cms">
                 <div class="navImgText4">
                     <img src="~assets/img/inbox.svg" alt="search icon" class="navImg4" />
                     <p class="navText">Inbox</p>
@@ -76,7 +76,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .navTriangle {
     position: fixed;
     z-index: 3;
@@ -91,7 +91,7 @@ export default {
     display: none;
     box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.3);
     top: 42px;
-    z-index: 1;
+    z-index: 4;
     background-color: white;
 }
 .navCons {

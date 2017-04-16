@@ -9,8 +9,11 @@ const formidable = require('formidable');
 const path = require('path');
 const uploadDir = path.join(__dirname, '../static/userPhotos/');
 
+
+
+
 router.post('/users/register', function(req, res) {
-    console.log("HERE!");
+    // console.log("HERE!");
     var form = new formidable.IncomingForm(),
         data = {},
         files = [],
@@ -53,7 +56,7 @@ router.post('/users/register', function(req, res) {
             //  console.log(data);
             Users.insertMany(data, function(err, results) {
                 // console.log(results);
-                delete results.password;
+                // delete results.password;
                 res.json(results);
             });
 
@@ -72,9 +75,11 @@ router.post('/users/getOne', function(req, res) {
         res.json(result)
     });
 })
+
 router.post('/users/getAll', function(req, res) {
-    services.getAll(model, function(res) {
-        // console.log(res);
+  // console.log("HERE!");
+    services.getAll(model, function(result) {
+      res.json(result);
     });
 })
 
@@ -89,11 +94,11 @@ router.post('/users/schedule', function(req, res) {
             schedule: req.body
         }
     }).exec(function(err, results) {
-      Users.find({
-          _id: id
-      }).exec(function(err, data) {
-        res.json(data);
-      })
+        Users.find({
+            _id: id
+        }).exec(function(err, data) {
+            res.json(data);
+        })
     })
 })
 
@@ -222,6 +227,25 @@ router.post('/users/updateTeam', function(req, res) {
         Users.find((_id) => {
             req.body.data.userId
         }).exec(function(err, result) {
+            res.json(result[0]);
+        })
+    })
+
+})
+router.post('/users/freeAgent', function(req, res) {
+    // console.log(req.body.data);
+    Users.update({
+        _id: req.body.data.userId
+    }, {
+        $set: {
+            torunament: req.body.data.torunament,
+            team: null
+        }
+    }).exec(function(err, resulttt) {
+        Users.find((_id) => {
+            req.body.data.userId
+        }).exec(function(err, result) {
+          // console.log(result);
             res.json(result[0]);
         })
     })

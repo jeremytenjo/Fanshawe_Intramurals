@@ -22,6 +22,14 @@
 import axios from '~plugins/axios';
 
 export default {
+    created() {
+        //do something after creating vue instance
+        var a_updateButton = document.querySelector('#a_updateButton'),
+            self = this;
+
+       
+
+    },
     data() {
         return {
             userDataTeamMates: this.$store.state.userDataTeamMates,
@@ -32,18 +40,18 @@ export default {
         openMember(id) {
             // console.log(id);
 
-						//Dropdown
-						TweenMax.to("#mateModaldash", .3, {
-								top: 102,
-								ease: Power2.easeInOut
-						});
+            //Dropdown
+            TweenMax.to("#mateModaldash", .3, {
+                top: 102,
+                ease: Power2.easeInOut
+            });
 
 
             var self = this;
             axios.post('/api/users/getOne', {
                 id: id
             }).then(function(response) {
-                console.log(response.data[0]);
+                // console.log(response.data[0]);
                 self.mateInfo = response.data[0];
             })
         },
@@ -63,7 +71,7 @@ export default {
     display: none;
 }
 #noborderr {
-  box-shadow: none !important;
+    box-shadow: none !important;
 }
 #mateModaldash {
     background-color: white;
@@ -72,18 +80,18 @@ export default {
     position: absolute;
     z-index: 4;
     top: -600px;
-		border-radius: 2px;
+    border-radius: 2px;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     img {
         width: 15px;
-        position:absolute;
+        position: absolute;
         right: 15px;
-        top:15px;
+        top: 15px;
     }
 }
 #matedModalPadding {
-  padding-left: 40px;
-  padding-right: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
 }
 @media (min-width: 600px) {
     #matesContainer {

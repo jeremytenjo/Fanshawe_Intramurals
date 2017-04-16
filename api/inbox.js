@@ -11,13 +11,14 @@ router.post('/inbox/getOne', function(req, res) {
     Inbox.find({
         _id: id
     }).populate('from').populate('to').exec(function(err, messages) {
+        if (err) return handleError(err);
         //  console.log(messages);
         res.json(messages);
     });
 })
 
 router.post('/inbox/send', function(req, res) {
-    // console.log("HERE!");
+    console.log("HERE!");
     var data = req.body.data,
         date = new Date(),
         monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -44,6 +45,7 @@ router.post('/inbox/getAllBy', function(req, res) {
     }).populate('from').populate('to').sort({
         date: -1
     }).exec(function(err, resultMessages) {
+        // if (err) return handleError(err);
         //  console.log(resultMessages);
         res.json(resultMessages);
     });

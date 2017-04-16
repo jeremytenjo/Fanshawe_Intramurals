@@ -35,18 +35,19 @@
 
 				<!--  Users-->
 				<div id="teamInputs" v-if="usersData != 'false'">
+					<p id="usersAlert">*Please fill all the fields</p>
 						<label for="fname">First Name</label>
-						<input type="text" name="fname" class="inputs">
+						<input type="text" name="fname" class="inputs required">
 						<label for="lname">Last Name</label>
-						<input type="text" name="lname" class="inputs">
+						<input type="text" name="lname" class="inputs required">
 						<label for="email">Email</label>
-						<input type="text" name="email" class="inputs">
+						<input type="text" name="email" class="inputs required">
 						<label for="password">Password</label>
-						<input type="text" name="password" class="inputs" value="pass">
+						<input type="text" name="password" class="inputs required" value="pass">
 						<label for="number">Number</label>
 						<input type="text" name="number" class="inputs" value="0">
-						<label for="type">Type</label>
-						<input type="text" name="type" class="inputs">
+						<label for="type" class="hidden">Type</label>
+						<input type="text" name="type" value="student" class="inputs hidden">
 						<label for="file">Photo</label>
 						<input type="file" name="file" id="file">
 
@@ -143,7 +144,7 @@ export default {
             formCon.style.display = 'block';
             var bundle,
                 teamInputForm = document.querySelector('#teamInputForm');
-                // sportInputs = document.querySelector('#sportInputs');
+            // sportInputs = document.querySelector('#sportInputs');
 
             //Determine Title
             var urlTitle = window.location.pathname;
@@ -154,49 +155,15 @@ export default {
             // console.log(urlTitle);
             formTitle.innerHTML = urlTitle;
 
-            // console.log(self.$store.state.urlPage);
-
+            console.log(self.$store.state.urlPage);
 
 
             if (self.$store.state.urlPage === 'Teams') {
                 addForm.teams(function(data) {
-									//Display
-									self.teamsData = 'true';
-									self.tournamentsData = 'false';
-									self.usersData = 'false';
-									self.inboxData = 'false';
-									self.announcementsData = 'false';
-
-
-									//Gett all team ids
-									axios.post('/api/teams/getAll').then(function(response) {
-											var bundle = '';
-											// console.log(response.data);
-											self.selectInputs = response.data;
-											for (var i = 0; i < response.data.length; i++) {
-													// bundle += 'response.data[i]';
-													bundle += '<option value="' + response.data[i]._id + '">' + response.data[i].name + '</option>';
-													// sportInputs.innerHTML = bundle;
-											}
-									})
-
-                });
-            } else if (original === 'tournaments') {
-                addForm.tournaments(function(data) {
-                    // console.log('tournaments');
-                    self.teamsData = 'false';
-                    self.tournamentsData = 'true';
-                    self.usersData = 'false';
-                    self.inboxData = 'false';
-                    self.announcementsData = 'false';
-
-                });
-            } else if (self.$store.state.urlPage === 'Users') {
-                addForm.users(function(data) {
-                    // console.log('users');
-                    self.teamsData = 'false';
+                    //Display
+                    self.teamsData = 'true';
                     self.tournamentsData = 'false';
-                    self.usersData = 'true';
+                    self.usersData = 'false';
                     self.inboxData = 'false';
                     self.announcementsData = 'false';
 
@@ -208,21 +175,47 @@ export default {
                         for (var i = 0; i < response.data.length; i++) {
                             // bundle += 'response.data[i]';
                             bundle += '<option value="' + response.data[i]._id + '">' + response.data[i].name + '</option>';
-                            teamInput.innerHTML = bundle;
+                            // sportInputs.innerHTML = bundle;
                         }
                     })
 
                 });
-            } else if (self.$store.state.urlPage === 'Inbox') {
-                addForm.inbox(function(data) {
-                    // console.log('inbox');
-                    self.teamsData = 'false';
-                    self.tournamentsData = 'false';
-                    self.usersData = 'false';
-                    self.inboxData = 'true';
-                    self.announcementsData = 'false';
+            } else if (original === 'tournaments') {
+                // console.log('tournaments');
+                self.teamsData = 'false';
+                self.tournamentsData = 'true';
+                self.usersData = 'false';
+                self.inboxData = 'false';
+                self.announcementsData = 'false';
 
-                });
+            } else if (self.$store.state.urlPage === 'Users') {
+                // console.log('users');
+                self.teamsData = 'false';
+                self.tournamentsData = 'false';
+                self.usersData = 'true';
+                self.inboxData = 'false';
+                self.announcementsData = 'false';
+
+                //Gett all team ids
+                axios.post('/api/teams/getAll').then(function(response) {
+                    var bundle = '';
+                    // console.log(response.data);
+                    self.selectInputs = response.data;
+                    for (var i = 0; i < response.data.length; i++) {
+                        // bundle += 'response.data[i]';
+                        bundle += '<option value="' + response.data[i]._id + '">' + response.data[i].name + '</option>';
+                        teamInput.innerHTML = bundle;
+                    }
+                })
+
+            } else if (self.$store.state.urlPage === 'Inbox') {
+                // console.log('inbox');
+                self.teamsData = 'false';
+                self.tournamentsData = 'false';
+                self.usersData = 'false';
+                self.inboxData = 'true';
+                self.announcementsData = 'false';
+
             }
         },
         onSubmit() {
@@ -230,15 +223,21 @@ export default {
             var inputs = document.querySelectorAll(".inputs"),
                 file = document.querySelector('#file'),
                 addIcon = document.querySelector('#addIcon'),
+                snackBar_update = document.querySelector('#snackBar_update'),
+                usersAlert = document.querySelector('#usersAlert'),
+                required = document.querySelectorAll('.required'),
                 formData = new FormData(),
                 self = this,
                 urlTitle = window.location.pathname,
                 original = urlTitle.substring(1),
+                w = window.innerWidth,
                 source,
                 teamsIds,
                 teamInput = document.querySelector('#teamInput'),
                 data = {};
-            // console.log(original);
+
+
+            //Define Api destination
             if (self.$store.state.urlPage === 'Teams') {
                 source = 'teams';
             } else if (original === 'tournaments') {
@@ -251,65 +250,94 @@ export default {
                 source = 'announcements';
             }
 
-            // console.log(self.selectInputs);
-            formData.append('team', self.selectInputs);
+            //Validate
+            for (var r = 0; r < required.length; r++) {
+                // console.log(required[r].value);
+                if (required[r].value != '') {
 
-            teamsIds = self.teamSelected;
-            // console.log(teamsIds);
-            //
-            // for (var a = 0; a < teamsIds.length; a++) {
-            //     formData.append('teamId', teamsIds[a]);
-            // }
-            formData.append('teamId', teamsIds);
+                    // console.log(self.selectInputs);
+                    formData.append('team', self.selectInputs);
 
-            //ALL
-            //Inputs
-            for (var i = 0; i < inputs.length; i++) {
-                formData.append(inputs[i].name, inputs[i].value);
-            }
-            //Files
-            // console.log(file.files[0]);
-            if (typeof file.files[0] != "undefined") {
-                if (file.value === '') {
-                    formData.append('photo', 'default_user_logo.png');
+                    teamsIds = self.teamSelected;
+                    // console.log(teamsIds);
+                    //
+                    // for (var a = 0; a < teamsIds.length; a++) {
+                    //     formData.append('teamId', teamsIds[a]);
+                    // }
+                    formData.append('teamId', teamsIds);
+
+
+                    //Inputs
+                    for (var i = 0; i < inputs.length; i++) {
+                        formData.append(inputs[i].name, inputs[i].value);
+                    }
+                    //Files
+                    // console.log(file.files[0]);
+                    if (typeof file.files[0] != "undefined") {
+                        if (file.value === '') {
+                            formData.append('photo', 'default_user_logo.png');
+                        } else {
+                            formData.append('photo', file.files[0]);
+                        }
+                    } else {
+                        formData.append('photo', 'default_user_logo.png');
+                    }
+
+                    //
+                    // for (var value of formData.values()) {
+                    //     console.log(value);
+                    // }
+                    var insert = '/insert';
+                    if (source === 'users') {
+                        insert = '/register';
+                    }
+
+                    axios.post('api/' + source + insert,
+                        formData
+                    ).then(function(response) {
+                        // console.log(self);
+                        // self.$router.push('/reload');
+                        formCon.style.display = 'none';
+
+                        // snackBar
+                        snackBar_update.innerHTML = 'User Added';
+                        if (w <= 600) {
+                            TweenMax.to('#snackBar_update', .4, {
+                                bottom: 0,
+                                delay: .2
+                            });
+                            TweenMax.to('#snackBar_update', .3, {
+                                bottom: '-60px',
+                                delay: 2
+                            });
+                        } else {
+                            TweenMax.to('#snackBar_update', .4, {
+                                bottom: 0,
+                                delay: .2
+                            });
+                            TweenMax.to('#snackBar_update', .4, {
+                                bottom: '-500px',
+                                delay: 2
+                            });
+                        }
+
+                        //Remove alert
+                        usersAlert.style.display = 'none';
+                        formContent.reset();
+                    })
+
+                    addIcon.style.display = 'block';
+                    break;
+
+                    //Reset
+                    // self.$router.push('reload');
                 } else {
-                    formData.append('photo', file.files[0]);
+
+                    //Show alert
+                    usersAlert.style.display = 'block';
+                    break;
                 }
             }
-
-            //
-            for (var value of formData.values()) {
-                console.log(value);
-            }
-            var insert = '/insert';
-            if (source === 'users') {
-                insert = '/register';
-            }
-
-            axios.post('api/' + source + insert,
-                formData
-            ).then(function(response) {
-                // console.log(self);
-                // self.$router.push('/reload');
-                formCon.style.display = 'none';
-
-                //snackBar
-                TweenMax.to(snackBar_added, 1, {
-                    bottom: 0,
-                    delay: .2
-                });
-                TweenMax.to(snackBar_added, 1, {
-                    bottom: '-60px',
-                    delay: 2
-                });
-
-                formContent.reset();
-            })
-
-            addIcon.style.display = 'block';
-
-						//Reset
-						// self.$router.push('reload');
         },
         cancelForm() {
             formCon.style.display = 'none';
@@ -350,13 +378,17 @@ export default {
         max-height: 100px;
     }
 }
+#usersAlert {
+    color: red;
+    display: none;
+}
 #formCon {
     width: 100%;
     height: 100%;
     display: none;
     background-color: rgba(0, 0, 0, 0.4);
     position: fixed;
-    z-index: 3;
+    z-index: 5;
     top: 0;
     label {
         width: 70%;

@@ -67,7 +67,6 @@ export default {
             // console.log("HERE!");
             var messageInput = document.querySelector('#messageInput');
             messageInput.value = '';
-            newTo.value = '';
             newSubject.value = '';
             sendMessageCon.value = '';
             messageContainer_write.style.display = 'none';

@@ -63,7 +63,7 @@ export default {
                     // console.log(response.data);
                     if (response.data === false) {
                         // console.log(response);
-                        login_error.innerHTML = "Incorect Credentials, please check your information";
+                        login_error.innerHTML = "Incorect Credentials, please try again.";
 
                     } else {
                         userData = response.data;
@@ -94,9 +94,18 @@ export default {
                 }).then(function(response) {
                     // console.log(response.data);
                     self.$store.commit('set_userDataTeamMates', response.data);
-                })
+                    // console.log(self.$store.state.userData.type);
 
-                self.$router.push('/cms');
+                    //Set user type
+                    if (self.$store.state.userData.type === 'admin') {
+                        self.$store.commit('set_clientORcms', 'cms');
+												self.$router.push('/fixtures');
+
+                    } else {
+                        self.$store.commit('set_clientORcms', 'student');
+												self.$router.push('/users');
+                    }
+                })
             }
 
         }
@@ -106,13 +115,13 @@ export default {
 
 <style lang="scss">
 .question {
-  text-align: center;
-	bottom: 70px;
-	left: 0;
-	right: 0;
-	margin: auto;
-	font-size: 12px;
-	padding-bottom: 100px;
+    text-align: center;
+    bottom: 70px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    font-size: 12px;
+    padding-bottom: 100px;
 }
 #login_error {
     color: red;
@@ -127,7 +136,7 @@ export default {
     bottom: 0;
     height: 50px;
     font-weight: bold;
-		z-index: 4;
+    z-index: 4;
 
 }
 #loginLogo {
@@ -150,7 +159,7 @@ export default {
     top: 0;
     z-index: 100;
     border-radius: 2px;
-		overflow: scroll;
+    overflow: scroll;
 
 }
 #myForm {
@@ -164,15 +173,15 @@ export default {
     }
 }
 @media (min-width: 600px) {
-	.question {
-	  text-align: center;
-		position: absolute;
-		bottom: 10px;
-		left: 0;
-		right: 0;
-		margin: auto;
-		font-size: 12px;
-	}
+    .question {
+        text-align: center;
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        font-size: 12px;
+    }
     #loginLogo {
         width: 250px;
         display: block;
@@ -190,7 +199,7 @@ export default {
         left: 0;
         bottom: 0;
         right: 0;
-				overflow: hidden;
+        overflow: hidden;
 
     }
     #loginSubmitbtn {

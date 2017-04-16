@@ -8,6 +8,10 @@ const uploadDir = path.join(__dirname, '../static/teamLogos/');
 var remove = require('remove');
 
 
+router.post('/teams/update', function(req, res) {
+
+})
+
 
 router.post('/teams/getOne', function(req, res) {
     var id = req.body.id;
@@ -19,10 +23,10 @@ router.post('/teams/getOne', function(req, res) {
 })
 
 router.post('/teams/getAll', function(req, res) {
-    services.getAll(model, function(respo) {
-        // console.log(respo);
-        res.json(respo);
-    });
+    Teams.find().populate('sport').exec(function(err, result) {
+        // console.log(result);
+        res.json(result);
+    })
 })
 
 router.post('/teams/currentlyQualifying', function(req, res) {
@@ -268,6 +272,71 @@ router.post('/teams/delete', function(req, res) {
 
 })
 
+router.post('/teams/insert', function(req, res) {
+    // console.log(req.body);
+    var form = new formidable.IncomingForm(),
+        data = {},
+        files = [],
+        fields = [];
+    form.multiples = true;
+    form.keepExtensions = true;
+    form.uploadDir = uploadDir;
+    form.parse(req, (err, fields, files) => {
+        if (err) return res.status(500).json({
+            error: err
+        });
+    })
+
+    //Inputs
+    form.on('field', function(field, value) {
+        // console.log(field, value);
+        fields.push([field, value]);
+    })
+
+    //Files
+    form.on('fileBegin', function(name, file) {
+
+        const [fileName, fileExt] = file.name.split('.');
+        var date = new Date().getTime();
+        var fileNameDB = fileName + date + '.' + fileExt;
+        file.path = path.join(uploadDir, fileNameDB);
+
+        // console.log(fileNameDB);
+        //ADD file
+        data.file = fileNameDB;
+    })
+
+    //Selections
+
+
+
+    //Insert Database
+    form.on('end', function() {
+
+        //ADD inputs
+        for (var i = 0; i < fields.length; i++) {
+            data[fields[i][0]] = fields[i][1];
+            // console.log(fields[i][0]);
+        }
+
+        //Add players
+        console.log(fields);
+        console.log(data.players);
+        if (data.file === 'undefined') {
+            console.log('nofile');
+            data.file = 'default_team_logo.png';
+            services.insert(model, data, function(respo) {
+                res.json(respo);
+            });
+        } else {
+            services.insert(model, data, function(respo) {
+                res.json(respo);
+            });
+        }
+    });
+
+
+});
 
 
 module.exports = router

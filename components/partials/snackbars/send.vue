@@ -20,7 +20,7 @@ export default {}
     position: fixed;
     z-index: 5;
     left: 50%;
-    bottom: -42px;
+    bottom: -500px;
 }
 
   @media screen and (min-width: 600px) {

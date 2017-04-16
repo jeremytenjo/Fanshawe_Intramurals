@@ -71,8 +71,8 @@
   <div id="messageContainer_write">
 <div id="messageHeader">
 
-  <label for="to">To:</label>
-  <input type="text" name="to" value="" id="newTo">
+  <!-- <label for="to">To:</label>
+  <input type="text" name="to" value="" id="newTo"> -->
 
   <label for="subject">Subject:</label>
   <input type="text" name="subject" value="" id="newSubject">
@@ -102,7 +102,7 @@ export default {
             openedMessageID: ''
         }
     },
-    mounted: function mounted() {
+    mounted() {
         //do something after mounting vue instance
         var self = this,
             // sendCon = document.querySelector('#sendCon'),
@@ -123,7 +123,7 @@ export default {
             id: this.$store.state.userData._id
         }).then(function(response) {
             self.inboxMessages = response.data;
-            // console.log(response.data);
+            // console.log(self.inboxMessages);
         })
     },
     methods: {
@@ -163,7 +163,7 @@ export default {
                 bundle = {};
             // console.log(messageInput.value);
             bundle.from = this.$store.state.userData._id;
-            bundle.to = this.$store.state.fromID;
+            bundle.to = '58c3657183e0930e34bf79d8';
             bundle.message = messageInput.value;
             bundle.subject = this.$store.state.inboxSubject;
             if (messageInput.value != '') {
@@ -182,27 +182,21 @@ export default {
                 bundle = {},
                 w = window.innerWidth;
 
-            if (this.$store.state.userData.type === 'student') {
-                bundle.to = '58c3657183e0930e34bf79d8';
-            } else {
-                bundle.to = newTo.value;
-            }
-            if (bundle.to != '' && newSubject.value != '' && sendMessageCon.value != '') {
+            if (newSubject.value != '' && sendMessageCon.value != '') {
 
-                console.log(bundle.to);
                 bundle.from = this.$store.state.userData._id;
                 bundle.message = sendMessageCon.value;
+                bundle.to = '58c3657183e0930e34bf79d8';
                 bundle.subject = newSubject.value;
                 if (sendMessageCon.value != '') {
                     // console.log(bundle);
                     axios.post('/api/inbox/send', {
                         data: bundle
                     }).then(function(response) {
-                        console.log('response');
+                        // console.log('response');
                         messageContainer_write.style.display = 'none';
                         inboxlistContainer.style.display = 'block';
                         inboxContainer.style.display = 'grid';
-                        newTo.value = '';
                         newSubject.value = '';
                         sendMessageCon.value = '';
                     })
@@ -231,7 +225,7 @@ export default {
             }
         },
         writeMessage() {
-            console.log("HERE lol!");
+
             var w = window.innerWidth,
                 backIconInbox = document.querySelector('#backIconInbox'),
                 inboxListCon_inner = document.querySelector('#inboxListCon_inner'),

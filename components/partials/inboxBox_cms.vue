@@ -47,6 +47,10 @@ export default {
     methods: {
 
         showInbox() {
+					var inboxBox = document.querySelector('#inboxBox'),
+	            noEmail = document.querySelector('#noEmail'),
+	            addIcon = document.querySelector('#addIcon');
+	            self = this;
             var userData_id = self.$store.state.userData;
             // console.log(userData_id);
             axios.post('/api/inbox/getAllBy', {
@@ -73,7 +77,7 @@ export default {
             console.log(id);
             inboxBox.style.display = 'none';
             addIcon.style.opacity = 1;
-            self.$router.push('/inbox');
+            self.$router.push('/inbox_cms');
         }
     }
 }
