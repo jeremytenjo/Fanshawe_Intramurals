@@ -21,8 +21,8 @@ export default {
         var self = this;
 
         (function sddsdd() {
-            pageTitle.innerHTML = urlTitle;
-            console.log(urlTitle);
+            // pageTitle.innerHTML = urlTitle;
+            // console.log(urlTitle);
             if (urlTitle === 'Inbox') {
               addIcon.style.display = 'none';
             }else {

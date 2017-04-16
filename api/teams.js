@@ -9,13 +9,14 @@ var remove = require('remove');
 
 
 router.post('/teams/update', function(req, res) {
+    console.log("Update Here");
 
 })
 
 
 router.post('/teams/getOne', function(req, res) {
     var id = req.body.id;
-    console.log(id);
+    // console.log(id);
     services.getOne(model, id, function(respo) {
         // console.log(respo);
         res.json(respo);

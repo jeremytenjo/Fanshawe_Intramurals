@@ -31,12 +31,23 @@
   </div>
 
   <!--Sport  -->
-  <div>
+  <div id="sportContainer">
     <label for="sport">Change Sport</label>
-    <select name="sport" form="formContent" id="teamInput" v-model="selectInputs"></select>
+    <select name="sport" form="formContent" id="teamInput" v-model="selectInputs">
+    </select>
   </div>
 
   <!--  Players-->
+  <p>Players:</p>
+  <div id="playersList">
+
+    <div class="playerItem" v-for="item in playerList" :key="item.key">
+      <img src="~assets/img/default_user_logo.png" alt="team logo">
+      <p>{{item.fname}} {{item.lname}}</p>
+    </div>
+
+
+  </div>
   <!-- <div>
   <label for="typo__label">Add Players</label>
   <select name="player" form="formContent" v-model="selectInputsPlayer" id="playerInputs" multiple></select>
@@ -69,7 +80,8 @@ export default {
         return {
             itemInfo: '',
             selectInputs: '',
-            selectInputsPlayer: ''
+            selectInputsPlayer: '',
+            playerList: ''
         }
     },
     mounted() {
@@ -99,8 +111,12 @@ export default {
             //set profile pictures
             profilePicture.src = '/teamLogos/' + response.data[0].file;
 
+            // Set initial ID
+            self.$store.commit('setContentID', response.data[0]._id);
+
             //set sport
             axios.post('/api/tournaments/getAll').then(function(sport) {
+
                 bundle += '<option disabled value="">Please select one</option>';
                 for (var i = 0; i < sport.data.length; i++) {
                     // bundle += 'response.data[i]';
@@ -110,6 +126,14 @@ export default {
             })
 
             //set players
+            console.log(response.data[0]._id);
+            //player list
+            axios.post('/api/users/teamMatesCMS', {
+                id: response.data[0]._id
+            }).then(function(mates) {
+                self.playerList = mates.data;
+            })
+
             // axios.post('/api/users/getAll').then(function(result) {
             //   // console.log(result);
             //   bundle2 += '<option disabled value="">Hold Control to select</option>';
@@ -189,6 +213,7 @@ export default {
                 w = window.innerWidth,
                 currentPhoto,
                 file = document.querySelector('#file'),
+                teamInput = document.querySelector('#teamInput'),
                 snackBar_update = document.querySelector('#snackBar_update');
 
             formData.append('id', this.$store.state.contentId);
@@ -197,51 +222,66 @@ export default {
 
             //Get selected user current photo
             // console.log(self.$store.state.contentId);
+            // console.log(file.value);
             axios.post('/api/teams/getOne', {
                 id: self.$store.state.contentId
             }).then(function(response) {
-                console.log(response.data[0].photo);
-                currentPhoto = response.data[0].photo;
+
+                // console.log(response.data[0].file);
+                currentPhoto = response.data[0].file;
+                if (file.value === '') {
+                    // console.log("HERE!");
+                    // console.log(currentPhoto);
+                    formData.append('file', currentPhoto);
+                } else {
+                    formData.append('file', file.files[0]);
+                }
+
+                // console.log(formData.get('file'));
+
+                //Insert text inputs
+                for (var i = 0; i < accountInputs.length; i++) {
+                    formData.append(accountInputs[i].name, accountInputs[i].value);
+                }
+                var teamInput = document.querySelector('#teamInput');
+
+                //sport selected
+                var teamInput = teamInput.options[teamInput.selectedIndex].value;
+                // console.log(teamInput);
+                formData.append('sport', teamInput);
+
+                // Show Data
+                // for (var value of formData.values()) {
+                //     console.log(value);
+                // }
+
+                //Update
+                axios.post('/api/teams/update', formData).then(function(response) {
+
+                })
+
+                // snackBar
+                snackBar_update.innerHTML = 'Update Successful';
+                if (w <= 600) {
+                    TweenMax.to('#snackBar_update', .4, {
+                        bottom: 0,
+                        delay: .2
+                    });
+                    TweenMax.to('#snackBar_update', .3, {
+                        bottom: '-60px',
+                        delay: 2
+                    });
+                } else {
+                    TweenMax.to('#snackBar_update', .4, {
+                        bottom: 0,
+                        delay: .2
+                    });
+                    TweenMax.to('#snackBar_update', .4, {
+                        bottom: '-500px',
+                        delay: 2
+                    });
+                }
             })
-            if (file.value === '') {
-                formData.append('photo', currentPhoto);
-            } else {
-                formData.append('photo', file.files[0]);
-            }
-            for (var i = 0; i < accountInputs.length; i++) {
-                formData.append(accountInputs[i].name, accountInputs[i].value);
-            }
-
-            // for (var value of formData.values()) {
-            //     console.log(value);
-            // }
-            axios.post('/api/teams/update', formData).then(function(response) {
-
-            })
-
-
-
-            // snackBar
-            snackBar_update.innerHTML = 'Update Successful';
-            if (w <= 600) {
-                TweenMax.to('#snackBar_update', .4, {
-                    bottom: 0,
-                    delay: .2
-                });
-                TweenMax.to('#snackBar_update', .3, {
-                    bottom: '-60px',
-                    delay: 2
-                });
-            } else {
-                TweenMax.to('#snackBar_update', .4, {
-                    bottom: 0,
-                    delay: .2
-                });
-                TweenMax.to('#snackBar_update', .4, {
-                    bottom: '-500px',
-                    delay: 2
-                });
-            }
         }
     }
 }
@@ -361,6 +401,23 @@ html {
         width: 50%;
         display: block;
         margin-top: 7px;
+    }
+}
+#sportContainer {
+    margin-bottom: 20px;
+}
+#playersList {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-row-gap: 10px;
+    img {
+        width: 35px;
+        margin-left: 0;
+        float: left;
+    }
+    p {
+        padding-top: 8px;
+        margin-left: 40px;
     }
 }
 @media (min-width: 600px) {

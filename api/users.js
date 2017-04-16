@@ -103,10 +103,22 @@ router.post('/users/schedule', function(req, res) {
 })
 
 router.post('/users/teamMates', function(req, res) {
-    // console.log(req.body.id[0]);
+  // console.log("HERE!");
+    console.log(req.body.id[0]);
 
     Users.find({
         team: req.body.id[0]
+    }, function(err, results) {
+        // console.log(results);
+        res.json(results);
+    });
+})
+router.post('/users/teamMatesCMS', function(req, res) {
+  // console.log("HERE!");
+    console.log(req.body.id);
+
+    Users.find({
+        team: req.body.id
     }, function(err, results) {
         // console.log(results);
         res.json(results);

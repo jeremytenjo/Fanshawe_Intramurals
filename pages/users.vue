@@ -130,6 +130,7 @@ export default {
 
             // Set initial ID
             self.$store.commit('setContentID', response.data[0]._id);
+            
             //Schedule
             for (var a = 0; a < schedule.length; a++) {
                 // console.log(schedule[a]);
