@@ -137,31 +137,6 @@ export default {
                 self.playerList = mates.data;
             })
 
-            self.selectInputsPlayer = [{
-                    name: 'Vue.js',
-                    language: 'JavaScript'
-                },
-                {
-                    name: 'Adonis',
-                    language: 'JavaScript'
-                },
-                {
-                    name: 'Rails',
-                    language: 'Ruby'
-                },
-                {
-                    name: 'Sinatra',
-                    language: 'Ruby'
-                },
-                {
-                    name: 'Laravel',
-                    language: 'PHP'
-                },
-                {
-                    name: 'Phoenix',
-                    language: 'Elixir'
-                }
-            ]
             // axios.post('/api/users/getAll').then(function(result) {
             //   // console.log(result);
             //   bundle2 += '<option disabled value="">Hold Control to select</option>';
@@ -197,6 +172,13 @@ export default {
                 addIcon.style.display = 'none';
             }
 
+            // //reset list
+            // console.log("HERE!");
+            // axios.post('/api/teams/getAll').then(function(response) {
+            //     self.itemInfo = response.data;
+            // })
+
+            //et selected Item
             axios.post('/api/teams/getOne', {
                 id: id
             }).then(function(response) {

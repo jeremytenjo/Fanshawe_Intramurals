@@ -130,7 +130,7 @@ export default {
 
             // Set initial ID
             self.$store.commit('setContentID', response.data[0]._id);
-            
+
             //Schedule
             for (var a = 0; a < schedule.length; a++) {
                 // console.log(schedule[a]);
@@ -162,12 +162,19 @@ export default {
         showDetails(id) {
             this.$store.commit('setContentID', id);
             // console.log(this.$store.state.contentId);
-            var w = window.innerWidth;
+            var w = window.innerWidth,
+                self = this;
+
             if (w <= 600) {
                 usersList.style.display = 'none';
                 usersDetails.style.display = 'grid';
                 addIcon.style.display = 'none';
             }
+
+            //reset list
+            axios.post('/api/users/getAll').then(function(response) {
+                self.itemInfo = response.data;
+            })
 
             axios.post('/api/users/getOne', {
                 id: id
@@ -229,7 +236,7 @@ export default {
                 times = [this.$store.state.contentId],
                 accountInputs = document.querySelectorAll('.accountInputs'),
                 w = window.innerWidth,
-                self = this,
+                // self = this,
                 currentPhoto,
                 snackBar_update = document.querySelector('#snackBar_update'),
                 file = document.querySelector('#file'),
@@ -281,7 +288,7 @@ export default {
 
                 })
 
-                //Reset
+                //reset
                 axios.post('/api/users/getAll').then(function(response) {
                     self.itemInfo = response.data;
                 })
