@@ -128,6 +128,8 @@ export default {
             // console.log(response.data[0].photo);
             profilePicture.src = '/userPhotos/' + response.data[0].photo;
 
+            // Set initial ID
+            self.$store.commit('setContentID', response.data[0]._id);
             //Schedule
             for (var a = 0; a < schedule.length; a++) {
                 // console.log(schedule[a]);
@@ -252,7 +254,6 @@ export default {
 
 
             // console.log(this.$store.state.userData[0].photo);
-
             //Get selected user current photo
             // console.log(self.$store.state.contentId);
             axios.post('/api/users/getOne', {

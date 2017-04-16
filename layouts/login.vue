@@ -99,11 +99,11 @@ export default {
                     //Set user type
                     if (self.$store.state.userData.type === 'admin') {
                         self.$store.commit('set_clientORcms', 'cms');
-												self.$router.push('/fixtures');
+                        self.$router.push('/fixtures');
 
                     } else {
                         self.$store.commit('set_clientORcms', 'student');
-												self.$router.push('/users');
+                        self.$router.push('/users');
                     }
                 })
             }
@@ -149,7 +149,7 @@ export default {
     width: 100%;
     overflow: hidden;
     background-color: red;
-    position: absolute;
+    position: absolute;     
 }
 #loginCon {
     width: 100%;
