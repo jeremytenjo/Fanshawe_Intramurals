@@ -158,7 +158,7 @@ export default {
     top: 0;
     z-index: 100;
     border-radius: 2px;
-    overflow: scroll;
+    
 
 }
 #myForm {
