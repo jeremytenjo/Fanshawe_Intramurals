@@ -17,6 +17,7 @@
 </div>
 
    <div id="detailsPadding">
+
       <p>From: <span class="bold">{{detailsData[0].from[0].fname}}  {{detailsData[0].from[0].lname}}</span></p>
       <p >Subject: <span class="bold" id="currentSubject">{{detailsData[0].subject}}</span></p>
       <p>Message:</p>
@@ -50,28 +51,26 @@ export default {
         var self = this,
             addIcon = document.querySelector('#addIcon').style.display = 'none';
 
-        self.initLoad();
+        // load list items
+        axios.post('/api/inbox/getAllBy', {
+            id: self.$store.state.userData._id
+        }).then(function(response) {
+            // console.log(response.data);
+            self.listData = response.data;
+        })
+
+        //load first message
+        axios.post('/api/inbox/getAllBy', {
+            id: self.$store.state.userData._id
+        }).then(function(response) {
+            // console.log(response.data);
+            self.detailsData = response.data;
+        })
+
+
     },
     methods: {
-        initLoad() {
-            var self = this;
 
-            // load list items
-            axios.post('/api/inbox/getAllBy', {
-                id: self.$store.state.userData._id
-            }).then(function(response) {
-                // console.log(response.data);
-                self.listData = response.data;
-            })
-
-            //load first message
-            axios.post('/api/inbox/getAllBy', {
-                id: self.$store.state.userData._id
-            }).then(function(response) {
-                // console.log(response.data);
-                self.detailsData = response.data;
-            })
-        },
         openItem(id) {
             var w = window.innerWidth,
                 self = this,
@@ -162,16 +161,16 @@ export default {
 
 <style lang="scss">
 .fromP {
-  font-weight: bold;
-  font-size: 18px;
-  padding: 10px;
-  margin: 0;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 10px;
+    margin: 0;
 }
 .subjectP {
-  font-size: 18px;
-  padding: 10px;
-  margin: 0;
-  padding-top: 0px;
+    font-size: 18px;
+    padding: 10px;
+    margin: 0;
+    padding-top: 0;
 }
 .cms_inboxItem {
     background: white;
@@ -196,7 +195,7 @@ export default {
     height: calc(100vh - 42px);
     overflow-y: scroll;
     overflow-x: hidden;
-		padding-top: 30px;
+    padding-top: 30px;
 
 }
 
@@ -208,7 +207,7 @@ export default {
     display: none;
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: 50px 1fr 50px;
-		padding: 10px;
+    padding: 10px;
 }
 #backcms_inbox {
     width: 30px;
@@ -245,7 +244,7 @@ export default {
         display: block !important;
         height: calc(100vh - 155px);
         border-right: solid 1px #EEEEEE;
-				padding-top: 0;
+        padding-top: 0;
 
     }
     #backcms_inbox {
