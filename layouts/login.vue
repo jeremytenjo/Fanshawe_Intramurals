@@ -36,7 +36,6 @@ export default {
                 email_input = document.querySelector('#email_input').value,
                 password_input = document.querySelector('#password_input').value,
                 login_error = document.querySelector('#login_error'),
-                pageTitle = document.querySelector('#pageTitle'),
                 data,
                 id,
                 userData;
@@ -101,11 +100,9 @@ export default {
                     if (self.$store.state.userData.type === 'admin') {
                         self.$store.commit('set_clientORcms', 'cms');
                         self.$router.push('/teams');
-                        pageTitle.innerHTML = 'Teams';
                     } else {
-                        pageTitle.innerHTML = 'Teams';
                         self.$store.commit('set_clientORcms', 'student');
-                        self.$router.push('/teams');
+                        self.$router.push('/fixtures');
                     }
                 })
             }

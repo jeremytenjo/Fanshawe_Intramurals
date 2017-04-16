@@ -191,7 +191,7 @@ export default {
 #chatContent {
     // border: 1px solid black;
     height: calc(100vh - 145px);
-    margin-top: 70px;
+    margin-top: 90px;
     // position: relative;
     z-index: -1;
     overflow: hidden;

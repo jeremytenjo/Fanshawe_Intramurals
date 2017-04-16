@@ -91,7 +91,7 @@ export default {
             groupInfo: ''
         }
     },
-    mounted: function mounted() {
+    mounted() {
         var self = this,
             groupInfo,
             selectionContainer = document.querySelector('#selectionContainer'),
@@ -112,11 +112,10 @@ export default {
             group3B_P = document.querySelector('#group3B_P'),
             group4B_P = document.querySelector('#group4B_P');
 
-
         //Load Currently Qualifying
-        // console.log(this.$store.state.userDataTeam[0].sport);
+        // console.log(this.$store.state.userDataTeam[0].sport[0]);
         axios.post('/api/teams/currentlyQualifying', {
-            'id': this.$store.state.userDataTeam[0].sport
+            'id': this.$store.state.userDataTeam[0].sport[0]
         }).then(function(response) {
             // console.log(response.data.groupOne[1].file);
 
@@ -147,7 +146,7 @@ export default {
 
         //Load Group Statistics
         axios.post('/api/teams/groups', {
-            'id': this.$store.state.userDataTeam[0].sport
+            'id': this.$store.state.userDataTeam[0].sport[0]
         }).then(function(response) {
             // console.log(response.data.groupOne);
             self.groupInfo = response.data.groupOne;
