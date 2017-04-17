@@ -409,11 +409,16 @@ html {
     // background: green;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    width: 300px;
+    margin: 0 auto;
+
     button {
         margin: 0 auto;
         width: 50%;
         display: block;
         margin-top: 7px;
+        max-width: 150px;
+
     }
 }
 #sportContainer {
