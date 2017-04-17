@@ -2,226 +2,18 @@
 <div id="tournamentsContainer">
 
     <div id="sportList">
-        <div class="sportItem" @click="showDetails">
+        <div class="sportItem" @click="showDetails(elem._id)" v-for="elem in list" :key="elem.key">
             <div>
-                <img src="sportIcons/soccer.png" alt="sport icon">
+                <img :src="'sportIcons/' + elem.icon" alt="sport icon">
             </div>
             <div>
-                <p>Soccer</p>
+                <p>{{elem.sport}}</p>
             </div>
             <div>
-                <img src="~assets/img/male.png" alt="gender icon">
-            </div>
-        </div>
-        <div class="sportItem">
-            <div>
-                <img src="sportIcons/soccer.png" alt="sport icon">
-            </div>
-            <div>
-                <p>Soccer</p>
-            </div>
-            <div>
-                <img src="~assets/img/male.png" alt="gender icon">
+                <img :src="'genderIcons/'+ elem.genderIcon" alt="gender icon">
             </div>
         </div>
-        <div class="sportItem">
-            <div>
-                <img src="sportIcons/soccer.png" alt="sport icon">
-            </div>
-            <div>
-                <p>Soccer</p>
-            </div>
-            <div>
-                <img src="~assets/img/male.png" alt="gender icon">
-            </div>
-        </div>
-        <div class="sportItem">
-            <div>
-                <img src="sportIcons/soccer.png" alt="sport icon">
-            </div>
-            <div>
-                <p>Soccer</p>
-            </div>
-            <div>
-                <img src="~assets/img/male.png" alt="gender icon">
-            </div>
-        </div>
-        <div class="sportItem">
-            <div>
-                <img src="sportIcons/soccer.png" alt="sport icon">
-            </div>
-            <div>
-                <p>Soccer</p>
-            </div>
-            <div>
-                <img src="~assets/img/male.png" alt="gender icon">
-            </div>
-        </div>
-        <div class="sportItem">
-            <div>
-                <img src="sportIcons/soccer.png" alt="sport icon">
-            </div>
-            <div>
-                <p>Soccer</p>
-            </div>
-            <div>
-                <img src="~assets/img/male.png" alt="gender icon">
-            </div>
-        </div>
-        <div class="sportItem">
-            <div>
-                <img src="sportIcons/soccer.png" alt="sport icon">
-            </div>
-            <div>
-                <p>Soccer</p>
-            </div>
-            <div>
-                <img src="~assets/img/male.png" alt="gender icon">
-            </div>
-        </div>
-        <div class="sportItem">
-            <div>
-                <img src="sportIcons/soccer.png" alt="sport icon">
-            </div>
-            <div>
-                <p>Soccer</p>
-            </div>
-            <div>
-                <img src="~assets/img/male.png" alt="gender icon">
-            </div>
-        </div>
-        <div class="sportItem">
-            <div>
-                <img src="sportIcons/soccer.png" alt="sport icon">
-            </div>
-            <div>
-                <p>Soccer</p>
-            </div>
-            <div>
-                <img src="~assets/img/male.png" alt="gender icon">
-            </div>
-        </div>
-        <div class="sportItem">
-            <div>
-                <img src="sportIcons/soccer.png" alt="sport icon">
-            </div>
-            <div>
-                <p>Soccer</p>
-            </div>
-            <div>
-                <img src="~assets/img/male.png" alt="gender icon">
-            </div>
-        </div>
-        <div class="sportItem">
-            <div>
-                <img src="sportIcons/soccer.png" alt="sport icon">
-            </div>
-            <div>
-                <p>Soccer</p>
-            </div>
-            <div>
-                <img src="~assets/img/male.png" alt="gender icon">
-            </div>
-        </div>
-        <div class="sportItem">
-            <div>
-                <img src="sportIcons/soccer.png" alt="sport icon">
-            </div>
-            <div>
-                <p>Soccer</p>
-            </div>
-            <div>
-                <img src="~assets/img/male.png" alt="gender icon">
-            </div>
-        </div>
-        <div class="sportItem">
-            <div>
-                <img src="sportIcons/soccer.png" alt="sport icon">
-            </div>
-            <div>
-                <p>Soccer</p>
-            </div>
-            <div>
-                <img src="~assets/img/male.png" alt="gender icon">
-            </div>
-        </div>
-        <div class="sportItem">
-            <div>
-                <img src="sportIcons/soccer.png" alt="sport icon">
-            </div>
-            <div>
-                <p>Soccer</p>
-            </div>
-            <div>
-                <img src="~assets/img/male.png" alt="gender icon">
-            </div>
-        </div>
-        <div class="sportItem">
-            <div>
-                <img src="sportIcons/soccer.png" alt="sport icon">
-            </div>
-            <div>
-                <p>Soccer</p>
-            </div>
-            <div>
-                <img src="~assets/img/male.png" alt="gender icon">
-            </div>
-        </div>
-        <div class="sportItem">
-            <div>
-                <img src="sportIcons/soccer.png" alt="sport icon">
-            </div>
-            <div>
-                <p>Soccer</p>
-            </div>
-            <div>
-                <img src="~assets/img/male.png" alt="gender icon">
-            </div>
-        </div>
-        <div class="sportItem">
-            <div>
-                <img src="sportIcons/soccer.png" alt="sport icon">
-            </div>
-            <div>
-                <p>Soccer</p>
-            </div>
-            <div>
-                <img src="~assets/img/male.png" alt="gender icon">
-            </div>
-        </div>
-        <div class="sportItem">
-            <div>
-                <img src="sportIcons/soccer.png" alt="sport icon">
-            </div>
-            <div>
-                <p>Soccer</p>
-            </div>
-            <div>
-                <img src="~assets/img/male.png" alt="gender icon">
-            </div>
-        </div>
-        <div class="sportItem">
-            <div>
-                <img src="sportIcons/soccer.png" alt="sport icon">
-            </div>
-            <div>
-                <p>Soccer</p>
-            </div>
-            <div>
-                <img src="~assets/img/male.png" alt="gender icon">
-            </div>
-        </div>
-        <div class="sportItem">
-            <div>
-                <img src="sportIcons/soccer.png" alt="sport icon">
-            </div>
-            <div>
-                <p>Soccer</p>
-            </div>
-            <div>
-                <img src="~assets/img/male.png" alt="gender icon">
-            </div>
-        </div>
+
 
 
     </div>
@@ -238,12 +30,34 @@
             </div>
             <div id="sportDetailesContent">
                 <div class="overflowScroll">
-                    Content
+
+                    <label for="sport">Sport</label>
+                    <input type="text" name="sport" v-model="updateSport">
+                    <label for="Type">Type</label>
+                    <input type="text" name="Type" v-model="updateType">
+                    <label for="Capacity">Capacity</label>
+                    <input type="text" name="Capacity" v-model="updateCapacity">
+                    <label for="rules">Rules</label>
+                    <textarea rows="30"  name="rules" v-model="updateRules"></textarea>
+                    <label for="banner">Banner</label>
+                    <input type="file" name="banner" id="bannerInput">
+                    <br>
+                    <br>
+                    <label for="promoBanner">Promo Banner</label>
+                    <input type="file" name="promoBanner" id="promoBannerInput">
+                    <br>
+                    <br>
+                    <label for="rbgaInput">Gradient Color (RGBA)</label>
+                    <input type="text" name="rbgaInput"v-model="updatergba">
+
+
+
+                     StartDate Enddate
                 </div>
                 <div id="sportsUpdateContainer">
-                  <div @click="update">
-                    <v-btn class="red white--text">update</v-btn>
-                  </div>
+                    <div @click="update">
+                        <v-btn class="red white--text">update</v-btn>
+                    </div>
 
                 </div>
             </div>
@@ -251,23 +65,34 @@
 
         <div id="sportGames">
             <div id="sportGamesHeader">
-              <div >
-                Games
-              </div>
-              <div @click="addGame">
-                <i class="material-icons">add</i>
-              </div>
-              <!-- <div >
+                <div>
+                    Games
+                </div>
+                <div @click="addGame('dialog2')" id="fab">
+                    <i class="material-icons">add</i>
+                </div>
+                <!-- <div >
                 <i class="material-icons">filter_list</i>
               </div> -->
             </div>
 
-            <md-input-container>
-              <label>Single</label>
-              <md-file v-model="single"></md-file>
-            </md-input-container>
 
+            <md-dialog md-open-from="#fab" md-close-to="#fab" ref="dialog2">
+                <md-dialog-title>Add Game</md-dialog-title>
+                <md-dialog-content>
+                    <form>
+                        <md-input-container>
+                            <label>Name</label>
+                            <md-input v-model="name"></md-input>
+                        </md-input-container>
+                    </form>
+                </md-dialog-content>
 
+                <md-dialog-actions>
+                    <md-button class="md-primary" @click.native="closeGame('dialog2')">Cancel</md-button>
+                    <md-button class="md-primary" @click.native="closeGame('dialog2')">Add</md-button>
+                </md-dialog-actions>
+            </md-dialog>
 
 
         </div>
@@ -275,18 +100,43 @@
 </div>
 </template>
 <script>
+import axios from '~plugins/axios';
+
 export default {
     middleware: 'auth',
-    data(){
-      return {
-        single: ''
-      }
+    data() {
+        return {
+            name: '',
+            list: '',
+            updateSport:'',
+            updateType:'',
+            updateCapacity: '',
+            updateInput: '',
+            updateRules: '',
+            updatergba:''
+        }
     },
     mounted() {
-        var addIcon = document.querySelector('#addIcon');
+        var addIcon = document.querySelector('#addIcon'),
+            self = this;
 
         //show add button
         addIcon.style.display = 'block';
+
+        //load initial list and sport
+        axios.post('/api/tournaments/getAll', ).then(function(response) {
+            console.log(response.data);
+
+            //List
+            self.list = response.data;
+
+            // fill update form
+            self.updateSport = response.data[0].sport;
+            self.updateType = response.data[0].type;
+            self.updateCapacity = response.data[0].capacity;
+            self.updateRules = response.data[0].rules;
+            self.updatergba = response.data[0].promoBannerColor;
+        })
 
     },
     methods: {
@@ -312,7 +162,7 @@ export default {
 
             //mobile hide details show list
             if (w <= 600) {
-                sportList.style.display = 'grid';
+                sportList.style.display = 'block';
                 sportDetailsContainer.style.display = 'none';
             }
         },
@@ -344,11 +194,14 @@ export default {
             }
 
         },
-        update (){
+        update() {
 
         },
-        addGame (){
-
+        addGame(ref) {
+            this.$refs[ref].open();
+        },
+        closeGame(ref) {
+            this.$refs[ref].close()
         }
 
     }
@@ -360,11 +213,11 @@ export default {
     grid-template-columns: repeat(1, 1fr);
 }
 #sportList {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-row-gap: 10px;
+    display: block;
+
     padding: 10px;
     overflow: scroll;
+    overflow-x: hidden;
     height: calc(100vh - 42px);
     padding-bottom: 90px;
 
@@ -375,6 +228,7 @@ export default {
         padding: 10px;
         text-align: left;
         cursor: pointer;
+        margin: 10px;
         img {
             width: 40px;
             margin: 0 auto;
@@ -398,7 +252,7 @@ export default {
     #sportDetailesHeader {
         height: 50px;
         background: white;
-         box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 
         img {
             float: left;
@@ -423,34 +277,43 @@ export default {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
         grid-template-rows: 1fr 50px;
+        padding: 10px;
+
         #sportsUpdateContainer {
-          display: none;
-          button {
-            margin:  0 auto;
-            display: block;
-          }
+            display: none;
+            button {
+                margin: 0 auto;
+                display: block;
+            }
         }
     }
 }
 #sportGames {
-  padding: 15px;
+    padding: 15px;
 
-  #sportGamesHeader {
-    display: grid;
-    grid-template-columns: 4fr .5fr;
-    background: white;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    #sportGamesHeader {
+        display: grid;
+        grid-template-columns: 4fr 0.5fr;
+        background: white;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 
-  }
+    }
 }
 @media screen and (min-width: 600px) {
+    .sportItem {
+        height: 50px;
+        p {
+            margin-top: -7px;
+            padding-left: 10px;
+        }
+    }
     #tournamentsContainer {
         grid-template-columns: 1fr 3fr;
     }
     #sportList {
         height: calc(100vh - 155px);
         padding-bottom: 0;
-        display: grid !important;
+        display: block !important;
     }
     #sportDetailsContainer {
         grid-template-columns: repeat(2, 1fr);
@@ -461,11 +324,11 @@ export default {
         display: none;
     }
     #sportDetailesContent {
-      height: calc(100vh - 155px) !important;
-      box-shadow: none !important;
+        height: calc(100vh - 155px) !important;
+        box-shadow: none !important;
     }
     #sportsUpdateContainer {
-      display: block !important;
+        display: block !important;
     }
 }
 </style>

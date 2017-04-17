@@ -24,7 +24,6 @@ router.post('/tournaments/teams', function(req, res) {
 })
 
 router.post('/tournaments/getAll', function(req, res) {
-
     services.getAll(model, function(results) {
         res.json(results);
     });

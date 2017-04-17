@@ -120,15 +120,25 @@ select {
 }
 
 .hidden {
-  display: none !important;
+    display: none !important;
 }
 
 .overflowScroll {
-  overflow: scroll;
+    overflow: scroll;
+    overflow-x: hidden;
 }
 
 .material-icons {
-  color: #5F5F5F;
+    color: #5F5F5F;
+}
+.md-input-container {
+  display: block;
+}
+#masterContainer {
+    z-index: 3;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
 }
 #contentContainer {
     z-index: -1;
@@ -183,6 +193,8 @@ select {
     }
 }
 </style>
+
+
 
 
 

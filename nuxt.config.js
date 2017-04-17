@@ -52,7 +52,7 @@ module.exports = {
     /*
      ** Global CSS
      */
-    css: ['~assets/css/materialize.min.css', 'vuetify/dist/vuetify.min.css', '~assets/css/main.css'],
+    css: ['~assets/css/materialize.min.css', 'vuetify/dist/vuetify.min.css', '~assets/css/main.css','vue-material/dist/vue-material.css'],
     /*
      ** Add axios globally
      */
