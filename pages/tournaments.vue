@@ -4,13 +4,13 @@
     <div id="sportList">
         <div class="sportItem" @click="showDetails(elem._id)" v-for="elem in list" :key="elem.key">
             <div>
-                <img :src="'sportIcons/' + elem.icon" alt="sport icon">
+                <img :src="'sportBanners/' + elem.icon" alt="sport icon">
             </div>
             <div>
                 <p>{{elem.sport}}</p>
             </div>
             <div>
-                <img :src="'genderIcons/'+ elem.genderIcon" alt="gender icon">
+                <!-- <img :src="'genderIcons/'+ elem.genderIcon" alt="gender icon"> -->
             </div>
         </div>
 
@@ -43,22 +43,29 @@
                     <label for="rules">Rules</label>
                     <textarea rows="30" name="rules" v-model="updateRules"></textarea>
 
+                    <label for="icon">Icon</label>
+                    <br>
+                    <input type="file" name="icon" id="iconInput">
+                    <br>
+                    <br>
                     <label for="banner">Banner</label>
+                    <br>
                     <input type="file" name="banner" id="bannerInput">
                     <br>
                     <br>
                     <label for="promoBanner">Promo Banner</label>
+                    <br>
                     <input type="file" name="promoBanner" id="promoBannerInput">
                     <br>
                     <br>
                     <label for="rbgaInput">Gradient Color (RGBA)</label>
                     <input type="text" name="rbgaInput" v-model="updateRgba">
 
-                    <label for="startDate">Start Date (<span class="bold">Currently: {{updatestartDateName}}</span>)</label>
-                    <input type="text" name="startDate" v-model="updatestartDate">
+                    <label for="startDate">Start Date</label>
+                    <input type="date" name="startDate" v-model="updatestartDate">
 
-                    <label for="endDate">End Date (<span class="bold">Currently: {{updateEndDateName}}</span>)</label>
-                    <input type="text" name="endDate" v-model="updateEndDate" placeholder="DDMMYYYY">
+                    <label for="endDate">End Date</label>
+                    <input type="date" name="endDate" v-model="updateEndDate" placeholder="DDMMYYYY">
 
                     <div id="teamLogosList">
                         <div v-for="team in teams" :key="team.key">
@@ -112,27 +119,39 @@
             <!-- Game List -->
             <div id="gameList">
 
-                <div class="gameItem">
+                <div class="gameItem" v-for="item in games" :key="item.key">
+
                     <div>
-                        <img src="teamLogos/default_team_logo.png" alt="team logo" id="profilePicture"> <p class="alignCenter">name</p>
+                        <img :src="'teamLogos/' + item.teamOne[0].file" alt="team logo">
+                        <p class="alignCenter">{{item.teamOne[0].name}}</p>
                     </div>
                     <div>
                         <p class="alignCenter vsGame">Vs</p>
                     </div>
                     <div>
-                        <img src="teamLogos/default_team_logo.png" alt="team logo" id="profilePicture"> <p class="alignCenter">name</p>
+                        <img :src="'teamLogos/' + item.teamTwo[0].file" alt="team logo">
+                        <p class="alignCenter">{{item.teamTwo[0].name}}</p>
                     </div>
                     <div>
                         <ul>
-                            <li>Date</li>
-                            <li>Location</li>
+                            <li>{{item.dateString}}</li>
+                            <li>{{item.location}}</li>
+                            <li>{{item.time}}</li>
                         </ul>
                     </div>
-                    <div @click="addScore('addScoreForm')" id="addScoreFormCon">
-                        <v-btn light flat class=" teal white--text">Add Score</v-btn>
+                    <div>
+                        <p class="alignCenter">score</p>
+                        <div @click="addScore('addScoreForm')" id="addScoreFormCon" v-if="score === true">
+                            <v-btn light flat class=" teal white--text">Add</v-btn>
+                        </div>
+                        <div class="alignCenter fSize" v-else>
+                            <span class="md-headline">{{item.scoreTeamOne}}</span> -
+                            <span class="md-headline">{{item.scoreTeamTwo}}</span>
+                        </div>
                     </div>
 
                 </div>
+
 
             </div>
             <!-- add score form -->
@@ -177,7 +196,12 @@ export default {
             updateEndDate: '',
             updateEndDateName: '',
             teams: '',
-            games: ''
+            games: '',
+            score: '',
+            id: '',
+            banner: '',
+            icon: '',
+            promoBanner: ''
 
         }
 
@@ -196,17 +220,33 @@ export default {
             //List
             self.list = response.data;
 
-            // fill update form
+            //set initial id
+            self.id = response.data[0]._id;
+
+            //Set initial files
+            self.icon = response.data[0].icon;
+            self.banner = response.data[0].banner;
+            self.promoBanner = response.data[0].promoBanner;
+
+            // fill initial update form
             self.updateSport = response.data[0].sport;
             self.updateType = response.data[0].type;
             self.updateCapacity = response.data[0].capacity;
             self.updateRules = response.data[0].rules;
             self.updateRgba = response.data[0].promoBannerColor;
-            self.updatestartDate = response.data[0].date;
+
+            //Dates
+            //format Date
+            var formatedDate = response.data[0].startDate.substring(0, response.data[0].startDate.length - 14);
+            self.updatestartDate = formatedDate;
+
+            var formatedDateEnd = response.data[0].endDate.substring(0, response.data[0].endDate.length - 14);
+            self.updateEndDate = formatedDateEnd;
+
             self.updatestartDateName = response.data[0].startDateName;
             self.updateEndDateName = response.data[0].endDateName;
 
-            //load teams
+            //load initial teams
             axios.post('/api/tournaments/teams', {
                 data: response.data[0]._id
             }).then(function(response) {
@@ -214,11 +254,18 @@ export default {
                 self.teams = response.data;
             })
 
-            //Load Games
+            //Load initial Games
             axios.post('/api/games/allBy', {
                 id: response.data[0]._id
             }).then(function(response) {
-                console.log(response.data);
+                // console.log(response.data);
+                self.games = response.data;
+
+                //check score
+                // console.log(response.data[0].scoreTeamOne);
+                if (response.data[0].scoreTeamOne != 'null' && response.data[0].scoreTeamTwo != 'null') {
+                    self.score = false;
+                }
             })
 
         })
@@ -233,6 +280,9 @@ export default {
                 sportDetailsContainer = document.querySelector('#sportDetailsContainer'),
                 w = window.innerWidth,
                 self = this;
+
+            //set selected id
+            self.id = id;
 
             //mobile hide list show details and games
             if (w <= 600) {
@@ -252,9 +302,22 @@ export default {
                 self.updateCapacity = response.data[0].capacity;
                 self.updateRules = response.data[0].rules;
                 self.updateRgba = response.data[0].promoBannerColor;
-                self.updatestartDate = response.data[0].date;
+
+                //Dates
+                //format Date
+                var formatedDate = response.data[0].startDate.substring(0, response.data[0].startDate.length - 14);
+                self.updatestartDate = formatedDate;
+
+                var formatedDateEnd = response.data[0].endDate.substring(0, response.data[0].endDate.length - 14);
+                self.updateEndDate = formatedDateEnd;
+
                 self.updatestartDateName = response.data[0].startDateName;
                 self.updateEndDateName = response.data[0].endDateName;
+
+                //Set files
+                self.icon = response.data[0].icon;
+                self.banner = response.data[0].banner;
+                self.promoBanner = response.data[0].promoBanner;
 
                 //load teams
                 axios.post('/api/tournaments/teams', {
@@ -262,6 +325,21 @@ export default {
                 }).then(function(response) {
                     // console.log(response);
                     self.teams = response.data;
+                })
+
+                //Load Games
+                axios.post('/api/games/allBy', {
+                    id: response.data[0]._id
+                }).then(function(response) {
+                    // console.log(response.data);
+                    self.games = response.data;
+
+                    //check score
+                    // console.log(response.data[0].scoreTeamOne);
+                    if (response.data[0].scoreTeamOne != 'null' && response.data[0].scoreTeamTwo != 'null') {
+                        self.score = false;
+                        //error bease non existant games
+                    }
                 })
             })
         },
@@ -307,6 +385,59 @@ export default {
 
         },
         update() {
+            var self = this,
+                formData = new FormData(),
+                iconInput = document.querySelector('#iconInput'),
+                bannerInput = document.querySelector('#bannerInput'),
+                promoBannerInput = document.querySelector('#promoBannerInput');
+
+            //text inputs
+            formData.append('id', self.id);
+            formData.append('sport', self.updateSport);
+            formData.append('type', self.updateType);
+            formData.append('rules', self.updateRules);
+            formData.append('capacity', self.updateCapacity);
+            formData.append('promoBannerColor', self.updateRgba);
+
+            //Date inputs
+            formData.append('startDate', self.updatestartDate);
+            formData.append('endDate', self.updateEndDate);
+            formData.append('startDateName', self.updatestartDateName);
+            formData.append('endDateName', self.updateEndDateName);
+
+            //file Inputs
+            // console.log(iconInput.value);
+            if (iconInput.value === '') {
+                formData.append('icon', self.icon);
+            } else {
+                formData.append('icon', iconInput.files[0]);
+            }
+
+            if (bannerInput.value === '') {
+                formData.append('banner', self.banner);
+            } else {
+                formData.append('banner', bannerInput.files[0]);
+            }
+
+            if (promoBannerInput.value === '') {
+                formData.append('promoBanner', self.promoBanner);
+            } else {
+                formData.append('promoBanner', promoBannerInput.files[0]);
+            }
+
+            // Display the values
+            // for (var value of formData.values()) {
+            //     console.log(value);
+            // }
+
+            // Send
+            axios.post('/api/tournaments/update', formData).then(function(response) {
+                // console.log(response.data);
+                //Reset list
+                self.list = response.data;
+            })
+
+
 
         },
         addGame(ref) {
@@ -431,14 +562,21 @@ export default {
     }
     #gameList {
         overflow: scroll;
-        padding-top: 30px;
+        padding-bottom: 30px;
         .gameItem {
             display: grid;
-            grid-template-columns: .4fr .2fr .4fr 1fr .3fr ;
+            grid-template-columns: 0.4fr 0.2fr 0.4fr 1fr 0.5fr;
             box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-
+            margin-top: 30px;
+            padding: 10px;
+            img {
+                width: 60px;
+                height: 60px;
+                margin: 0 auto;
+                display: block;
+            }
             .vsGame {
-              margin-top: 20px;
+                margin-top: 20px;
             }
         }
     }

@@ -92,7 +92,7 @@
             </div>
 
             <div>
-                <img :src="'/sportIcons/' + result.icon" alt="sport icons" id="sportIcon">
+                <img :src="'/sportBanners/' + result.icon" alt="sport icons" id="sportIcon">
             </div>
 
             <div @click="openModal(result._id)">

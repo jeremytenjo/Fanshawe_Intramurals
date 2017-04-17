@@ -17,7 +17,10 @@ var gamesSchema = new Schema({
     notes: String,
     stage: String,
     group: Number,
-    dateString: String
+    dateString: String,
+    scoreTeamOne: String,
+    scoreTeamTwo: String,
+    time: String
 }, {
     collection: 'games'
 });
