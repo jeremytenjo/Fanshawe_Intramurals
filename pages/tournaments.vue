@@ -239,13 +239,26 @@
                     Content
                 </div>
                 <div id="sportsUpdateContainer">
-                    ss
+                  <div @click="update">
+                    <v-btn class="red white--text">update</v-btn>
+                  </div>
+
                 </div>
             </div>
         </div>
 
         <div id="sportGames">
-            games
+            <div id="sportGamesHeader">
+              <div >
+                Games
+              </div>
+              <div >
+                Add
+              </div>
+              <div >
+                Filter
+              </div>
+            </div>
         </div>
     </div>
 </div>
@@ -289,7 +302,8 @@ export default {
         },
         showDetailsHeader() {
             var showDetailsBTN = document.querySelector('#showDetailsBTN').childNodes[0],
-                sportDetailesContent = document.querySelector('#sportDetailesContent');
+                sportDetailesContent = document.querySelector('#sportDetailesContent'),
+                sportsUpdateContainer = document.querySelector('#sportsUpdateContainer');
 
             //change button text
             // console.log(showDetailsBTN.innerHTML);
@@ -300,6 +314,7 @@ export default {
                 TweenMax.to('#sportDetailesContent', .4, {
                     height: 'calc(100vh / 2 - 42px)'
                 });
+                sportsUpdateContainer.style.display = 'block';
 
             } else {
                 showDetailsBTN.innerHTML = 'Show Details';
@@ -308,9 +323,15 @@ export default {
                 TweenMax.to('#sportDetailesContent', .4, {
                     height: 0
                 });
+                sportsUpdateContainer.style.display = 'none';
+
             }
 
+        },
+        update (){
+
         }
+
     }
 }
 </script>
@@ -357,7 +378,8 @@ export default {
 #sportDetails {
     #sportDetailesHeader {
         height: 50px;
-        background: yellow;
+        background: white;
+         box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 
         img {
             float: left;
@@ -376,12 +398,19 @@ export default {
         }
     }
     #sportDetailesContent {
-        background: green;
-        // Change height to auto
+        background: white;
+         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
         height: 0;
         display: grid;
         grid-template-columns: repeat(1, 1fr);
         grid-template-rows: 1fr 50px;
+        #sportsUpdateContainer {
+          display: none;
+          button {
+            margin:  0 auto;
+            display: block;
+          }
+        }
     }
 }
 #sportGames {}
@@ -404,6 +433,10 @@ export default {
     }
     #sportDetailesContent {
       height: calc(100vh - 155px) !important;
+      box-shadow: none !important;
+    }
+    #sportsUpdateContainer {
+      display: block !important;
     }
 }
 </style>
