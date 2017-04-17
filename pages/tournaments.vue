@@ -175,7 +175,7 @@ export default {
             axios.post('/api/games/allBy', {
                 id: response.data[0]._id
             }).then(function(response) {
-                console.log(response);
+                console.log(response.data);
             })
 
         })
