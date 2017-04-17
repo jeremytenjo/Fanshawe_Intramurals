@@ -126,6 +126,10 @@ select {
 .overflowScroll {
   overflow: scroll;
 }
+
+.material-icons {
+  color: #5F5F5F;
+}
 #contentContainer {
     z-index: -1;
     position: absolute;

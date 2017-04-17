@@ -229,9 +229,11 @@
 
         <div id="sportDetails">
             <div id="sportDetailesHeader">
+
                 <img src="~assets/img/back.svg" alt="back button" @click="hideDetails">
+
                 <div @click="showDetailsHeader">
-                    <v-btn outline small class="red red-text" id="showDetailsBTN">Show Details</v-btn>
+                    <v-btn outline small class="cyan cyan-text" id="showDetailsBTN">Show Details</v-btn>
                 </div>
             </div>
             <div id="sportDetailesContent">
@@ -252,13 +254,22 @@
               <div >
                 Games
               </div>
-              <div >
-                Add
+              <div @click="addGame">
+                <i class="material-icons">add</i>
               </div>
-              <div >
-                Filter
-              </div>
+              <!-- <div >
+                <i class="material-icons">filter_list</i>
+              </div> -->
             </div>
+
+            <md-input-container>
+              <label>Single</label>
+              <md-file v-model="single"></md-file>
+            </md-input-container>
+
+
+
+
         </div>
     </div>
 </div>
@@ -266,6 +277,11 @@
 <script>
 export default {
     middleware: 'auth',
+    data(){
+      return {
+        single: ''
+      }
+    },
     mounted() {
         var addIcon = document.querySelector('#addIcon');
 
@@ -329,6 +345,9 @@ export default {
 
         },
         update (){
+
+        },
+        addGame (){
 
         }
 
@@ -399,7 +418,7 @@ export default {
     }
     #sportDetailesContent {
         background: white;
-         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
         height: 0;
         display: grid;
         grid-template-columns: repeat(1, 1fr);
@@ -413,7 +432,17 @@ export default {
         }
     }
 }
-#sportGames {}
+#sportGames {
+  padding: 15px;
+
+  #sportGamesHeader {
+    display: grid;
+    grid-template-columns: 4fr .5fr;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
+  }
+}
 @media screen and (min-width: 600px) {
     #tournamentsContainer {
         grid-template-columns: 1fr 3fr;
