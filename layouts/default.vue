@@ -46,11 +46,21 @@ export default {
     },
     mounted() {
         var self = this,
+            masterContainer = document.querySelector('#masterContainer'),
             pageTitle = document.querySelector('#pageTitle'),
             backIcon = document.querySelector('#backIcon'),
             header = document.querySelector('#header');
 
 
+        //set master conainer settings
+        if (this.$store.state.clientORcms === 'student') {
+            masterContainer.style.position = 'static';
+        }else if (this.$store.state.clientORcms === 'cms') {
+          masterContainer.style.position = 'absolute';
+          masterContainer.style.width = '100%';
+          masterContainer.style.height = '100vh';
+          masterContainer.style.zIndex = 3;
+        }
 
         // console.log(self.$store.state.clientORcms);
 
@@ -133,24 +143,24 @@ select {
     color: #5F5F5F;
 }
 .md-input-container {
-  display: block;
+    display: block;
 }
 .pointer {
-  cursor: pointer;
+    cursor: pointer;
 }
 .alignLeft {
-  text-align: left;
+    text-align: left;
 }
 .alignCenter {
-  text-align: center;
+    text-align: center;
 }
- 
-#masterContainer {
-    z-index: 3;
-    width: 100%;
-    height: 100vh;
-    position: absolute;
-}
+
+// #masterContainer {
+//     z-index: 3;
+//     width: 100%;
+//     height: 100vh;
+    // position: absolute;
+// }
 #contentContainer {
     z-index: -1;
     position: absolute;
@@ -167,7 +177,7 @@ select {
         color: red;
     }
     #contentContainer {
-        // position: static;
+        position: static;
         width: 100%;
         height: auto;
         background-color: white;
@@ -204,6 +214,8 @@ select {
     }
 }
 </style>
+
+
 
 
 
