@@ -387,7 +387,13 @@ export default {
 }
 #sportGamesContainer {
     padding: 15px;
+    overflow: scroll;
+    overflow-x: hidden;
+    height: calc(100vh - 92px);
 
+    #gameList {
+      overflow: scroll;
+    }
     #sportGamesHeader {
         display: grid;
         grid-template-columns: 4fr 0.5fr;
