@@ -21,7 +21,7 @@
 <img src="~assets/img/back.svg" alt="back arrow" >
 </div>
 <div class="teamsDetails_info">
-<img src="teamLogos/default_teams_logo.png" alt="team logo" id="profilePicture">
+<img src="teamLogos/default_team_logo.png" alt="team logo" id="profilePicture">
 
 
     <div>

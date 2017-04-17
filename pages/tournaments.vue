@@ -79,7 +79,9 @@
             </div>
         </div>
 
-        <div id="sportGames">
+        <div id="sportGamesContainer">
+
+          <!--  Header-->
             <div id="sportGamesHeader">
                 <div>
                     Games
@@ -87,12 +89,9 @@
                 <div @click="addGame('dialog2')" id="fab">
                     <i class="material-icons">add</i>
                 </div>
-                <!-- <div >
-                <i class="material-icons">filter_list</i>
-              </div> -->
             </div>
 
-
+            <!-- add game form -->
             <md-dialog md-open-from="#fab" md-close-to="#fab" ref="dialog2">
                 <md-dialog-title>Add Game</md-dialog-title>
                 <md-dialog-content>
@@ -110,6 +109,26 @@
                 </md-dialog-actions>
             </md-dialog>
 
+            <!-- Game List -->
+            <div id="gameList">
+              <div>
+                <img src="teamLogos/default_team_logo.png" alt="team logo" id="profilePicture">
+                Name
+              </div>
+              <div>
+                VS
+              </div>
+              <div>
+                <img src="teamLogos/default_team_logo.png" alt="team logo" id="profilePicture">
+                Name
+              </div>
+              <div>
+                <ul>
+                  <li>Date</li>
+                  <li>Location</li>
+                </ul>
+              </div>
+            </div>
 
         </div>
     </div>
@@ -366,7 +385,7 @@ export default {
     width: 300px;
     margin: 0 auto;
 }
-#sportGames {
+#sportGamesContainer {
     padding: 15px;
 
     #sportGamesHeader {
@@ -393,6 +412,16 @@ export default {
         padding-bottom: 0;
         display: block !important;
     }
+    #sportGamesContainer {
+        padding-top: 40px;
+        overflow: hidden;
+        height: calc(100vh - 155px);
+        padding-bottom: 0;
+        display: grid !important;
+        #gameList {
+          overflow: scroll;
+        }
+    }
     #sportDetailsContainer {
         grid-template-columns: repeat(2, 1fr);
         display: grid;
@@ -404,6 +433,7 @@ export default {
     #sportDetailesContent {
         height: calc(100vh - 155px) !important;
         box-shadow: none !important;
+        padding-top: 40px;
     }
     #sportsUpdateContainer {
         display: block !important;
