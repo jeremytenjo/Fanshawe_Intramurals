@@ -54,12 +54,12 @@ export default {
 
         //set master conainer settings
         if (this.$store.state.clientORcms === 'student') {
-            masterContainer.style.position = 'static';
+            // masterContainer.style.position = 'static';
         }else if (this.$store.state.clientORcms === 'cms') {
-          masterContainer.style.position = 'absolute';
-          masterContainer.style.width = '100%';
-          masterContainer.style.height = '100vh';
-          masterContainer.style.zIndex = 3;
+          // masterContainer.style.position = 'absolute';
+          // masterContainer.style.width = '100%';
+          // masterContainer.style.height = '100vh';
+          // masterContainer.style.zIndex = 3;
         }
 
         // console.log(self.$store.state.clientORcms);
@@ -80,15 +80,15 @@ export default {
                     pageTitle.style.display = 'none';
                     backIcon.style.display = 'none';
 
-                    masterContainer.style.position = 'static';
+                    // masterContainer.style.position = 'static';
 
                     // header.style.backgroundColor = 'none';
 
                     self.$router.push('/');
                 } else {
                     // console.log('Mobile');
-                    masterContainer.style.position = 'static';
-                    masterContainer.style.zIndex = 3;
+                    // masterContainer.style.position = 'static';
+                    // masterContainer.style.zIndex = 3;
 
                     pageTitle.style.display = 'block';
                     header.style.backgroundColor = 'red';
@@ -161,15 +161,16 @@ select {
     text-align: center;
 }
 
-// #masterContainer {
-//     z-index: 3;
-//     width: 100%;
-//     height: 100vh;
+#masterContainer {
+    // z-index: 3;
+    // width: 100%;
+    // height: 100%;
+    // height: 100vh;
     // position: absolute;
-// }
+}
 #contentContainer {
     z-index: -1;
-    position: absolute;
+    position: static;
     width: 100%;
     margin-top: 10px;
     padding-bottom: 42px;

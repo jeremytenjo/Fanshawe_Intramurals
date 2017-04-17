@@ -116,6 +116,7 @@ export default {
     background-color: red;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
+    z-index: 3;
 }
 
 #nav_fixturesContainer {
