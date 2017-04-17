@@ -99,7 +99,11 @@ export default {
             usersList = document.querySelector('#usersList'),
             self = this,
             usersDetails = document.querySelector('#usersDetails'),
+            pageTitle = document.querySelector('#pageTitle'),
             addIcon = document.querySelector('#addIcon');
+
+        // set title
+        pageTitle.innerHTML = 'Users';
 
         //set url in store
         self.$store.commit('setUrlPage', 'Users');

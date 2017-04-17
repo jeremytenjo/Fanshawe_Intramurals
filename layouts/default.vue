@@ -106,6 +106,7 @@ export default {
 </script>
 
 <style lang="scss">
+// Global Styles
 body {
     margin: 0;
     overflow: hidden;
@@ -122,6 +123,9 @@ select {
   display: none !important;
 }
 
+.overflowScroll {
+  overflow: scroll;
+}
 #contentContainer {
     z-index: -1;
     position: absolute;
