@@ -33,12 +33,16 @@
 
                     <label for="sport">Sport</label>
                     <input type="text" name="sport" v-model="updateSport">
+
                     <label for="Type">Type</label>
                     <input type="text" name="Type" v-model="updateType">
+
                     <label for="Capacity">Capacity</label>
                     <input type="text" name="Capacity" v-model="updateCapacity">
+
                     <label for="rules">Rules</label>
-                    <textarea rows="30"  name="rules" v-model="updateRules"></textarea>
+                    <textarea rows="30" name="rules" v-model="updateRules"></textarea>
+
                     <label for="banner">Banner</label>
                     <input type="file" name="banner" id="bannerInput">
                     <br>
@@ -48,11 +52,23 @@
                     <br>
                     <br>
                     <label for="rbgaInput">Gradient Color (RGBA)</label>
-                    <input type="text" name="rbgaInput"v-model="updatergba">
+                    <input type="text" name="rbgaInput" v-model="updateRgba">
 
+                    <label for="startDate">Start Date (<span class="bold">Currently: {{updatestartDateName}}</span>)</label>
+                    <input type="text" name="startDate" v-model="updatestartDate">
 
+                    <label for="endDate">End Date (<span class="bold">Currently: {{updateEndDateName}}</span>)</label>
+                    <input type="text" name="endDate" v-model="updateEndDate" placeholder="DDMMYYYY">
 
-                     StartDate Enddate
+                    <div id="teamLogosList">
+                        <div v-for="team in teams" :key="team.key">
+                            <md-avatar>
+                                <img :src="'teamLogos/'+ team.file " alt="team logo">
+                                <md-tooltip md-direction="top">{{team.name}}</md-tooltip>
+                            </md-avatar>
+                        </div>
+                    </div>
+
                 </div>
                 <div id="sportsUpdateContainer">
                     <div @click="update">
@@ -108,12 +124,19 @@ export default {
         return {
             name: '',
             list: '',
-            updateSport:'',
-            updateType:'',
+            updateSport: '',
+            updateType: '',
             updateCapacity: '',
             updateInput: '',
             updateRules: '',
-            updatergba:''
+            updateRgba: '',
+            updatestartDate: '',
+            updatestartDateName: '',
+            updateEndDate: '',
+            updateEndDateName: '',
+            teams: '',
+            games: ''
+
         }
     },
     mounted() {
@@ -124,8 +147,8 @@ export default {
         addIcon.style.display = 'block';
 
         //load initial list and sport
-        axios.post('/api/tournaments/getAll', ).then(function(response) {
-            console.log(response.data);
+        axios.post('/api/tournaments/getAll').then(function(response) {
+            // console.log(response.data);
 
             //List
             self.list = response.data;
@@ -135,12 +158,33 @@ export default {
             self.updateType = response.data[0].type;
             self.updateCapacity = response.data[0].capacity;
             self.updateRules = response.data[0].rules;
-            self.updatergba = response.data[0].promoBannerColor;
+            self.updateRgba = response.data[0].promoBannerColor;
+            self.updatestartDate = response.data[0].date;
+            self.updatestartDateName = response.data[0].startDateName;
+            self.updateEndDateName = response.data[0].endDateName;
+
+            //load teams
+            axios.post('/api/tournaments/teams', {
+                data: response.data[0]._id
+            }).then(function(response) {
+                // console.log(response);
+                self.teams = response.data;
+            })
+
+            //Load Games
+            axios.post('/api/games/allBy', {
+                id: response.data[0]._id
+            }).then(function(response) {
+                console.log(response);
+            })
+
         })
+
+
 
     },
     methods: {
-        showDetails() {
+        showDetails(id) {
             var sportList = document.querySelector('#sportList'),
                 tournamentsContainer = document.querySelector('#tournamentsContainer'),
                 sportDetailsContainer = document.querySelector('#sportDetailsContainer'),
@@ -152,6 +196,31 @@ export default {
                 sportList.style.display = 'none';
                 sportDetailsContainer.style.display = 'grid';
             }
+
+            //load selected list and sport
+            axios.post('/api/tournaments/getOne', {
+                data: id
+            }).then(function(response) {
+                // console.log(response.data);
+
+                // fill update form
+                self.updateSport = response.data[0].sport;
+                self.updateType = response.data[0].type;
+                self.updateCapacity = response.data[0].capacity;
+                self.updateRules = response.data[0].rules;
+                self.updateRgba = response.data[0].promoBannerColor;
+                self.updatestartDate = response.data[0].date;
+                self.updatestartDateName = response.data[0].startDateName;
+                self.updateEndDateName = response.data[0].endDateName;
+
+                //load teams
+                axios.post('/api/tournaments/teams', {
+                    data: response.data[0]._id
+                }).then(function(response) {
+                    // console.log(response);
+                    self.teams = response.data;
+                })
+            })
         },
         hideDetails() {
             var sportList = document.querySelector('#sportList'),
@@ -276,8 +345,10 @@ export default {
         height: 0;
         display: grid;
         grid-template-columns: repeat(1, 1fr);
-        grid-template-rows: 1fr 50px;
-        padding: 10px;
+        grid-template-rows: 1fr 40px;
+        padding-left: 10px;
+        padding-right: 10px;
+        overflow: hidden;
 
         #sportsUpdateContainer {
             display: none;
@@ -287,6 +358,13 @@ export default {
             }
         }
     }
+}
+#teamLogosList {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-row-gap: 10px;
+    width: 300px;
+    margin: 0 auto;
 }
 #sportGames {
     padding: 15px;

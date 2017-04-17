@@ -126,6 +126,7 @@ select {
 .overflowScroll {
     overflow: scroll;
     overflow-x: hidden;
+    padding-bottom: 40px;
 }
 
 .material-icons {

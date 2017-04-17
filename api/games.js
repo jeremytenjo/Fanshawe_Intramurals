@@ -13,6 +13,16 @@ router.post('/games/getOne', function(req, res) {
     });
 
 })
+router.post('/games/allBy', function(req, res) {
+    console.log(req.body.id);
+    Games.find({
+        tournament: req.body.id
+    }).populate('teamOne').populate('teamTwo').exec(function(err, games) {
+        if (err) return handleError(err);
+        // console.log(games);
+        res.json(games);
+    });
+})
 
 router.post('/games/fixtures', function(req, res) {
     // console.log(req.body.userData);
