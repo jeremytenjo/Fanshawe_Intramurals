@@ -1,0 +1,48 @@
+{ 
+    "_id" : ObjectId("58c3706f83e0930e34bf79f0"), 
+    "status" : "false", 
+    "message" : "Hello Team", 
+    "user" : ObjectId("58c3657183e0930e34bf79d8"), 
+    "date" : ISODate("2017-03-11T03:24:25.141+0000"), 
+    "team" : ObjectId("58de5b9cbf8cb60d000af8bb")
+}
+{ 
+    "_id" : ObjectId("58f283c74d87820d1001373a"), 
+    "__v" : NumberInt(0), 
+    "message" : "Looking forward to the season!", 
+    "team" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "date" : ISODate("2017-04-15T20:34:15.612+0000"), 
+    "user" : [
+        ObjectId("58f279ed4d87820d1001366d")
+    ]
+}
+{ 
+    "_id" : ObjectId("58f2dd48e8988b32f801ff99"), 
+    "__v" : NumberInt(0), 
+    "message" : "c", 
+    "team" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "date" : ISODate("2017-04-16T02:56:08.512+0000"), 
+    "user" : [
+        ObjectId("58c3657183e0930e34bf79d8")
+    ]
+}
+{ 
+    "_id" : ObjectId("58f3c26a614f9030fcbc85f6"), 
+    "__v" : NumberInt(0), 
+    "message" : "Welcome", 
+    "team" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "date" : ISODate("2017-04-16T19:13:46.876+0000"), 
+    "user" : [
+        ObjectId("58f279ed4d87820d1001366d")
+    ]
+}
+{ 
+    "_id" : ObjectId("58f3ca86614f9030fcbc85f8"), 
+    "__v" : NumberInt(0), 
+    "message" : "Thank you\n", 
+    "team" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "date" : ISODate("2017-04-16T19:48:22.753+0000"), 
+    "user" : [
+        ObjectId("58c366ca83e0930e34bf79da")
+    ]
+}

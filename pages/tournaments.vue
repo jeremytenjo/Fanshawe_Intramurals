@@ -138,6 +138,7 @@ export default {
             games: ''
 
         }
+
     },
     mounted() {
         var addIcon = document.querySelector('#addIcon'),
@@ -283,7 +284,6 @@ export default {
 }
 #sportList {
     display: block;
-
     padding: 10px;
     overflow: scroll;
     overflow-x: hidden;
@@ -379,7 +379,7 @@ export default {
 }
 @media screen and (min-width: 600px) {
     .sportItem {
-        height: 50px;
+        height: 60px;
         p {
             margin-top: -7px;
             padding-left: 10px;
