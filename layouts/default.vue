@@ -80,11 +80,16 @@ export default {
                     pageTitle.style.display = 'none';
                     backIcon.style.display = 'none';
 
+                    masterContainer.style.position = 'static';
+
                     // header.style.backgroundColor = 'none';
 
                     self.$router.push('/');
                 } else {
                     // console.log('Mobile');
+                    masterContainer.style.position = 'static';
+                    masterContainer.style.zIndex = 3;
+
                     pageTitle.style.display = 'block';
                     header.style.backgroundColor = 'red';
                     pageTitle.innerHTML = 'Account';
@@ -120,6 +125,7 @@ export default {
 body {
     margin: 0;
     overflow: hidden;
+    z-index: -1;
 }
 
 select {

@@ -122,7 +122,7 @@ export default {
 #backIcon {
     width: 30px;
     position: fixed;
-    top: 63px;
+    top: 43px;
     left: 18px;
     cursor: pointer;
     display: none;
