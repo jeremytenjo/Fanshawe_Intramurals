@@ -297,10 +297,17 @@ export default {
                 showDetailsBTN.innerHTML = 'Hide Details';
 
                 //show details
-
+                TweenMax.to('#sportDetailesContent', .4, {
+                    height: 'calc(100vh / 2 - 42px)'
+                });
 
             } else {
                 showDetailsBTN.innerHTML = 'Show Details';
+
+                //Hide details
+                TweenMax.to('#sportDetailesContent', .4, {
+                    height: 0
+                });
             }
 
         }
@@ -371,7 +378,7 @@ export default {
     #sportDetailesContent {
         background: green;
         // Change height to auto
-        height: 300px;
+        height: 0;
         display: grid;
         grid-template-columns: repeat(1, 1fr);
         grid-template-rows: 1fr 50px;
@@ -394,6 +401,9 @@ export default {
     }
     #sportDetailesHeader {
         display: none;
+    }
+    #sportDetailesContent {
+      height: calc(100vh - 155px) !important;
     }
 }
 </style>
