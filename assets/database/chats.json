@@ -46,3 +46,13 @@
         ObjectId("58c366ca83e0930e34bf79da")
     ]
 }
+{ 
+    "_id" : ObjectId("58f46b324437240b04f0e037"), 
+    "__v" : NumberInt(0), 
+    "message" : "Hello There", 
+    "team" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "date" : ISODate("2017-04-17T07:13:54.274+0000"), 
+    "user" : [
+        ObjectId("58f279ed4d87820d1001366d")
+    ]
+}
