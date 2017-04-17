@@ -78,8 +78,13 @@
 
 		<div id="formBtns">
 			<div id="innerDivForm">
-				<v-btn small primary dark outline class="formCancelBtn red red--text" ><p @click="cancelForm" >Cancel</p></v-btn>
+				<div @click="cancelForm" id="move">
+					<v-btn small primary dark outline class="formCancelBtn red red--text" ><p>Cancel</p></v-btn>
+				</div>
+				<div>
 				<v-btn small primary dark class="formSubmitBtn red" type="submit" ><p>Submit</p></v-btn>
+			</div>
+
 			</div>
 
 		</div>
@@ -450,6 +455,10 @@ export default {
             }
 
         }
+				#move {
+				  width: 30px;
+					float: left;
+				}
         #formBtns {
             // background-color: yellow;
             height: 10%;
@@ -468,6 +477,7 @@ export default {
                 .formCancelBtn {
                     border-color: #e2231a !important;
                     color: #e2231a !important;
+										width: 100px;
                     p {
                         position: absolute;
                         top: 50%;

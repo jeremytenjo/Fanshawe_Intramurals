@@ -139,7 +139,7 @@ select {
     z-index: 3;
     width: 100%;
     height: 100vh;
-    position: fixed;
+    position: absolute;
 }
 #contentContainer {
     z-index: -1;
@@ -157,7 +157,7 @@ select {
         color: red;
     }
     #contentContainer {
-        position: static;
+        // position: static;
         width: 100%;
         height: auto;
         background-color: white;
