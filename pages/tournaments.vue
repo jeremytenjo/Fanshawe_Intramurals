@@ -81,18 +81,18 @@
 
         <div id="sportGamesContainer">
 
-          <!--  Header-->
+            <!--  Header-->
             <div id="sportGamesHeader">
                 <div>
                     Games
                 </div>
-                <div @click="addGame('dialog2')" id="fab">
+                <div @click="addGame('addGameForm')" id="addGameFormCon">
                     <i class="material-icons">add</i>
                 </div>
             </div>
 
             <!-- add game form -->
-            <md-dialog md-open-from="#fab" md-close-to="#fab" ref="dialog2">
+            <md-dialog md-open-from="#addGameFormCon" md-close-to="#addGameFormCon" ref="addGameForm">
                 <md-dialog-title>Add Game</md-dialog-title>
                 <md-dialog-content>
                     <form>
@@ -104,31 +104,54 @@
                 </md-dialog-content>
 
                 <md-dialog-actions>
-                    <md-button class="md-primary" @click.native="closeGame('dialog2')">Cancel</md-button>
-                    <md-button class="md-primary" @click.native="closeGame('dialog2')">Add</md-button>
+                    <md-button class="md-primary" @click.native="closeGame('addGameForm')">Cancel</md-button>
+                    <md-button class="md-primary" @click.native="closeGame('addGameForm')">Add</md-button>
                 </md-dialog-actions>
             </md-dialog>
 
             <!-- Game List -->
             <div id="gameList">
-              <div>
-                <img src="teamLogos/default_team_logo.png" alt="team logo" id="profilePicture">
-                Name
-              </div>
-              <div>
-                VS
-              </div>
-              <div>
-                <img src="teamLogos/default_team_logo.png" alt="team logo" id="profilePicture">
-                Name
-              </div>
-              <div>
-                <ul>
-                  <li>Date</li>
-                  <li>Location</li>
-                </ul>
-              </div>
+
+                <div class="gameItem">
+                    <div>
+                        <img src="teamLogos/default_team_logo.png" alt="team logo" id="profilePicture"> <p class="alignCenter">name</p>
+                    </div>
+                    <div>
+                        <p class="alignCenter vsGame">Vs</p>
+                    </div>
+                    <div>
+                        <img src="teamLogos/default_team_logo.png" alt="team logo" id="profilePicture"> <p class="alignCenter">name</p>
+                    </div>
+                    <div>
+                        <ul>
+                            <li>Date</li>
+                            <li>Location</li>
+                        </ul>
+                    </div>
+                    <div @click="addScore('addScoreForm')" id="addScoreFormCon">
+                        <v-btn light flat class=" teal white--text">Add Score</v-btn>
+                    </div>
+
+                </div>
+
             </div>
+            <!-- add score form -->
+            <md-dialog md-open-from="#addScoreFormCon" md-close-to="#addScoreFormCon" ref="addScoreForm">
+                <md-dialog-title>Add Score</md-dialog-title>
+                <md-dialog-content>
+                    <form>
+                        <md-input-container>
+                            <label>Name</label>
+                            <md-input v-model="name"></md-input>
+                        </md-input-container>
+                    </form>
+                </md-dialog-content>
+
+                <md-dialog-actions>
+                    <md-button class="md-primary" @click.native="closeGame('addScoreForm')">Cancel</md-button>
+                    <md-button class="md-primary" @click.native="closeGame('addScoreForm')">Add</md-button>
+                </md-dialog-actions>
+            </md-dialog>
 
         </div>
     </div>
@@ -291,6 +314,13 @@ export default {
         },
         closeGame(ref) {
             this.$refs[ref].close()
+        },
+
+        addScore(ref) {
+            this.$refs[ref].open();
+        },
+        closeScore(ref) {
+            this.$refs[ref].close()
         }
 
     }
@@ -321,7 +351,6 @@ export default {
             width: 40px;
             margin: 0 auto;
             display: block;
-
         }
         p {
             padding-top: 10px;
@@ -390,16 +419,28 @@ export default {
     overflow: scroll;
     overflow-x: hidden;
     height: calc(100vh - 92px);
-
-    #gameList {
-      overflow: scroll;
-    }
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: 30px 1fr;
     #sportGamesHeader {
         display: grid;
         grid-template-columns: 4fr 0.5fr;
         background: white;
         box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        padding-top: 5px;
+    }
+    #gameList {
+        overflow: scroll;
+        padding-top: 30px;
+        .gameItem {
+            display: grid;
+            grid-template-columns: .4fr .2fr .4fr 1fr .3fr ;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 
+            .vsGame {
+              margin-top: 20px;
+            }
+        }
     }
 }
 @media screen and (min-width: 600px) {
@@ -417,6 +458,7 @@ export default {
         height: calc(100vh - 155px);
         padding-bottom: 0;
         display: block !important;
+        overflow-x: hidden;
     }
     #sportGamesContainer {
         padding-top: 40px;
@@ -425,7 +467,9 @@ export default {
         padding-bottom: 0;
         display: grid !important;
         #gameList {
-          overflow: scroll;
+            overflow: scroll;
+            overflow-x: hidden;
+
         }
     }
     #sportDetailsContainer {

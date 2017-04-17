@@ -135,6 +135,15 @@ select {
 .md-input-container {
   display: block;
 }
+.pointer {
+  cursor: pointer;
+}
+.alignLeft {
+  text-align: left;
+}
+.alignCenter {
+  text-align: center;
+}
 #masterContainer {
     z-index: 3;
     width: 100%;
