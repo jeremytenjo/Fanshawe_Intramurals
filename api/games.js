@@ -17,7 +17,9 @@ router.post('/games/allBy', function(req, res) {
     console.log(req.body.id);
     Games.find({
         tournament: req.body.id
-    }).populate('teamOne').populate('teamTwo').exec(function(err, games) {
+    }).populate('teamOne').populate('teamTwo').sort({
+        date: -1
+    }).exec(function(err, games) {
         if (err) return handleError(err);
         // console.log(games);
         res.json(games);
@@ -98,23 +100,23 @@ router.post('/games/insert', function(req, res) {
 })
 
 router.post('/games/addScore', function(req, res) {
-  Games.update({
-      _id: req.body.data.id
-  }, {
-      teamOne: req.body.data.TeamOne,
-      teamTwo: req.body.data.TeamTwo,
-      scoreTeamOne: req.body.data.scoreTeamOne,
-      scoreTeamTwo: req.body.data.scoreTeamTwo
-  }).exec(function(res, result) {
-      // console.log(result);
-      Games.find(function(err, resultr) {
-          sendTo(resultr);
-      })
-  })
+    Games.update({
+        _id: req.body.data.id
+    }, {
+        teamOne: req.body.data.TeamOne,
+        teamTwo: req.body.data.TeamTwo,
+        scoreTeamOne: req.body.data.scoreTeamOne,
+        scoreTeamTwo: req.body.data.scoreTeamTwo
+    }).exec(function(res, result) {
+        // console.log(result);
+        Games.find(function(err, resultr) {
+            sendTo(resultr);
+        })
+    })
 
-  function sendTo(resultr) {
-      res.json(resultr);
-  }
+    function sendTo(resultr) {
+        res.json(resultr);
+    }
 
 })
 

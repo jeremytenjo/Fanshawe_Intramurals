@@ -391,6 +391,7 @@ export default {
                 formData.append('capacity', self.updateCapacity);
                 formData.append('amount', '0');
                 formData.append('promoBannerColor', self.updateRgba);
+                formData.append('genderIcon', 'male.png');
 
 								//Date inputs
 								formData.append('startDate', self.updatestartDate);
@@ -429,7 +430,7 @@ export default {
                 })
 
 								// snackBar
-								snackBar_update.innerHTML = 'User Added';
+								snackBar_update.innerHTML = 'Tournament Added';
 								if (w <= 600) {
 										TweenMax.to('#snackBar_update', .4, {
 												bottom: 0,
@@ -449,6 +450,10 @@ export default {
 												delay: 2
 										});
 								}
+
+								//hide modal
+								formCon.style.display = 'none';
+		            addIcon.style.display = 'block';
 
                 //Reload
                 self.$router.push('/reload');
