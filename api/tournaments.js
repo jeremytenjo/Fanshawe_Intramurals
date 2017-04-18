@@ -140,7 +140,9 @@ router.post('/tournaments/insert', function(req, res) {
         // console.log(bundle);
 
         //Update
-        Tournaments.insertMany(bundle).exec();
+        Tournaments.insertMany(bundle, function(error, docs) {
+            res.json('Success');
+        });
 
 
     });

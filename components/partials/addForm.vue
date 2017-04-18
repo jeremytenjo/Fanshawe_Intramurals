@@ -375,7 +375,7 @@ export default {
                 }
             }
 
-            console.log(self.$store.state.urlPage);
+            // console.log(self.$store.state.urlPage);
             if (self.$store.state.urlPage === 'Tournaments') {
 
                 var self = this,
@@ -389,7 +389,14 @@ export default {
                 formData.append('type', self.updateType);
                 formData.append('rules', self.updateRules);
                 formData.append('capacity', self.updateCapacity);
+                formData.append('amount', '0');
                 formData.append('promoBannerColor', self.updateRgba);
+
+								//Date inputs
+								formData.append('startDate', self.updatestartDate);
+								formData.append('endDate', self.updateEndDate);
+								formData.append('startDateName', self.updatestartDateName);
+								formData.append('endDateName', self.updateEndDateName);
 
                 //file Inputs
                 // console.log(iconInput.value);
@@ -420,6 +427,28 @@ export default {
                 axios.post('/api/tournaments/insert', formData).then(function(response) {
 
                 })
+
+								// snackBar
+								snackBar_update.innerHTML = 'User Added';
+								if (w <= 600) {
+										TweenMax.to('#snackBar_update', .4, {
+												bottom: 0,
+												delay: .2
+										});
+										TweenMax.to('#snackBar_update', .3, {
+												bottom: '-60px',
+												delay: 2
+										});
+								} else {
+										TweenMax.to('#snackBar_update', .4, {
+												bottom: 0,
+												delay: .2
+										});
+										TweenMax.to('#snackBar_update', .4, {
+												bottom: '-500px',
+												delay: 2
+										});
+								}
 
                 //Reload
                 self.$router.push('/reload');
