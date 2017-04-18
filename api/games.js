@@ -48,7 +48,9 @@ router.post('/games/fixtures', function(req, res) {
                 }
             }
         ]
-    }).populate('teamOne').populate('teamTwo').exec(function(err, upcomingResults) {
+    }).populate('teamOne').populate('teamTwo').sort({
+        date: -1
+    }).exec(function(err, upcomingResults) {
         if (err) return handleError(err);
         // console.log(upcomingResults);
         res.json(upcomingResults);
@@ -81,7 +83,9 @@ router.post('/games/results', function(req, res) {
                 }
             }
         ]
-    }).populate('teamOne').populate('teamTwo').exec(function(err, upcomingResults) {
+    }).populate('teamOne').populate('teamTwo').sort({
+        date: -1
+    }).exec(function(err, upcomingResults) {
         if (err) return handleError(err);
         //  console.log(err);
         res.json(upcomingResults);

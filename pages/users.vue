@@ -89,7 +89,8 @@ export default {
     middleware: 'auth',
     data() {
         return {
-            itemInfo: ''
+            itemInfo: '',
+            selectedId: ''
         }
     },
     mounted() {
@@ -169,6 +170,9 @@ export default {
             var w = window.innerWidth,
                 self = this;
 
+            //set selected id
+            self.selectedId = id
+
             if (w <= 600) {
                 usersList.style.display = 'none';
                 usersDetails.style.display = 'grid';
@@ -239,6 +243,7 @@ export default {
             // console.log(id);
             var bundle = {},
                 formData = new FormData(),
+                self = this,
                 times = [this.$store.state.contentId],
                 accountInputs = document.querySelectorAll('.accountInputs'),
                 w = window.innerWidth,
@@ -248,7 +253,8 @@ export default {
                 file = document.querySelector('#file'),
                 timesArray = [time1, time2, time3, time4, time5];
 
-            formData.append('id', this.$store.state.contentId);
+            // formData.append('id', this.$store.state.contentId);
+            formData.append('id', self.selectedId);
 
             //Schedule
             // console.log(timesArray);
@@ -271,7 +277,7 @@ export default {
             //Get selected user current photo
             // console.log(self.$store.state.contentId);
             axios.post('/api/users/getOne', {
-                id: self.$store.state.contentId
+                id: self.selectedId
             }).then(function(response) {
                 // console.log(response.data[0].photo);
                 currentPhoto = response.data[0].photo;
