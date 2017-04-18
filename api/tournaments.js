@@ -101,6 +101,54 @@ router.post('/tournaments/update', function(req, res) {
 })
 
 
+router.post('/tournaments/insert', function(req, res) {
+    var form = new formidable.IncomingForm(),
+        bundle = {};
+
+    //Setup
+    form.multiples = true;
+    form.keepExtensions = true;
+    form.uploadDir = sportBannerDir;
+    form.parse(req, (err, fields, files) => {
+        if (err) return res.status(500).json({
+            error: err
+        })
+        // res.status(200).json({
+        //     uploaded: true
+        // })
+    })
+
+    //place inputs in data
+    form.on('field', function(field, value) {
+        bundle[field] = value;
+    });
+
+    //save files
+    form.on('fileBegin', function(name, file) {
+        const [fileName, fileExt] = file.name.split('.');
+        var date = new Date().getTime();
+        var fileNameDB = fileName + date + '.' + fileExt;
+        file.path = path.join(sportBannerDir, fileNameDB);
+
+        console.log(name);
+        //ADD file
+        bundle[name] = fileNameDB;
+    })
+
+    //Query
+    form.on('end', function() {
+        // console.log(bundle);
+
+        //Update
+        Tournaments.insertMany(bundle).exec();
+
+
+    });
+
+
+})
+
+
 
 
 

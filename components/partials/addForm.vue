@@ -28,7 +28,41 @@
 
 				<!--  Tournamnets-->
 				<div id="teamInputs" v-if="tournamentsData != 'false'">
-					<p>Hi Tournaments</p>
+					<label for="sport">Sport</label>
+					<input type="text" name="sport" v-model="updateSport">
+
+					<label for="Type">Type</label>
+					<input type="text" name="Type" v-model="updateType">
+
+					<label for="Capacity">Capacity</label>
+					<input type="text" name="Capacity" v-model="updateCapacity">
+
+					<label for="rules">Rules</label>
+					<textarea rows="30" name="rules" v-model="updateRules"></textarea>
+
+					<label for="icon">Icon</label>
+					<br>
+					<input type="file" name="icon" id="iconInput">
+					<br>
+					<br>
+					<label for="banner">Banner</label>
+					<br>
+					<input type="file" name="banner" id="bannerInput">
+					<br>
+					<br>
+					<label for="promoBanner">Promo Banner</label>
+					<br>
+					<input type="file" name="promoBanner" id="promoBannerInput">
+					<br>
+					<br>
+					<label for="rbgaInput">Gradient Color (RGBA)</label>
+					<input type="text" name="rbgaInput" v-model="updateRgba">
+
+					<label for="startDate">Start Date</label>
+					<input type="date" name="startDate" v-model="updatestartDate">
+
+					<label for="endDate">End Date</label>
+					<input type="date" name="endDate" v-model="updateEndDate" placeholder="DDMMYYYY">
 				</div>
 
 
@@ -108,26 +142,23 @@ export default {
     data() {
         return {
             teamSelected: 'None',
-            teamOptions: [{
-                    text: 'Lamparla Silva',
-                    value: 'Id1'
-                },
-                {
-                    text: 'Jeremy Tenjo',
-                    value: 'Id2'
-                },
-                {
-                    text: 'Archer Newton',
-                    value: 'Id3'
-                }
-            ],
             teamsData: 'false',
             tournamentsData: 'false',
             usersData: 'false',
             inboxData: 'false',
             announcementsData: 'false',
             selectInputs: '',
-            sportsList: ''
+            sportsList: '',
+            updateSport: '',
+            updateType: '',
+            updateRules: '',
+            updateCapacity: '',
+            updateRgba: '',
+            updatestartDate: '',
+            updateEndDate: '',
+            updatestartDateName: '',
+            updateEndDateName: ''
+
         }
     },
     methods: {
@@ -160,7 +191,7 @@ export default {
             // console.log(urlTitle);
             formTitle.innerHTML = urlTitle;
 
-            console.log(self.$store.state.urlPage);
+            // console.log(self.$store.state.urlPage);
 
 
             if (self.$store.state.urlPage === 'Teams') {
@@ -224,7 +255,7 @@ export default {
             }
         },
         onSubmit() {
-            // console.log('Submit');
+
             var inputs = document.querySelectorAll(".inputs"),
                 file = document.querySelector('#file'),
                 addIcon = document.querySelector('#addIcon'),
@@ -343,6 +374,58 @@ export default {
                     break;
                 }
             }
+
+            console.log(self.$store.state.urlPage);
+            if (self.$store.state.urlPage === 'Tournaments') {
+
+                var self = this,
+                    formData = new FormData(),
+                    iconInput = document.querySelector('#iconInput'),
+                    bannerInput = document.querySelector('#bannerInput'),
+                    promoBannerInput = document.querySelector('#promoBannerInput');
+
+                //text inputs
+                formData.append('sport', self.updateSport);
+                formData.append('type', self.updateType);
+                formData.append('rules', self.updateRules);
+                formData.append('capacity', self.updateCapacity);
+                formData.append('promoBannerColor', self.updateRgba);
+
+                //file Inputs
+                // console.log(iconInput.value);
+                if (iconInput.value === '') {
+                    formData.append('icon', self.icon);
+                } else {
+                    formData.append('icon', iconInput.files[0]);
+                }
+
+                if (bannerInput.value === '') {
+                    formData.append('banner', self.banner);
+                } else {
+                    formData.append('banner', bannerInput.files[0]);
+                }
+
+                if (promoBannerInput.value === '') {
+                    formData.append('promoBanner', self.promoBanner);
+                } else {
+                    formData.append('promoBanner', promoBannerInput.files[0]);
+                }
+
+                // Display the values
+                for (var value of formData.values()) {
+                    console.log(value);
+                }
+
+                // Send
+                axios.post('/api/tournaments/insert', formData).then(function(response) {
+
+                })
+
+                //Reload
+                self.$router.push('/reload');
+
+            }
+
         },
         cancelForm() {
             formCon.style.display = 'none';
@@ -455,10 +538,10 @@ export default {
             }
 
         }
-				#move {
-				  width: 30px;
-					float: left;
-				}
+        #move {
+            width: 30px;
+            float: left;
+        }
         #formBtns {
             // background-color: yellow;
             height: 10%;
@@ -477,7 +560,7 @@ export default {
                 .formCancelBtn {
                     border-color: #e2231a !important;
                     color: #e2231a !important;
-										width: 100px;
+                    width: 100px;
                     p {
                         position: absolute;
                         top: 50%;
