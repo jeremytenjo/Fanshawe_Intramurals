@@ -163,6 +163,11 @@ select {
 .md-theme-default.md-button:not([disabled]).md-primary:not(.md-icon-button) {
   color: #009587 !important;
 }
+.btn {
+  height: 34px;
+  font-size: 12px;
+  min-width: 54px;
+}
 #masterContainer {
     // z-index: 3;
     // width: 100%;

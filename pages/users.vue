@@ -178,6 +178,8 @@ export default {
             //reset list
             axios.post('/api/users/getAll').then(function(response) {
                 self.itemInfo = response.data;
+                self.itemInfo = '';
+                self.itemInfo = response.data;
             })
 
             axios.post('/api/users/getOne', {
@@ -294,6 +296,8 @@ export default {
 
                 //reset
                 axios.post('/api/users/getAll').then(function(response) {
+                    self.itemInfo = response.data;
+                    self.itemInfo = '';
                     self.itemInfo = response.data;
                 })
 

@@ -528,13 +528,13 @@ export default {
             data.scoreTeamOne = self.scoreOne;
             data.scoreTeamTwo = self.scoreTwo;
 
-            console.log(data);
+            // console.log(data);
 
             //send
             axios.post('/api/games/addScore', {
                 data: data
             }).then(function(response) {
-                console.log(response);
+                // console.log(response);
             })
 
             //Reload Games
