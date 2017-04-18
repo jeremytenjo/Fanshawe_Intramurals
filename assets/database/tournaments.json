@@ -40,14 +40,14 @@
 }
 { 
     "_id" : ObjectId("58eabc0e53da742bdc4a2023"), 
-    "sport" : "Basketball", 
+    "sport" : "Basketballl", 
     "capacity" : NumberInt(15), 
-    "startDate" : ISODate("2017-02-11T03:06:52.897+0000"), 
-    "endDate" : ISODate("2017-09-11T03:06:52.897+0000"), 
+    "startDate" : ISODate("2017-02-11T00:00:00.000+0000"), 
+    "endDate" : ISODate("2017-09-11T00:00:00.000+0000"), 
     "amount" : NumberInt(0), 
     "banner" : "default_banner.png", 
     "rules" : "TRules for Backstball", 
-    "icon" : "basketball.png", 
+    "icon" : "basketball1492485782537.png", 
     "teams" : [
 
     ], 
@@ -55,25 +55,25 @@
     "promoBanner" : "backseballPromoBaner.jpg", 
     "promoBannerColor" : "44, 102, 255, 0.8", 
     "genderIcon" : "male.png", 
-    "startDateName" : "January 1, 2017", 
-    "endDateName" : "April 1, 2017"
+    "startDateName" : "2017-02-11", 
+    "endDateName" : "2017-09-11"
 }
 { 
-    "_id" : ObjectId("58f50ad3faa7c82f40eaf937"), 
+    "_id" : ObjectId("58f5845c7462b817987009ed"), 
     "__v" : NumberInt(0), 
-    "sport" : "Loramaerlly", 
+    "sport" : "Tennis", 
     "type" : "Co-Ed", 
-    "rules" : "Please Follow", 
-    "capacity" : NumberInt(10), 
-    "promoBannerColor" : "0, 195, 143, 0.8", 
-    "startDate" : ISODate("2017-02-28T00:00:00.000+0000"), 
-    "endDate" : ISODate("2017-03-24T00:00:00.000+0000"), 
-    "startDateName" : "2017-02-28", 
-    "endDateName" : "2017-03-24", 
+    "rules" : "dfsdfsd", 
+    "capacity" : NumberInt(4), 
+    "promoBannerColor" : "255, 0, 0, 0.2", 
+    "icon" : "tennis-ball1492485924129.png", 
+    "banner" : "default_banner.png", 
+    "promoBanner" : "backseballPromoBaner.jpg", 
     "teams" : [
 
     ], 
-    "icon" : "tennis-ball14924590942801492459866808.png", 
-    "promoBanner" : "download1492459632123.jpg", 
-    "banner" : "enlarged-facebook-profile-picture1492459632122.jpg"
+    "endDateName" : "2017-09-15", 
+    "startDateName" : "2017-02-02", 
+    "endDate" : ISODate("2017-09-15T00:00:00.000+0000"), 
+    "startDate" : ISODate("2017-02-02T00:00:00.000+0000")
 }

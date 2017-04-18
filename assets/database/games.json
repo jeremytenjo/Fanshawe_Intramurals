@@ -8,10 +8,10 @@
     "user" : ObjectId("58c36e9883e0930e34bf79ef"), 
     "notes" : "A long description", 
     "stage" : "Group", 
-    "group" : NumberInt(1), 
-    "scoreTeamOne" : "5", 
-    "scoreTeamTwo" : "2", 
-    "dateString" : "March 11, 2017", 
+    "group" : "1", 
+    "scoreTeamOne" : "", 
+    "scoreTeamTwo" : "", 
+    "dateString" : "2017-03-11", 
     "time" : "4:00pm"
 }
 { 
@@ -24,9 +24,55 @@
     "user" : ObjectId("58c36e9883e0930e34bf79ef"), 
     "notes" : "A long description", 
     "stage" : "Group", 
-    "group" : NumberInt(1), 
-    "scoreTeamOne" : "5", 
-    "scoreTeamTwo" : "2", 
-    "dateString" : "March 11, 2017", 
+    "group" : "1", 
+    "scoreTeamOne" : "", 
+    "scoreTeamTwo" : "", 
+    "dateString" : "2017-06-11", 
     "time" : "4:00pm"
+}
+{ 
+    "_id" : ObjectId("58f56c32114da007d4d5bc3c"), 
+    "tournament" : ObjectId("58c3689f83e0930e34bf79dc"), 
+    "date" : ISODate("2017-04-22T00:00:00.000+0000"), 
+    "dateString" : "2017-04-22", 
+    "time" : "", 
+    "location" : "Gym 5", 
+    "group" : "2", 
+    "scoreTeamOne" : "", 
+    "scoreTeamTwo" : "", 
+    "teamTwo" : ObjectId("58e6a5da8617d71d2c87d2c3"), 
+    "teamOne" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("58f57a2960ebdf2fb0fa653a"), 
+    "tournament" : ObjectId("58c3689f83e0930e34bf79dc"), 
+    "date" : ISODate("2017-04-08T00:00:00.000+0000"), 
+    "dateString" : "2017-04-08", 
+    "time" : "5pm", 
+    "location" : "GYM5", 
+    "group" : "3", 
+    "scoreTeamOne" : "2", 
+    "scoreTeamTwo" : "1", 
+    "teamTwo" : ObjectId("58e6a5d28617d71d2c87d2c0"), 
+    "teamOne" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("58f57aa160ebdf2fb0fa653b"), 
+    "tournament" : ObjectId("58c3689f83e0930e34bf79dc"), 
+    "date" : ISODate("2017-04-08T00:00:00.000+0000"), 
+    "dateString" : "2017-04-08", 
+    "time" : "5pm", 
+    "location" : "GYM5", 
+    "group" : "3", 
+    "scoreTeamOne" : "2", 
+    "scoreTeamTwo" : "1", 
+    "teamTwo" : [
+        ObjectId("58e6a5d28617d71d2c87d2c0")
+    ], 
+    "teamOne" : [
+        ObjectId("58de5b9cbf8cb60d000af8bb")
+    ], 
+    "__v" : NumberInt(0)
 }

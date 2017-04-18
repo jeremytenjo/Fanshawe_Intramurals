@@ -35,7 +35,7 @@
 
     ], 
     "tournaments" : ObjectId("58c3689f83e0930e34bf79dc"), 
-    "team" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "team" : ObjectId("58debc6f9942b0318ccc7e3d"), 
     "schedule" : [
         "time1", 
         "time2", 
@@ -98,7 +98,7 @@
 { 
     "_id" : ObjectId("58d86f7e83e09312209e9fa1"), 
     "fname" : "Jerold", 
-    "photo" : "download1491679616037.jpg", 
+    "photo" : "download1492482745352.jpg", 
     "lname" : "Tenjo", 
     "type" : "student", 
     "team" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
@@ -108,6 +108,9 @@
     "number" : NumberInt(2147483647), 
     "tournaments" : ObjectId("58c3689f83e0930e34bf79dc"), 
     "schedule" : [
+        "time1", 
+        "time2", 
+        "time3", 
         "time4", 
         "time5"
     ]
@@ -297,4 +300,26 @@
     "schedule" : [
 
     ]
+}
+{ 
+    "_id" : ObjectId("58f58b1f3ed24a32b4647af5"), 
+    "__v" : NumberInt(0), 
+    "photo" : "enlarged-facebook-profile-picture1492487587376.jpg", 
+    "fname" : "Kimberly", 
+    "lname" : "Dieter Clayton", 
+    "email" : "lecocucu@yahoo.com", 
+    "password" : "$2a$10$gCxDyjtD7gigyi9tjloVt.JNFmBDzWRk./JCNk4CpyUKKlgbae3YC", 
+    "type" : "student", 
+    "notification" : true, 
+    "social" : [
+
+    ], 
+    "tournaments" : [
+
+    ], 
+    "team" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "schedule" : [
+
+    ], 
+    "number" : "3424234"
 }
