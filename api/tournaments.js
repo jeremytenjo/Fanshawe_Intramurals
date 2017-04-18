@@ -70,7 +70,7 @@ router.post('/tournaments/update', function(req, res) {
 
     //Query
     form.on('end', function() {
-        console.log(bundle);
+        // console.log(bundle);
 
         //Update
         Tournaments.update({

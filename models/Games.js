@@ -16,7 +16,7 @@ var gamesSchema = new Schema({
     user: Schema.ObjectId,
     notes: String,
     stage: String,
-    group: Number,
+    group: String,
     dateString: String,
     scoreTeamOne: String,
     scoreTeamTwo: String,

@@ -93,7 +93,7 @@
                 <div>
                     Games
                 </div>
-                <div @click="addGame('addGameForm')" id="addGameFormCon">
+                <div @click="openGame('addGameForm')" id="addGameFormCon">
                     <i class="material-icons">add</i>
                 </div>
             </div>
@@ -103,16 +103,33 @@
                 <md-dialog-title>Add Game</md-dialog-title>
                 <md-dialog-content>
                     <form>
-                        <md-input-container>
-                            <label>Name</label>
-                            <md-input v-model="name"></md-input>
-                        </md-input-container>
+                        <label for="teamOne">Team One</label>
+                        <select name="" id="teameOne">
+                          <option :value="item._id" name="teamOne" v-for="item in teams" :key="item.key">{{item.name}}</option>
+                        </select>
+
+                        <label for="teamtwo">Team Two</label>
+                        <select name="" id="teamTwo">
+                          <option :value="item._id" name="teamtwo" v-for="item in teams" :key="item.key">{{item.name}}</option>
+                        </select>
+
+                        <label for="date">Date</label>
+                        <input type="date" v-model="addDate">
+
+                        <label for="time">Time</label>
+                        <input type="text" v-model="addTime">
+
+                        <label for="location">Location</label>
+                        <input type="text" v-model="addLocation">
+
+                        <label for="group">Group</label>
+                        <input type="number" v-model="addGroup">
                     </form>
                 </md-dialog-content>
 
                 <md-dialog-actions>
                     <md-button class="md-primary" @click.native="closeGame('addGameForm')">Cancel</md-button>
-                    <md-button class="md-primary" @click.native="closeGame('addGameForm')">Add</md-button>
+                    <md-button class="md-primary" @click.native="addGame('addGameForm')">Add</md-button>
                 </md-dialog-actions>
             </md-dialog>
 
@@ -141,12 +158,14 @@
                     </div>
                     <div>
                         <p class="alignCenter">score</p>
-                        <div @click="addScore('addScoreForm')" id="addScoreFormCon" v-if="score === true">
-                            <v-btn light flat class=" teal white--text">Add</v-btn>
-                        </div>
-                        <div class="alignCenter fSize" v-else>
+
+                        <div class="alignCenter fSize">
                             <span class="md-headline">{{item.scoreTeamOne}}</span> -
                             <span class="md-headline">{{item.scoreTeamTwo}}</span>
+
+                            <div @click="openScore('addScoreForm', item.teamOne[0]._id, item.teamTwo[0]._id, item._id)" id="addScoreFormCon">
+                                <v-btn light flat class=" teal white--text">Add</v-btn>
+                            </div>
                         </div>
                     </div>
 
@@ -159,16 +178,17 @@
                 <md-dialog-title>Add Score</md-dialog-title>
                 <md-dialog-content>
                     <form>
-                        <md-input-container>
-                            <label>Name</label>
-                            <md-input v-model="name"></md-input>
-                        </md-input-container>
+                        <label for="scoreOne">Score team One</label>
+                        <input type="text" v-model="scoreOne">
+
+                        <label for="scoreTwo">Score team two</label>
+                        <input type="text" v-model="scoreTwo">
                     </form>
                 </md-dialog-content>
 
                 <md-dialog-actions>
                     <md-button class="md-primary" @click.native="closeGame('addScoreForm')">Cancel</md-button>
-                    <md-button class="md-primary" @click.native="closeGame('addScoreForm')">Add</md-button>
+                    <md-button class="md-primary" @click.native="addScore('addScoreForm')">Add</md-button>
                 </md-dialog-actions>
             </md-dialog>
 
@@ -201,14 +221,25 @@ export default {
             id: '',
             banner: '',
             icon: '',
-            promoBanner: ''
+            promoBanner: '',
+            addDate: '',
+            addTime: '',
+            addLocation: '',
+            addGroup: '',
+            selectedTeamOne: '',
+            selectedTeamTwo: '',
+            scoreOne: '',
+            scoreTwo: '',
+            gameId: ''
 
         }
 
     },
     mounted() {
         var addIcon = document.querySelector('#addIcon'),
-            self = this;
+            self = this,
+            teameOne = document.querySelector('#teameOne'),
+            teamTwo = document.querySelector('#teamTwo');
 
         //show add button
         addIcon.style.display = 'block';
@@ -261,11 +292,6 @@ export default {
                 // console.log(response.data);
                 self.games = response.data;
 
-                //check score
-                // console.log(response.data[0].scoreTeamOne);
-                if (response.data[0].scoreTeamOne != 'null' && response.data[0].scoreTeamTwo != 'null') {
-                    self.score = false;
-                }
             })
 
         })
@@ -333,13 +359,6 @@ export default {
                 }).then(function(response) {
                     // console.log(response.data);
                     self.games = response.data;
-
-                    //check score
-                    // console.log(response.data[0].scoreTeamOne);
-                    if (response.data[0].scoreTeamOne != 'null' && response.data[0].scoreTeamTwo != 'null') {
-                        self.score = false;
-                        //error bease non existant games
-                    }
                 })
             })
         },
@@ -435,20 +454,104 @@ export default {
                 // console.log(response.data);
                 //Reset list
                 self.list = response.data;
+                self.list = '';
+                self.list = response.data;
             })
 
 
 
         },
-        addGame(ref) {
+        openGame(ref) {
             this.$refs[ref].open();
+
+        },
+        addGame(ref) {
+            this.$refs[ref].close()
+            var self = this,
+                bundle = {},
+                teameOne = document.querySelector('#teameOne'),
+                teamTwo = document.querySelector('#teamTwo');
+
+            bundle.tournament = self.id;
+            bundle.teamOne = teameOne.value;
+            bundle.teamTwo = teamTwo.value;
+            bundle.date = self.addDate;
+            bundle.dateString = self.addDate;
+            bundle.time = self.addTime;
+            bundle.location = self.addLocation;
+            bundle.group = self.addGroup;
+            bundle.scoreTeamOne = '';
+            bundle.scoreTeamTwo = '';
+
+            // console.log(bundle);
+
+            //send
+            axios.post('/api/games/insert', {
+                data: bundle
+            }).then(function(response) {
+                // console.log(response);
+            })
+
+            //Reload Games
+            axios.post('/api/games/allBy', {
+                id: self.id
+            }).then(function(response) {
+                // console.log(response.data);
+                self.games = response.data;
+                self.games = '';
+                self.games = response.data;
+            })
         },
         closeGame(ref) {
             this.$refs[ref].close()
         },
 
-        addScore(ref) {
+        openScore(ref, teamOne, teamTwo, gameId) {
             this.$refs[ref].open();
+            // console.log(teamOne, teamTwo);
+            var self = this;
+
+            //Set selected teams scores
+            self.selectedTeamOne = teamOne;
+            self.selectedTeamTwo = teamTwo;
+            self.gameId = gameId;
+
+        },
+        addScore(ref) {
+
+            var self = this,
+                data = {};
+
+            data.id = self.gameId;
+            data.TeamOne = self.selectedTeamOne;
+            data.TeamTwo = self.selectedTeamTwo;
+            data.scoreTeamOne = self.scoreOne;
+            data.scoreTeamTwo = self.scoreTwo;
+
+            console.log(data);
+
+            //send
+            axios.post('/api/games/addScore', {
+                data: data
+            }).then(function(response) {
+                console.log(response);
+            })
+
+            //Reload Games
+            axios.post('/api/games/allBy', {
+                id: self.id
+            }).then(function(response) {
+                // console.log(response.data);
+                self.games = response.data;
+                self.games = '';
+                self.games = response.data;
+
+                //Close Modal
+                self.$refs[ref].close();
+            })
+
+
+
         },
         closeScore(ref) {
             this.$refs[ref].close()
@@ -565,7 +668,7 @@ export default {
         padding-bottom: 30px;
         .gameItem {
             display: grid;
-            grid-template-columns: 0.4fr 0.2fr 0.4fr 1fr 0.5fr;
+            grid-template-columns: 3fr 1fr 3fr 2fr 2fr;
             box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
             margin-top: 30px;
             padding: 10px;

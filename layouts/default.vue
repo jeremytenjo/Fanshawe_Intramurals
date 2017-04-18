@@ -160,7 +160,9 @@ select {
 .alignCenter {
     text-align: center;
 }
-
+.md-theme-default.md-button:not([disabled]).md-primary:not(.md-icon-button) {
+  color: #009587 !important;
+}
 #masterContainer {
     // z-index: 3;
     // width: 100%;

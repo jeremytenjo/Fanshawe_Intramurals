@@ -217,9 +217,6 @@ router.post('/users/update', function(req, res) {
             })
         }
 
-
-
-
         function sendTo(resultr) {
             res.json(resultr);
         }

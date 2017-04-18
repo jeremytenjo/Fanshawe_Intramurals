@@ -88,15 +88,35 @@ router.post('/games/results', function(req, res) {
 })
 
 router.post('/games/insert', function(req, res) {
-    console.log('insert');
+    // console.log('insert');
     var data = req.body.data;
-    console.log(data);
+    // console.log(data);
     services.insert(model, data, function(res) {
-        console.log(res);
+        // console.log(res);
     });
 
 })
 
+router.post('/games/addScore', function(req, res) {
+  Games.update({
+      _id: req.body.data.id
+  }, {
+      teamOne: req.body.data.TeamOne,
+      teamTwo: req.body.data.TeamTwo,
+      scoreTeamOne: req.body.data.scoreTeamOne,
+      scoreTeamTwo: req.body.data.scoreTeamTwo
+  }).exec(function(res, result) {
+      // console.log(result);
+      Games.find(function(err, resultr) {
+          sendTo(resultr);
+      })
+  })
+
+  function sendTo(resultr) {
+      res.json(resultr);
+  }
+
+})
 
 
 
