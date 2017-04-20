@@ -78,7 +78,7 @@ export default {
         }
     },
     mounted: function mounted() {
-        //do something after mounting vue instance
+
         // console.log('this.$store.state.userData.team[0]');
         var self = this,
             chatMessage_input = document.querySelector('#chatMessage_input'),
