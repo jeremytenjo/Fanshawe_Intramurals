@@ -44,23 +44,23 @@
  <div id="scheduleCon" >
    <h6>Schedule</h6>
    <p>
-    <input type="checkbox" id="time1" value="time1">
+    <input type="checkbox" id="time1" value="time1" disabled>
     <label for="time1">10:00am - 11:00am</label>
   </p>
    <p>
-    <input type="checkbox" id="time2" value="time2" >
+    <input type="checkbox" id="time2" value="time2" disabled>
     <label for="time2">11:00am - 12:00pm</label>
   </p>
    <p>
-    <input type="checkbox" id="time3" value="time3" >
+    <input type="checkbox" id="time3" value="time3" disabled>
     <label for="time3">1:00pm - 2:00pm</label>
   </p>
    <p>
-    <input type="checkbox" id="time4" value="time4" >
+    <input type="checkbox" id="time4" value="time4" disabled>
     <label for="time4">3:00pm - 4:00pm</label>
   </p>
    <p>
-    <input type="checkbox" id="time5" value="time5" >
+    <input type="checkbox" id="time5" value="time5" disabled>
     <label for="time5">4:00pm - 5:00pm</label>
   </p>
  </div>

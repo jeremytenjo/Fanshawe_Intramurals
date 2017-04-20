@@ -1,63 +1,12 @@
 <template>
-<div id="welcomeContainer">
+<div id="testContainer">
     <div id="snackBar">
         Update Successful
     </div>
-    <div id="welcomeModal">
-        <div id="w_modalTop">
-            <img src="~assets/img/cancelBlack.svg" alt="" @click="closeModal" id="w_closemodal">
-            <h2>{{ tournamentOne.sport }}</h2>
-            <div id="m_information">
-                <div>
-                    <p>Type</p>
-                    <img :src="'/sportBanners/' + tournamentOne.genderIcon" alt="gender Icon" id="modalTypeImg">
-                </div>
-                <div>
-                    <p>Start Date</p>
-                    <p>{{ tournamentOne.startDateName }}</p>
-                </div>
-                <div>
-                    <p>End Date</p>
-                    <p>{{ tournamentOne.endDateName }}</p>
-                </div>
-                <div>
-                    <p>Capacity</p>
-                    <p>{{ tournamentOne.amount }}/{{ tournamentOne.capacity }}</p>
-                </div>
-            </div>
-            <div id="w_modalDesc">
-                <h4>Rules</h4>
-                <p>{{ tournamentOne.rules }}</p>
-            </div>
-        </div>
-        <div id="w_modalMid">
-            <div v-if="teamList == ''">
-                <p id="noteamText">No teams Available. Join as a Free Agent and we will notify you when there is a team available.</p>
-            </div>
-            <div class="w_teamItem" v-for="item in teamList" :key="teamList.key" v-else>
-                <div>
-                    <img :src="'teamLogos/' + item.file" alt="">
-                </div>
-                <div>
-                    <p>{{ item.name }}</p>
-                </div>
-                <div @click="teamPick(item._id)">
-                    <v-btn class="red white-text">Join</v-btn>
-                </div>
-            </div>
-
-        </div>
-        <div id="w_modalBottom">
-            <div @click="freeAgent()">
-                <v-btn outline class="blue-grey-text">Free Agent</v-btn>
-
-            </div>
-        </div>
-    </div>
 
     <div id="newUserShow">
-        <div id="welcomeIntro">
-            <div id="welcomeBtns" v-if="userData === false">
+        <div id="testIntro">
+            <div id="testBtns" v-if="userData === false">
                 <div>
                     <router-link to="/register">
                         <v-btn outline class="red red-text">Sign up</v-btn>
@@ -69,7 +18,7 @@
                 </div>
 
             </div>
-            <div id="welcomeBtns2" v-else>
+            <div id="testBtns2" v-else>
                 <div>
                     <router-link to="/account">
                         <v-btn warning dark class="red white-text">Go Home</v-btn>
@@ -130,7 +79,7 @@ export default {
     },
     mounted: function mounted() {
         var self = this,
-            welcomeModal = document.querySelector('#welcomeModal');
+            testModal = document.querySelector('#testModal');
         axios.post('/api/tournaments/getAll').then(function(response) {
             // console.log(response.data);
             self.tournamentInfo = response.data;
@@ -178,7 +127,7 @@ export default {
             } else {
 
                 //Show MOdal
-                welcomeModal.style.display = 'grid';
+                testModal.style.display = 'grid';
 
                 //Get Tournmanet Information
                 axios.post('/api/tournaments/getOne', {
@@ -201,7 +150,7 @@ export default {
 
         },
         closeModal() {
-            welcomeModal.style.display = 'none';
+            testModal.style.display = 'none';
         },
         teamPick(teamId) {
             var bundle = {},
@@ -303,7 +252,7 @@ export default {
     left: 50%;
     bottom: -800px;
 }
-#welcomeModal {
+#testModal {
     width: 100%;
     height: 100%;
     background: white;
@@ -401,7 +350,7 @@ export default {
 #modalTypeImg {
     position: static !important;
 }
-#welcomeBtns {
+#testBtns {
     width: 290px;
     display: block;
     margin: auto;
@@ -413,12 +362,12 @@ export default {
         width: 130px;
     }
 }
-#welcomeBtns2 {
-    @extend #welcomeBtns;
+#testBtns2 {
+    @extend #testBtns;
     width: 130px;
 
 }
-#welcomeIntro {
+#testIntro {
     background-image: url('~assets/img/sportBanners/welcome-intro.jpg');
     height: 300px;
     background-size: contain;
@@ -480,7 +429,7 @@ export default {
     #snackBar {
         bottom: -500px;
     }
-    #welcomeModal {
+    #testModal {
         width: 80%;
         height: 80%;
         max-width: 800px;

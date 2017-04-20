@@ -220,9 +220,10 @@ export default {
     overflow-x: hidden;
 }
 #replyMessage {
-    background: #9E9E9E;
-    color: white;
+    // background: #9E9E9E;
+    // color: white;
     height: 400px;
+        border: solid 1px #9E9E9E;
 }
 .bold {
     font-weight: bold;
