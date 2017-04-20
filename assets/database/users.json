@@ -306,7 +306,7 @@
     "__v" : NumberInt(0), 
     "photo" : "enlarged-facebook-profile-picture1492487587376.jpg", 
     "fname" : "Kimberly", 
-    "lname" : "Dieter Clayton", 
+    "lname" : "Dieter", 
     "email" : "lecocucu@yahoo.com", 
     "password" : "$2a$10$gCxDyjtD7gigyi9tjloVt.JNFmBDzWRk./JCNk4CpyUKKlgbae3YC", 
     "type" : "student", 
@@ -319,7 +319,72 @@
     ], 
     "team" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
     "schedule" : [
-
+        "time1", 
+        "time2"
     ], 
     "number" : "3424234"
+}
+{ 
+    "_id" : ObjectId("58f608d05cb5b6303c1e9d67"), 
+    "__v" : NumberInt(0), 
+    "fname" : "Drake ", 
+    "lname" : "Gage ", 
+    "email" : "buciwi@hotmail.com", 
+    "password" : "$2a$10$RtQE8r0o8ytvwsrRR.Joz.nB/2P6cPT7t2JP/ZwUXQwHKRQj4gRIW", 
+    "number" : "191", 
+    "type" : "student", 
+    "photo" : "enlarged-facebook-profile-picture1492519119901.jpg", 
+    "notification" : true, 
+    "social" : [
+
+    ], 
+    "tournaments" : [
+
+    ], 
+    "team" : [
+        ObjectId("58c3689f83e0930e34bf79dc")
+    ], 
+    "schedule" : [
+
+    ]
+}
+{ 
+    "_id" : ObjectId("58f616429853f8306cc943c8"), 
+    "__v" : NumberInt(0), 
+    "photo" : "ss_profile1492522562696.jpg", 
+    "fname" : "Matt", 
+    "lname" : "Leblank", 
+    "email" : "matt@gmail.com", 
+    "password" : "$2a$10$wemPm2.SroVdcqmLsJ4n9uRzeO.cA/nipnPqOrwJVEyW19j2GhwjO", 
+    "type" : "student", 
+    "notification" : true, 
+    "social" : [
+
+    ], 
+    "tournaments" : [
+
+    ], 
+    "team" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "schedule" : [
+
+    ]
+}
+{ 
+    "_id" : ObjectId("58f6195a602fb80fa079698b"), 
+    "__v" : NumberInt(0), 
+    "photo" : "default_user_logo.png", 
+    "fname" : "Knox Allen", 
+    "lname" : "Hiram Foreman", 
+    "email" : "wyvomisutu@yahoo.com", 
+    "password" : "$2a$10$N4.MKye0yXua5o2mQhHS3uRyE9633z7RsOJM6NTsSakfOJrcXjBz.", 
+    "type" : "student", 
+    "notification" : true, 
+    "social" : [
+
+    ], 
+    "tournaments" : null, 
+    "team" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "schedule" : [
+
+    ]
 }

@@ -1,6 +1,6 @@
 { 
     "_id" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
-    "file" : "Manchester_United_logo1490981284554.png", 
+    "file" : "Manchester_United_logo14909812845541492516850504.png", 
     "name" : "Manchester United", 
     "sport" : ObjectId("58c3689f83e0930e34bf79dc"), 
     "players" : [
@@ -111,7 +111,7 @@
     "_id" : ObjectId("58e6a5d08617d71d2c87d2bf"), 
     "name" : "Everton", 
     "sport" : ObjectId("58c3689f83e0930e34bf79dc"), 
-    "file" : "Everton_FC_logo.svg.png", 
+    "file" : "chelsea1492516931142.png", 
     "players" : [
 
     ], 
@@ -241,4 +241,34 @@
     "loses" : NumberInt(1), 
     "points" : NumberInt(1), 
     "group" : NumberInt(4)
+}
+{ 
+    "_id" : ObjectId("58f614c59853f8306cc943c2"), 
+    "file" : "paris-saint-germain-fc-hd-logo1492522181891.png", 
+    "name" : "PSG", 
+    "tournament" : [
+
+    ], 
+    "players" : [
+
+    ], 
+    "sport" : [
+        ObjectId("58c36ae183e0930e34bf79dd")
+    ], 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("58f614fb9853f8306cc943c3"), 
+    "file" : "Sangmu-Volleyball-Team-Logo1492522235566.png", 
+    "name" : "Volley FC", 
+    "tournament" : [
+
+    ], 
+    "players" : [
+
+    ], 
+    "sport" : [
+        ObjectId("58c36ae183e0930e34bf79dd")
+    ], 
+    "__v" : NumberInt(0)
 }

@@ -189,7 +189,7 @@ export default {
 
             // console.log(self);
 
- 
+
 
 
 
@@ -265,7 +265,7 @@ export default {
 
 }
 #accountContainer {
-    margin-top: 80px;
+    margin-top: 100px;
     padding-bottom: 60px;
     // display: grid;
     // grid-template-columns: repeat(1, 1fr);

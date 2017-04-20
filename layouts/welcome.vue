@@ -48,10 +48,10 @@
 
         </div>
         <div id="w_modalBottom">
-          <div @click="freeAgent()">
-            <v-btn outline class="blue-grey-text">Free Agent</v-btn>
+            <div @click="freeAgent()">
+                <v-btn outline class="blue-grey-text">Free Agent</v-btn>
 
-          </div>
+            </div>
         </div>
     </div>
 
@@ -209,9 +209,17 @@ export default {
             var bundle = {},
                 self = this;
 
+
+            //get tournament from selected team
+            axios.post('/api/teams/getOne', {
+                id: teamId
+            }).then(function(response) {
+              bundle.sportId = response.Data._id;
+            });
             bundle.teamId = teamId;
             bundle.userId = this.$store.state.userData._id;
             // console.log(bundle);
+
 
             axios.post('/api/users/updateTeam', {
                 data: bundle
@@ -432,6 +440,7 @@ export default {
 #sportsList {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
+    overflow: hidden;
 }
 .sportinfo {
     display: grid;
@@ -467,6 +476,7 @@ export default {
     #sportsList {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+        
 
     }
     #snackBar {

@@ -29,6 +29,7 @@
 <div>
   <ul>
     <li>{{result.dateString}}</li>
+    <li>{{result.time}}</li>
     <li>{{result.location}}</li>
     <li>{{result.stage}}</li>
   </ul>
@@ -238,7 +239,7 @@ export default {
     width: 100%;
     height: 400px;
     display: block;
-    margin-top: 90px;
+    margin-top: 130px;
 
 }
 #resultsContainer {
@@ -246,7 +247,7 @@ export default {
     width: 100%;
     height: 400px;
     display: none;
-    margin-top: 90px;
+    margin-top: 130px;
 
 }
 @media (min-width: 600px) {
@@ -261,7 +262,7 @@ export default {
         }
     }
     #upcomingContainer {
-        margin-top: 0;
+        margin-top: 10px;
     }
     #resultsContainer {
         margin-top: 0;

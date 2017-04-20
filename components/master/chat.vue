@@ -129,6 +129,8 @@ export default {
             //Dropdown
             TweenMax.to("#mateModal", .3, {
                 top: 100,
+								backgroundColor: 'white',
+								boxShadow: '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)',
                 ease: Power2.easeInOut
             });
 
@@ -145,6 +147,8 @@ export default {
             //Dropdown
             TweenMax.to("#mateModal", .2, {
                 top: -260,
+								backgroundColor: 'none',
+								boxShadow: 'none',
                 ease: Power2.easeInOut
             });
         }
@@ -281,13 +285,13 @@ export default {
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 #mateModal {
-    background-color: white;
+    // background-color: white;
     height: 300px;
     width: 100%;
     position: fixed;
     z-index: 4;
     top: -260px;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    // box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     img {
         width: 15px;
         position: absolute;

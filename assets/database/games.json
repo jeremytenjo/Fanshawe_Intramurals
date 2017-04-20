@@ -68,11 +68,61 @@
     "group" : "3", 
     "scoreTeamOne" : "2", 
     "scoreTeamTwo" : "1", 
+    "teamTwo" : ObjectId("58e6a5d28617d71d2c87d2c0"), 
+    "teamOne" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("58f6151a9853f8306cc943c4"), 
+    "tournament" : ObjectId("58c36ae183e0930e34bf79dd"), 
+    "date" : ISODate("2017-04-20T00:00:00.000+0000"), 
+    "dateString" : "2017-04-20", 
+    "time" : "5pm", 
+    "location" : "GYM1", 
+    "group" : "1", 
+    "scoreTeamOne" : "", 
+    "scoreTeamTwo" : "", 
     "teamTwo" : [
-        ObjectId("58e6a5d28617d71d2c87d2c0")
+        ObjectId("58f614fb9853f8306cc943c3")
     ], 
     "teamOne" : [
-        ObjectId("58de5b9cbf8cb60d000af8bb")
+        ObjectId("58f614c59853f8306cc943c2")
+    ], 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("58f615929853f8306cc943c5"), 
+    "tournament" : ObjectId("58c36ae183e0930e34bf79dd"), 
+    "date" : ISODate("2017-04-20T00:00:00.000+0000"), 
+    "dateString" : "2017-04-20", 
+    "time" : "5pm", 
+    "location" : "GYM1", 
+    "group" : "1", 
+    "scoreTeamOne" : "", 
+    "scoreTeamTwo" : "", 
+    "teamTwo" : [
+        ObjectId("58f614fb9853f8306cc943c3")
+    ], 
+    "teamOne" : [
+        ObjectId("58f614c59853f8306cc943c2")
+    ], 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("58f6160a9853f8306cc943c7"), 
+    "tournament" : ObjectId("58c36ae183e0930e34bf79dd"), 
+    "date" : ISODate("2017-04-20T00:00:00.000+0000"), 
+    "dateString" : "2017-04-20", 
+    "time" : "5pm", 
+    "location" : "GYM1", 
+    "group" : "1", 
+    "scoreTeamOne" : "", 
+    "scoreTeamTwo" : "", 
+    "teamTwo" : [
+        ObjectId("58f614fb9853f8306cc943c3")
+    ], 
+    "teamOne" : [
+        ObjectId("58f614c59853f8306cc943c2")
     ], 
     "__v" : NumberInt(0)
 }

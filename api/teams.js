@@ -9,7 +9,59 @@ var remove = require('remove');
 
 
 router.post('/teams/update', function(req, res) {
-    console.log("Update Here");
+  var form = new formidable.IncomingForm(),
+      bundle = {};
+
+  //Setup
+  form.multiples = true;
+  form.keepExtensions = true;
+  form.uploadDir = uploadDir;
+  form.parse(req, (err, fields, files) => {
+      if (err) return res.status(500).json({
+          error: err
+      })
+      // res.status(200).json({
+      //     uploaded: true
+      // })
+  })
+
+  //place inputs in data
+  form.on('field', function(field, value) {
+      bundle[field] = value;
+  });
+
+  //save files
+  form.on('fileBegin', function(name, file) {
+      const [fileName, fileExt] = file.name.split('.');
+      var date = new Date().getTime();
+      var fileNameDB = fileName + date + '.' + fileExt;
+      file.path = path.join(uploadDir, fileNameDB);
+
+      // console.log(name);
+      //ADD file
+      bundle[name] = fileNameDB;
+  })
+
+  //Query
+  form.on('end', function() {
+      // console.log(bundle);
+
+      //Update
+      Teams.update({
+          _id: bundle.id
+      }, {
+          name: bundle.name,
+          sport: bundle.sport,
+          file: bundle.file
+
+      }).exec();
+
+      //Send new users Data
+      Teams.find().exec(function(err, newData) {
+          res.json(newData);
+      })
+
+  });
 
 })
 
@@ -321,8 +373,8 @@ router.post('/teams/insert', function(req, res) {
         }
 
         //Add players
-        console.log(fields);
-        console.log(data.players);
+        // console.log(fields);
+        // console.log(data.players);
         if (data.file === 'undefined') {
             console.log('nofile');
             data.file = 'default_team_logo.png';

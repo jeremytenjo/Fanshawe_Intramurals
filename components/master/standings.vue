@@ -180,6 +180,10 @@ export default {
 </script>
 
 <style lang="scss">
+
+#standingsContainer {
+  margin-top: 50px;
+}
 .teamStats {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -286,6 +290,9 @@ export default {
         h2 {
             margin-top: 0;
         }
+    }
+    #standingsContainer {
+      margin-top: 10px;
     }
 
 }

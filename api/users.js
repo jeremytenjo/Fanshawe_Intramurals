@@ -13,7 +13,7 @@ const uploadDir = path.join(__dirname, '../static/userPhotos/');
 
 
 router.post('/users/register', function(req, res) {
-    // console.log("HERE!");
+    console.log("HERE!");
     var form = new formidable.IncomingForm(),
         data = {},
         files = [],
@@ -53,7 +53,7 @@ router.post('/users/register', function(req, res) {
         // encrypt password
         bcrypt.hash(data.password, null, null, function(err, hash) {
             data.password = hash
-            //  console.log(data);
+             console.log(data);
             Users.insertMany(data, function(err, results) {
                 // console.log(results);
                 // delete results.password;
@@ -230,7 +230,8 @@ router.post('/users/updateTeam', function(req, res) {
         _id: req.body.data.userId
     }, {
         $set: {
-            team: req.body.data.teamId
+            team: req.body.data.teamId,
+            tournaments: req.body.data.sportId
         }
     }).exec(function(err, resulttt) {
         Users.find((_id) => {

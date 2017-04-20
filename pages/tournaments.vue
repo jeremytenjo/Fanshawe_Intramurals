@@ -520,7 +520,9 @@ export default {
         addScore(ref) {
 
             var self = this,
-                data = {};
+                data = {},
+                snackBar_update = document.querySelector('#snackBar_update'),
+                w = window.innerWidth;
 
             data.id = self.gameId;
             data.TeamOne = self.selectedTeamOne;
@@ -552,6 +554,30 @@ export default {
 
 
 
+
+            // snackBar
+            snackBar_update.innerHTML = 'Score Added';
+            if (w <= 600) {
+                TweenMax.to('#snackBar_update', .4, {
+                    bottom: 0,
+                    delay: .2
+                });
+                TweenMax.to('#snackBar_update', .3, {
+                    bottom: '-60px',
+                    delay: 2
+                });
+            } else {
+                TweenMax.to('#snackBar_update', .4, {
+                    bottom: 0,
+                    delay: .2
+                });
+                TweenMax.to('#snackBar_update', .4, {
+                    bottom: '-500px',
+                    delay: 2
+                });
+            }
+
+
         },
         closeScore(ref) {
             this.$refs[ref].close()
@@ -561,6 +587,9 @@ export default {
 }
 </script>
 <style lang="scss">
+#addGameFormCon {
+    cursor: pointer;
+}
 #tournamentsContainer {
     display: grid;
     grid-template-columns: repeat(1, 1fr);

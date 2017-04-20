@@ -92,12 +92,17 @@ export default {
             teamsContainer = document.querySelector('#teamsContainer'),
             addIcon = document.querySelector('#addIcon'),
             teamInput = document.querySelector('#teamInput'),
+            pageTitle = document.querySelector('#pageTitle'),
             playerInputs = document.querySelector('#playerInputs'),
             teamsList = document.querySelector('#teamsList'),
             self = this,
             bundle,
             bundle2,
             teamsDetails = document.querySelector('#teamsDetails');
+
+//Set title
+
+pageTitle.innerHTML = 'Teams';
 
         addIcon.style.display = 'block';
         axios.post('/api/teams/getAll').then(function(response) {
@@ -225,6 +230,7 @@ export default {
                 accountInputs = document.querySelectorAll('.accountInputs'),
                 w = window.innerWidth,
                 currentPhoto,
+                // self = this;
                 file = document.querySelector('#file'),
                 teamInput = document.querySelector('#teamInput'),
                 snackBar_update = document.querySelector('#snackBar_update');
@@ -260,8 +266,15 @@ export default {
 
                 //sport selected
                 var teamInput = teamInput.options[teamInput.selectedIndex].value;
-                // console.log(teamInput);
-                formData.append('sport', teamInput);
+                console.log(teamInput);
+                if (teamInput === '') {
+                    console.log('same');
+                    formData.append('sport', response.data[0].sport[0]);
+                } else {
+                    console.log("Different");
+                    formData.append('sport', teamInput);
+                }
+
 
                 // Show Data
                 // for (var value of formData.values()) {
@@ -272,6 +285,9 @@ export default {
                 axios.post('/api/teams/update', formData).then(function(response) {
 
                 })
+
+                //Rest list
+                self.$router.push('/reload');
 
                 // snackBar
                 snackBar_update.innerHTML = 'Update Successful';

@@ -366,7 +366,7 @@ textarea::-moz-input-placeholder {
     input[type=text] {
         height: auto;
     }
-    padding: 30px 30px 0;
+    padding: 60px 30px 0;
     #messageHeader {
         // background-color: green;
     }
