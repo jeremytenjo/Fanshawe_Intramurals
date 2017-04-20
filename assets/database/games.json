@@ -9,8 +9,8 @@
     "notes" : "A long description", 
     "stage" : "Group", 
     "group" : "1", 
-    "scoreTeamOne" : "", 
-    "scoreTeamTwo" : "", 
+    "scoreTeamOne" : "2", 
+    "scoreTeamTwo" : "1", 
     "dateString" : "2017-03-11", 
     "time" : "4:00pm"
 }
@@ -28,6 +28,22 @@
     "scoreTeamOne" : "", 
     "scoreTeamTwo" : "", 
     "dateString" : "2017-06-11", 
+    "time" : "4:00pm"
+}
+{ 
+    "_id" : ObjectId("58f53c82d98e521224b7b9eb"), 
+    "tournament" : ObjectId("58c3689f83e0930e34bf79dc"), 
+    "teamOne" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "teamTwo" : ObjectId("58debca4420761383c43947a"), 
+    "date" : ISODate("2017-06-11T00:00:00.000+0000"), 
+    "location" : "GYM 3", 
+    "user" : ObjectId("58c36e9883e0930e34bf79ef"), 
+    "notes" : "A long description", 
+    "stage" : "Group", 
+    "group" : NumberInt(1), 
+    "scoreTeamOne" : "0", 
+    "scoreTeamTwo" : "2", 
+    "dateString" : "March 11, 2017", 
     "time" : "4:00pm"
 }
 { 

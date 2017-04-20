@@ -27,7 +27,7 @@
     "photo" : "Shawn_Tok_Profile1492295941901.jpg", 
     "fname" : "Aladdin ", 
     "lname" : "Rogan", 
-    "email" : "zexecojy@gmail.com", 
+    "email" : "zac@gmail.com", 
     "password" : "$2a$10$9gFpdcemxM0LMSkbROK3eu7tBGunAD.Fsh.N8hPwXVE1mIHIXDd5K", 
     "type" : "student", 
     "notification" : true, 
@@ -35,13 +35,12 @@
 
     ], 
     "tournaments" : ObjectId("58c3689f83e0930e34bf79dc"), 
-    "team" : ObjectId("58debc6f9942b0318ccc7e3d"), 
+    "team" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
     "schedule" : [
         "time1", 
-        "time2", 
         "time3"
     ], 
-    "number" : 5198903454.0
+    "number" : "5198903454"
 }
 { 
     "_id" : ObjectId("58c366a983e0930e34bf79d9"), 
@@ -79,17 +78,17 @@
 }
 { 
     "_id" : ObjectId("58c3672983e0930e34bf79db"), 
-    "fname" : "Jeremy", 
-    "lname" : "Tenjo", 
+    "fname" : "Bally", 
+    "lname" : "Lamar", 
     "type" : "student", 
     "email" : "jeremy@gmail.com", 
     "password" : "pass", 
-    "photo" : "profile_img1492318921637.png", 
+    "photo" : "viewImage1492699281296.jpg", 
     "notification" : true, 
     "gender" : "Male", 
     "tournaments" : ObjectId("58c3689f83e0930e34bf79dc"), 
     "team" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
-    "number" : NumberInt(2147483644), 
+    "number" : "2147483644", 
     "schedule" : [
         "time2", 
         "time3"
@@ -133,44 +132,51 @@
 }
 { 
     "_id" : ObjectId("58e93bd753da742bdc4a201d"), 
-    "fname" : "Jerold", 
-    "photo" : "download1492357799447.jpg", 
-    "lname" : "Newton", 
+    "fname" : "Parala", 
+    "photo" : "stokes-profile-400-11492699328752.png", 
+    "lname" : "Manye", 
     "type" : "student", 
     "team" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
     "email" : "jerold@gmail.com", 
     "password" : "pass", 
     "notification" : true, 
-    "number" : NumberInt(2147483647), 
+    "number" : "2147483647", 
     "tournaments" : ObjectId("58c3689f83e0930e34bf79dc"), 
     "schedule" : [
-        "time2"
+        "time1", 
+        "time2", 
+        "time3", 
+        "time4", 
+        "time5"
     ]
 }
 { 
     "_id" : ObjectId("58e93bda53da742bdc4a201e"), 
-    "fname" : "Jerold", 
-    "photo" : "download1491679616037.jpg", 
-    "lname" : "Tenjo", 
+    "fname" : "Mine", 
+    "photo" : "images1492699368364.jpg", 
+    "lname" : "Wona", 
     "type" : "student", 
     "team" : ObjectId("58debca4420761383c43947a"), 
     "email" : "jerold@gmail.com", 
     "password" : "pass", 
     "notification" : true, 
-    "number" : NumberInt(2147483647), 
-    "tournaments" : ObjectId("58c3689f83e0930e34bf79dc")
+    "number" : "2147483647", 
+    "tournaments" : ObjectId("58c3689f83e0930e34bf79dc"), 
+    "schedule" : [
+
+    ]
 }
 { 
     "_id" : ObjectId("58e93bdd53da742bdc4a201f"), 
-    "fname" : "Jerold", 
-    "photo" : "download1491679616037.jpg", 
-    "lname" : "Tenjo", 
+    "fname" : "Paka", 
+    "photo" : "harry-profile-pic-400x4001492699385861.jpg", 
+    "lname" : "Mone", 
     "type" : "student", 
     "team" : ObjectId("58debca4420761383c43947a"), 
     "email" : "jerold@gmail.com", 
     "password" : "pass", 
     "notification" : true, 
-    "number" : NumberInt(2147483647), 
+    "number" : "2147483647", 
     "tournaments" : ObjectId("58c3689f83e0930e34bf79dc"), 
     "schedule" : [
         "time3"
@@ -291,12 +297,8 @@
     "social" : [
 
     ], 
-    "tournaments" : [
-
-    ], 
-    "team" : [
-        ObjectId("58debca4420761383c43947a")
-    ], 
+    "tournaments" : null, 
+    "team" : ObjectId("58debca4420761383c43947a"), 
     "schedule" : [
 
     ]
@@ -333,7 +335,7 @@
     "password" : "$2a$10$RtQE8r0o8ytvwsrRR.Joz.nB/2P6cPT7t2JP/ZwUXQwHKRQj4gRIW", 
     "number" : "191", 
     "type" : "student", 
-    "photo" : "enlarged-facebook-profile-picture1492519119901.jpg", 
+    "photo" : "1451456913_brodie1492692209693.jpg", 
     "notification" : true, 
     "social" : [
 
@@ -351,7 +353,7 @@
 { 
     "_id" : ObjectId("58f616429853f8306cc943c8"), 
     "__v" : NumberInt(0), 
-    "photo" : "ss_profile1492522562696.jpg", 
+    "photo" : "sm-rookies-kun-profile1492692214457.jpg", 
     "fname" : "Matt", 
     "lname" : "Leblank", 
     "email" : "matt@gmail.com", 
@@ -367,14 +369,15 @@
     "team" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
     "schedule" : [
 
-    ]
+    ], 
+    "number" : "undefined"
 }
 { 
     "_id" : ObjectId("58f6195a602fb80fa079698b"), 
     "__v" : NumberInt(0), 
-    "photo" : "default_user_logo.png", 
-    "fname" : "Knox Allen", 
-    "lname" : "Hiram Foreman", 
+    "photo" : "kayla-young-400x4001492699562269.jpg", 
+    "fname" : "Knox ", 
+    "lname" : "Hiram ", 
     "email" : "wyvomisutu@yahoo.com", 
     "password" : "$2a$10$N4.MKye0yXua5o2mQhHS3uRyE9633z7RsOJM6NTsSakfOJrcXjBz.", 
     "type" : "student", 
@@ -386,5 +389,6 @@
     "team" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
     "schedule" : [
 
-    ]
+    ], 
+    "number" : "undefined"
 }

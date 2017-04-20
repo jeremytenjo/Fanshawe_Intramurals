@@ -57,6 +57,26 @@
     ]
 }
 { 
+    "_id" : ObjectId("58f534dcf9a2f625d082ebae"), 
+    "__v" : NumberInt(0), 
+    "message" : "Hi David!\n", 
+    "team" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "date" : ISODate("2017-04-17T21:34:20.662+0000"), 
+    "user" : [
+        ObjectId("58f279ed4d87820d1001366d")
+    ]
+}
+{ 
+    "_id" : ObjectId("58f53d38f9a2f625d082ebb0"), 
+    "__v" : NumberInt(0), 
+    "message" : "hfdfhfhhf", 
+    "team" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "date" : ISODate("2017-04-17T22:10:00.623+0000"), 
+    "user" : [
+        ObjectId("58f279ed4d87820d1001366d")
+    ]
+}
+{ 
     "_id" : ObjectId("58f58be0248b6a2c84637acd"), 
     "__v" : NumberInt(0), 
     "message" : "Happy", 
@@ -74,5 +94,15 @@
     "date" : ISODate("2017-04-18T13:39:06.648+0000"), 
     "user" : [
         ObjectId("58f616429853f8306cc943c8")
+    ]
+}
+{ 
+    "_id" : ObjectId("58f6522970fd2718fc47861d"), 
+    "__v" : NumberInt(0), 
+    "message" : "Welcome to the team", 
+    "team" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "date" : ISODate("2017-04-18T17:51:37.985+0000"), 
+    "user" : [
+        ObjectId("58f279ed4d87820d1001366d")
     ]
 }

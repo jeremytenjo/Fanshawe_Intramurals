@@ -58,3 +58,23 @@
     "startDateName" : "2017-02-11", 
     "endDateName" : "2017-09-11"
 }
+{ 
+    "_id" : ObjectId("58f50ad3faa7c82f40eaf937"), 
+    "__v" : NumberInt(0), 
+    "sport" : "Tennis", 
+    "type" : "Male", 
+    "rules" : "Please Follow", 
+    "capacity" : NumberInt(11), 
+    "promoBannerColor" : "149, 167, 44, 0.8", 
+    "startDate" : ISODate("2017-02-28T00:00:00.000+0000"), 
+    "endDate" : ISODate("2017-03-24T00:00:00.000+0000"), 
+    "startDateName" : "2017-02-28", 
+    "endDateName" : "2017-03-24", 
+    "teams" : [
+
+    ], 
+    "icon" : "tennis-ball14924590942801492459866808.png", 
+    "promoBanner" : "wtn_dewees21492525581203.jpg", 
+    "banner" : "enlarged-facebook-profile-picture1492459632122.jpg", 
+    "genderIcon" : "male.png"
+}

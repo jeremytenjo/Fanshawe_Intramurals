@@ -186,7 +186,7 @@
     "_id" : ObjectId("58e6a5dc8617d71d2c87d2c4"), 
     "name" : "Santa Fe", 
     "sport" : ObjectId("58c3689f83e0930e34bf79dc"), 
-    "file" : "Logo_Independiente_Santa_Fe.png", 
+    "file" : "Southampton1492692273932.png", 
     "players" : [
 
     ], 
@@ -270,5 +270,18 @@
     "sport" : [
         ObjectId("58c36ae183e0930e34bf79dd")
     ], 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("58f8c95a5ba069086c5db78f"), 
+    "file" : "271492699499482.vresize", 
+    "name" : "Washington M", 
+    "tournament" : [
+
+    ], 
+    "players" : [
+
+    ], 
+    "sport" : ObjectId("58eabc0e53da742bdc4a2023"), 
     "__v" : NumberInt(0)
 }
