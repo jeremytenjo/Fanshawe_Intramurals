@@ -7,6 +7,7 @@
 
 
 
+
 	<div id="mc_fixtures">
 		<master-fixtures />
 	</div>
@@ -82,6 +83,8 @@ export default {
 }
 </script>
 <style lang="scss">@media (min-width: 600px) {
+
+
 
     #DarkOverlay {
         background: black;

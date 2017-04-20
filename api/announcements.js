@@ -62,6 +62,18 @@ router.post('/annoucements/delete', function(req, res) {
     });
 })
 
+router.post('/annoucements/setSeen', function(req, res) {
+    // console.log(req.body.id);
 
+    //Update
+    Announ.update({
+        _id: req.body.id
+    }, {
+        seen: true
+    }).exec(function() {
+        res.json('success');
+    });
+
+})
 
 module.exports = router

@@ -110,6 +110,8 @@ export default {
                     self.$store.commit('set', userData);
                     // console.log(self.$store.state.userData);
                     self.$router.push('/welcome');
+										
+
                 }
 
             }

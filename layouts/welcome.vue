@@ -227,6 +227,7 @@ export default {
                 // console.log(self.$store);
                 //Set User Data
                 // console.log(response.data);
+                self.$store.commit('set', '');
                 self.$store.commit('set', response.data);
                 // console.log(userData);
 
@@ -234,6 +235,7 @@ export default {
                 axios.post('/api/teams/getOne', {
                     id: response.data.team[0]
                 }).then(function(responsee) {
+                    self.$store.commit('set_userDataTeam', '');
                     self.$store.commit('set_userDataTeam', responsee.data);
                 })
 
@@ -242,6 +244,7 @@ export default {
                     id: response.data.team
                 }).then(function(responseee) {
                     // console.log(response.data);
+                    self.$store.commit('set_userDataTeamMates', '');
                     self.$store.commit('set_userDataTeamMates', responseee.data);
                     // console.log(self.$store.state);
                     self.$router.push('/account');

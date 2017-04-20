@@ -101,7 +101,7 @@ export default {
             //if user has no team redirect to no team page
             // console.log("HERE!");
             // console.log(self.$store.state.userData.team);
-            if (self.$store.state.userData.tournaments.length === 0) {
+            if (self.$store.state.userData.team.length === null) {
                 self.$router.push('/noTeam');
             } else if (self.$store.state.userData.team === null) {
                 self.$router.push('/freeAgent');
