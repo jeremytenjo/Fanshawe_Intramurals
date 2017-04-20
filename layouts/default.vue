@@ -134,7 +134,9 @@ select {
 ::-webkit-input-placeholder {
     color: white;
 }
-
+html {
+  overflow-x: hidden !important;
+}
 .hidden {
     display: none !important;
 }
