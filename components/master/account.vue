@@ -22,7 +22,13 @@
     <label for="password">Change Password</label>
     <input type="text" name="password" placeholder="First name"value="" id="password" class="accountInputs">
 
-   <input type="file" name="" value="" id="file">
+   <!-- <input type="file" name="" value="" id="file"> -->
+   <md-input-container>
+  <label>Profile Picture</label>
+  <!-- <input type="file" name="" value="" id="file"> -->
+  <md-file id="file" v-model="single"></md-file>
+</md-input-container>
+
 
    <div id="scheduleCon" >
      <h6>Schedule</h6>
