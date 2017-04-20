@@ -178,6 +178,7 @@ export default {
         sendMessage_new() {
             var newTo = document.querySelector('#newTo'),
                 newSubject = document.querySelector('#newSubject'),
+                snackBar_update = document.querySelector('#snackBar_update'),
                 sendMessageCon = document.querySelector('#sendMessageCon'),
                 bundle = {},
                 w = window.innerWidth;
@@ -204,6 +205,7 @@ export default {
             }
 
             //snackBar
+            snackBar_update.innerHTML = 'Message Sent';
             if (w <= 600) {
                 TweenMax.to('#snackBar_update', .4, {
                     bottom: 42,
@@ -374,6 +376,7 @@ textarea::-moz-input-placeholder {
         // background-color: blue;
         overflow: scroll;
         padding-top: 20px;
+        overflow-x: hidden;
     }
     #messabeButtons {
         // background-color: yellow;
