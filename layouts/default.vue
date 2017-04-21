@@ -137,6 +137,20 @@ select {
 html {
   overflow-x: hidden !important;
 }
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+}
+
+::-webkit-scrollbar-thumb {
+    color: red;
+    background-color: #E0E0E0;
+    border-radius: 5px;
+
+
+}
 .hidden {
     display: none !important;
 }
