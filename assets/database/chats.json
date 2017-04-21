@@ -106,3 +106,23 @@
         ObjectId("58f279ed4d87820d1001366d")
     ]
 }
+{ 
+    "_id" : ObjectId("58f8df3ad6272d2ab854e72e"), 
+    "__v" : NumberInt(0), 
+    "message" : "Hey", 
+    "team" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "date" : ISODate("2017-04-20T16:18:02.760+0000"), 
+    "user" : [
+        ObjectId("58f279ed4d87820d1001366d")
+    ]
+}
+{ 
+    "_id" : ObjectId("58f8df63d6272d2ab854e72f"), 
+    "__v" : NumberInt(0), 
+    "message" : "Hey Back", 
+    "team" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "date" : ISODate("2017-04-20T16:18:43.403+0000"), 
+    "user" : [
+        ObjectId("58c366a983e0930e34bf79d9")
+    ]
+}
