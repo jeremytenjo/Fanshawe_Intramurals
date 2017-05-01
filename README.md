@@ -9,7 +9,7 @@ Features: tournament creation and management, optimized tournament schedule orga
 
 ``` bash
 # import database
-database locates in assets/database
+located in assets/database
 
 # install dependencies
 $ npm install # Or yarn install
