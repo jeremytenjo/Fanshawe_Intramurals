@@ -8,7 +8,7 @@ Features: tournament creation and management, optimized tournament schedule orga
 ## Build Setup
 
 ``` bash
-import database
+# import database
 database locates in assets/database
 
 # install dependencies
