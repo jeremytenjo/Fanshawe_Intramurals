@@ -8,6 +8,9 @@ Features: tournament creation and management, optimized tournament schedule orga
 ## Build Setup
 
 ``` bash
+import database
+database locates in assets/database
+
 # install dependencies
 $ npm install # Or yarn install
 
