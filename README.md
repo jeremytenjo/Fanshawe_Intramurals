@@ -1,3 +1,6 @@
+Features: tournament creation and management, optimized tournament schedule organizer based on participants’ time schedules, student team creation, team hub, team chat, designation of referees, generation of tournament timetables and space based on schedules provided by participants, development and management of playoffs and announcements to teams or tournaments.
+
+
 # again
 
 > Nuxt.js project
