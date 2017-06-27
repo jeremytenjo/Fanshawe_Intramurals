@@ -59,7 +59,7 @@ module.exports = {
     build: {
         vendor: ['axios', 'vuetify', 'socket.io-client']
     },
-    plugins: ['plugins/element-ui', '~plugins/vuetify.js', '~plugins/favicon.js', '~plugins/vee-validate.js', { src: '~plugins/vue-material', ssr: false }],
+    plugins: ['plugins/element-ui', '~plugins/vuetify.js',  '~plugins/vee-validate.js', { src: '~plugins/vue-material', ssr: false }],
     loading: false,
     // cache: true,
     env: {

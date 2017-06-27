@@ -1,3 +1,4 @@
+[
 { 
     "_id" : ObjectId("58c36dc283e0930e34bf79e3"), 
     "title" : "This is a title", 
@@ -7,3 +8,4 @@
     "torunament" : ObjectId("58c36dd783e0930e34bf79e5"), 
     "description" : "A long description"
 }
+]

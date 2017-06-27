@@ -2,6 +2,7 @@ var express = require('express');
 const Nuxt = require('nuxt');
 const app = require('express')()
 const host = process.env.HOST || '0.0.0.0'
+// const host = process.env.HOST || '127.0.0.1'
 // const port = process.env.PORT || 3000
 const port = process.env.PORT || 8080
 const session = require('express-session');
@@ -10,7 +11,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-import bcrypt from "bcrypt-nodejs";
+var bcrypt = require('bcrypt-nodejs');
 var Chats = require('./models/Chats.js');
 
 //Socket io - Chat
@@ -44,7 +45,7 @@ io.on('connection', function(socket) {
 //Models
 var Users = require('./models/Users.js');
 
-// database setup
+// database setup Local
 mongoose.connect('mongodb://localhost/fanshaweIntramurals_db', function(err) {
     if (err) {
         console.log('error connecting Yo!', err);
@@ -52,6 +53,14 @@ mongoose.connect('mongodb://localhost/fanshaweIntramurals_db', function(err) {
         console.log('DB Connected!');
     }
 });
+// database setup Online
+// mongoose.connect('mongodb://jeremytenjo:Shadowsombra7!@cluster0-shard-00-00-ji1uv.mongodb.net:27017,cluster0-shard-00-01-ji1uv.mongodb.net:27017,cluster0-shard-00-02-ji1uv.mongodb.net:27017/<DATABASE>?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin', function(err) {
+//     if (err) {
+//         console.log('error connecting Yo!', err);
+//     } else {
+//         console.log('DB Connected!');
+//     }
+// });
 
 // Body parser middleware, to access req.body
 app.use(logger('dev'));

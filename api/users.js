@@ -2,7 +2,7 @@ var router = require('express').Router()
 var Users = require('../models/Users.js');
 var services = require('../services/CRUD.js');
 var model = 'Users';
-import bcrypt from "bcrypt-nodejs";
+var bcrypt = require('bcrypt-nodejs');
 
 //form Handling
 const formidable = require('formidable');

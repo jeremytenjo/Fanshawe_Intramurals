@@ -1,0 +1,122 @@
+{ 
+    "_id" : ObjectId("58c3718283e0930e34bf79f6"), 
+    "from" : ObjectId("58f279ed4d87820d1001366d"), 
+    "to" : ObjectId("58c3657183e0930e34bf79d8"), 
+    "subject" : "This is a subject", 
+    "message" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.", 
+    "date" : ISODate("2017-03-11T03:40:18.855+0000"), 
+    "notify" : "true", 
+    "dateName" : "feb 18"
+}
+{ 
+    "_id" : ObjectId("58f2d7bb1d0a2a31601e51bf"), 
+    "__v" : NumberInt(0), 
+    "message" : "How do I joing a team?", 
+    "subject" : "Join a Team?", 
+    "date" : ISODate("2017-04-16T02:32:27.506+0000"), 
+    "dateName" : "Apr 15", 
+    "to" : [
+        ObjectId("58c3657183e0930e34bf79d8")
+    ], 
+    "from" : [
+        ObjectId("58f279ed4d87820d1001366d")
+    ]
+}
+{ 
+    "_id" : ObjectId("58f30c31ce826806acdb52db"), 
+    "__v" : NumberInt(0), 
+    "date" : ISODate("2017-04-16T06:16:17.608+0000"), 
+    "dateName" : "Apr 16", 
+    "subject" : "This is a subject", 
+    "message" : "Helping", 
+    "to" : [
+        ObjectId("58c3657183e0930e34bf79d8")
+    ], 
+    "from" : [
+        ObjectId("58f279ed4d87820d1001366d")
+    ]
+}
+{ 
+    "_id" : ObjectId("58f30cb3ce826806acdb52dc"), 
+    "__v" : NumberInt(0), 
+    "message" : "Me", 
+    "subject" : "Help", 
+    "date" : ISODate("2017-04-16T06:18:27.496+0000"), 
+    "dateName" : "Apr 16", 
+    "to" : [
+        ObjectId("58c3657183e0930e34bf79d8")
+    ], 
+    "from" : [
+        ObjectId("58f279ed4d87820d1001366d")
+    ]
+}
+{ 
+    "_id" : ObjectId("58f30dacce826806acdb52dd"), 
+    "__v" : NumberInt(0), 
+    "date" : ISODate("2017-04-16T06:22:36.861+0000"), 
+    "dateName" : "Apr 16", 
+    "subject" : "Help", 
+    "message" : "dfgfgdf", 
+    "to" : [
+        ObjectId("58f279ed4d87820d1001366d")
+    ], 
+    "from" : [
+        ObjectId("58c3657183e0930e34bf79d8")
+    ]
+}
+{ 
+    "_id" : ObjectId("58f30e07ce826806acdb52de"), 
+    "__v" : NumberInt(0), 
+    "message" : "Thank you", 
+    "subject" : "job", 
+    "date" : ISODate("2017-04-16T06:24:07.586+0000"), 
+    "dateName" : "Apr 16", 
+    "to" : [
+        ObjectId("58c3657183e0930e34bf79d8")
+    ], 
+    "from" : [
+        ObjectId("58f279ed4d87820d1001366d")
+    ]
+}
+{ 
+    "_id" : ObjectId("58f8cb4b5ba069086c5db790"), 
+    "__v" : NumberInt(0), 
+    "message" : "Hello,\n\nPlease help me find where to register\n\nThank you, \n\nJ", 
+    "subject" : "Registration?", 
+    "date" : ISODate("2017-04-20T14:52:59.228+0000"), 
+    "dateName" : "Apr 20", 
+    "to" : [
+        ObjectId("58c3657183e0930e34bf79d8")
+    ], 
+    "from" : [
+        ObjectId("58f3c49e614f9030fcbc85f7")
+    ]
+}
+{ 
+    "_id" : ObjectId("58f8cbbb5ba069086c5db791"), 
+    "__v" : NumberInt(0), 
+    "message" : "Please Help", 
+    "subject" : "Sorry", 
+    "date" : ISODate("2017-04-20T14:54:51.656+0000"), 
+    "dateName" : "Apr 20", 
+    "to" : [
+        ObjectId("58c3657183e0930e34bf79d8")
+    ], 
+    "from" : [
+        ObjectId("58f3c49e614f9030fcbc85f7")
+    ]
+}
+{ 
+    "_id" : ObjectId("58f8cbd95ba069086c5db792"), 
+    "__v" : NumberInt(0), 
+    "date" : ISODate("2017-04-20T14:55:21.947+0000"), 
+    "dateName" : "Apr 20", 
+    "subject" : "Sorry", 
+    "message" : "Sure,\n\nI am here to help You", 
+    "to" : [
+        ObjectId("58f3c49e614f9030fcbc85f7")
+    ], 
+    "from" : [
+        ObjectId("58c3657183e0930e34bf79d8")
+    ]
+}
