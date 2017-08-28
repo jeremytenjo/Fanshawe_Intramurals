@@ -1,10 +1,10 @@
 var express = require('express');
 const Nuxt = require('nuxt');
 const app = require('express')()
-const host = process.env.HOST || '0.0.0.0'
-// const host = process.env.HOST || '127.0.0.1'
-// const port = process.env.PORT || 3000
-const port = process.env.PORT || 8080
+// const host = process.env.HOST || '0.0.0.0'
+const host = process.env.HOST || '127.0.0.1'
+const port = process.env.PORT || 3000
+// const port = process.env.PORT || 8080
 const session = require('express-session');
 var path = require('path');
 var logger = require('morgan');
