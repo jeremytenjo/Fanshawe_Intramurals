@@ -1,0 +1,289 @@
+[
+{ 
+    "_id" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
+    "file" : "Manchester_United_logo14909812845541492516850504.png", 
+    "name" : "Manchester United", 
+    "sport" : ObjectId("58c3689f83e0930e34bf79dc"), 
+    "players" : [
+        ObjectId("58c3657183e0930e34bf79d8"), 
+        ObjectId("58c366a983e0930e34bf79d9"), 
+        ObjectId("58c366ca83e0930e34bf79da"), 
+        ObjectId("58c3672983e0930e34bf79db"), 
+        ObjectId("58d86f7e83e09312209e9fa1")
+    ], 
+    "__v" : NumberInt(0), 
+    "wins" : NumberInt(4), 
+    "ties" : NumberInt(1), 
+    "loses" : NumberInt(2), 
+    "points" : NumberInt(3), 
+    "group" : NumberInt(1)
+},
+{ 
+    "_id" : ObjectId("58debc6f9942b0318ccc7e3d"), 
+    "name" : "Arsenal", 
+    "sport" : ObjectId("58c3689f83e0930e34bf79dc"), 
+    "file" : "Arsenal-logo.png", 
+    "players" : [
+
+    ], 
+    "__v" : NumberInt(0), 
+    "wins" : NumberInt(1), 
+    "ties" : NumberInt(0), 
+    "loses" : NumberInt(3), 
+    "points" : NumberInt(4), 
+    "group" : NumberInt(1)
+},
+{ 
+    "_id" : ObjectId("58debca4420761383c43947a"), 
+    "name" : "Real Madrid", 
+    "sport" : ObjectId("58c3689f83e0930e34bf79dc"), 
+    "file" : "Real-Madrid.png", 
+    "players" : [
+
+    ], 
+    "__v" : NumberInt(0), 
+    "wins" : NumberInt(0), 
+    "ties" : NumberInt(2), 
+    "loses" : NumberInt(1), 
+    "points" : NumberInt(2), 
+    "group" : NumberInt(1)
+},
+{ 
+    "_id" : ObjectId("58e64cfd8617d71d2c87d2b2"), 
+    "name" : "FC Barcelona", 
+    "sport" : ObjectId("58c3689f83e0930e34bf79dc"), 
+    "file" : "Fc_barcelona.png", 
+    "players" : [
+
+    ], 
+    "__v" : NumberInt(0), 
+    "wins" : NumberInt(0), 
+    "ties" : NumberInt(2), 
+    "loses" : NumberInt(1), 
+    "points" : NumberInt(1), 
+    "group" : NumberInt(1)
+},
+{ 
+    "_id" : ObjectId("58e6a5c28617d71d2c87d2bc"), 
+    "name" : "Liverpool", 
+    "sport" : ObjectId("58c3689f83e0930e34bf79dc"), 
+    "file" : "Liverpool.png", 
+    "players" : [
+
+    ], 
+    "__v" : NumberInt(0), 
+    "wins" : NumberInt(0), 
+    "ties" : NumberInt(2), 
+    "loses" : NumberInt(1), 
+    "points" : NumberInt(4), 
+    "group" : NumberInt(2)
+},
+{ 
+    "_id" : ObjectId("58e6a5c88617d71d2c87d2bd"), 
+    "name" : "Chelsea", 
+    "sport" : ObjectId("58c3689f83e0930e34bf79dc"), 
+    "file" : "chelsea.png", 
+    "players" : [
+
+    ], 
+    "__v" : NumberInt(0), 
+    "wins" : NumberInt(0), 
+    "ties" : NumberInt(2), 
+    "loses" : NumberInt(1), 
+    "points" : NumberInt(3), 
+    "group" : NumberInt(2)
+},
+{ 
+    "_id" : ObjectId("58e6a5cd8617d71d2c87d2be"), 
+    "name" : "Leister City", 
+    "sport" : ObjectId("58c3689f83e0930e34bf79dc"), 
+    "file" : "Leicester02.png", 
+    "players" : [
+
+    ], 
+    "__v" : NumberInt(0), 
+    "wins" : NumberInt(0), 
+    "ties" : NumberInt(2), 
+    "loses" : NumberInt(1), 
+    "points" : NumberInt(2), 
+    "group" : NumberInt(2)
+},
+{ 
+    "_id" : ObjectId("58e6a5d08617d71d2c87d2bf"), 
+    "name" : "Everton", 
+    "sport" : ObjectId("58c3689f83e0930e34bf79dc"), 
+    "file" : "chelsea1492516931142.png", 
+    "players" : [
+
+    ], 
+    "__v" : NumberInt(0), 
+    "wins" : NumberInt(0), 
+    "ties" : NumberInt(2), 
+    "loses" : NumberInt(1), 
+    "points" : NumberInt(1), 
+    "group" : NumberInt(2)
+},
+{ 
+    "_id" : ObjectId("58e6a5d28617d71d2c87d2c0"), 
+    "name" : "Sevilla", 
+    "sport" : ObjectId("58c3689f83e0930e34bf79dc"), 
+    "file" : "Sevilla_cf_200px.png", 
+    "players" : [
+
+    ], 
+    "__v" : NumberInt(0), 
+    "wins" : NumberInt(0), 
+    "ties" : NumberInt(2), 
+    "loses" : NumberInt(1), 
+    "points" : NumberInt(4), 
+    "group" : NumberInt(3)
+},
+{ 
+    "_id" : ObjectId("58e6a5d58617d71d2c87d2c1"), 
+    "name" : "Bayern", 
+    "sport" : ObjectId("58c3689f83e0930e34bf79dc"), 
+    "file" : "FC_Bayern_Munich.png", 
+    "players" : [
+
+    ], 
+    "__v" : NumberInt(0), 
+    "wins" : NumberInt(0), 
+    "ties" : NumberInt(2), 
+    "loses" : NumberInt(1), 
+    "points" : NumberInt(3), 
+    "group" : NumberInt(3)
+},
+{ 
+    "_id" : ObjectId("58e6a5d78617d71d2c87d2c2"), 
+    "name" : "Juventus", 
+    "sport" : ObjectId("58c3689f83e0930e34bf79dc"), 
+    "file" : "Juventus.png", 
+    "players" : [
+
+    ], 
+    "__v" : NumberInt(0), 
+    "wins" : NumberInt(0), 
+    "ties" : NumberInt(2), 
+    "loses" : NumberInt(1), 
+    "points" : NumberInt(2), 
+    "group" : NumberInt(3)
+},
+{ 
+    "_id" : ObjectId("58e6a5da8617d71d2c87d2c3"), 
+    "name" : "Inter", 
+    "sport" : ObjectId("58c3689f83e0930e34bf79dc"), 
+    "file" : "Inter_Milan.png", 
+    "players" : [
+
+    ], 
+    "__v" : NumberInt(0), 
+    "wins" : NumberInt(0), 
+    "ties" : NumberInt(2), 
+    "loses" : NumberInt(1), 
+    "points" : NumberInt(1), 
+    "group" : NumberInt(3)
+},
+{ 
+    "_id" : ObjectId("58e6a5dc8617d71d2c87d2c4"), 
+    "name" : "Santa Fe", 
+    "sport" : ObjectId("58c3689f83e0930e34bf79dc"), 
+    "file" : "Southampton1492692273932.png", 
+    "players" : [
+
+    ], 
+    "__v" : NumberInt(0), 
+    "wins" : NumberInt(0), 
+    "ties" : NumberInt(2), 
+    "loses" : NumberInt(1), 
+    "points" : NumberInt(4), 
+    "group" : NumberInt(4)
+},
+{ 
+    "_id" : ObjectId("58e6a5de8617d71d2c87d2c5"), 
+    "name" : "Manchester City", 
+    "sport" : ObjectId("58c3689f83e0930e34bf79dc"), 
+    "file" : "Manchester-city-logo-1-.png", 
+    "players" : [
+
+    ], 
+    "__v" : NumberInt(0), 
+    "wins" : NumberInt(0), 
+    "ties" : NumberInt(2), 
+    "loses" : NumberInt(1), 
+    "points" : NumberInt(3), 
+    "group" : NumberInt(4)
+},
+{ 
+    "_id" : ObjectId("58e6a5e28617d71d2c87d2c6"), 
+    "name" : "Dormunt", 
+    "sport" : ObjectId("58c3689f83e0930e34bf79dc"), 
+    "file" : "584d8678367b6a13e54477d3.png", 
+    "players" : [
+
+    ], 
+    "__v" : NumberInt(0), 
+    "wins" : NumberInt(0), 
+    "ties" : NumberInt(2), 
+    "loses" : NumberInt(1), 
+    "points" : NumberInt(2), 
+    "group" : NumberInt(4)
+},
+{ 
+    "_id" : ObjectId("58e6a5e48617d71d2c87d2c7"), 
+    "name" : "Tottenham", 
+    "sport" : ObjectId("58c3689f83e0930e34bf79dc"), 
+    "file" : "tottenham1490991741674.png", 
+    "players" : [
+
+    ], 
+    "__v" : NumberInt(0), 
+    "wins" : NumberInt(0), 
+    "ties" : NumberInt(2), 
+    "loses" : NumberInt(1), 
+    "points" : NumberInt(1), 
+    "group" : NumberInt(4)
+},
+{ 
+    "_id" : ObjectId("58f614c59853f8306cc943c2"), 
+    "file" : "paris-saint-germain-fc-hd-logo1492522181891.png", 
+    "name" : "PSG", 
+    "tournament" : [
+
+    ], 
+    "players" : [
+
+    ], 
+    "sport" : [
+        ObjectId("58c36ae183e0930e34bf79dd")
+    ], 
+    "__v" : NumberInt(0)
+},
+{ 
+    "_id" : ObjectId("58f614fb9853f8306cc943c3"), 
+    "file" : "Sangmu-Volleyball-Team-Logo1492522235566.png", 
+    "name" : "Volley FC", 
+    "tournament" : [
+
+    ], 
+    "players" : [
+
+    ], 
+    "sport" : [
+        ObjectId("58c36ae183e0930e34bf79dd")
+    ], 
+    "__v" : NumberInt(0)
+},
+{ 
+    "_id" : ObjectId("58f8c95a5ba069086c5db78f"), 
+    "file" : "271492699499482.vresize", 
+    "name" : "Washington M", 
+    "tournament" : [
+
+    ], 
+    "players" : [
+
+    ], 
+    "sport" : ObjectId("58eabc0e53da742bdc4a2023"), 
+    "__v" : NumberInt(0)
+}
+]
