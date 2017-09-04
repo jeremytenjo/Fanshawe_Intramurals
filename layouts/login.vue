@@ -26,91 +26,89 @@
 </template>
 
 <script>
-import axios from '~/plugins/axios';
+import axios from '~plugins/axios';
 
 export default {
 
-	methods: {
-		submit_form: function() {
-			var self = this,
-				email_input = document.querySelector('#email_input').value,
-				password_input = document.querySelector('#password_input').value,
-				login_error = document.querySelector('#login_error'),
-				data,
-				id,
-				userData;
-			// console.log(email_input);
-			//Validation
-			if (email_input === '' && password_input === '') {
-				login_error.innerHTML = '*Please fill all Inputs';
-			} else
-			if (email_input === '') {
-				login_error.innerHTML = '*Please include an email';
-			} else if (password_input === '') {
-				login_error.innerHTML = '*Please include a apassword';
-			}
+    methods: {
+        submit_form: function() {
+            var self = this,
+                email_input = document.querySelector('#email_input').value,
+                password_input = document.querySelector('#password_input').value,
+                login_error = document.querySelector('#login_error'),
+                data,
+                id,
+                userData;
+            // console.log(email_input);
+            //Validation
+            if (email_input === '' && password_input === '') {
+                login_error.innerHTML = '*Please fill all Inputs';
+            } else
+            if (email_input === '') {
+                login_error.innerHTML = '*Please include an email';
+            } else if (password_input === '') {
+                login_error.innerHTML = '*Please include a apassword';
+            }
 
-			data = {
-				// _token: csrf_field,
-				email: email_input,
-				password: password_input
-			};
-			// console.log(data);
-			axios.post('/login', {
-					data: data
-				})
-				.then(function(response) {
-					// console.log(response.data);
-					if (response.data === false) {
-						// console.log(response);
-						login_error.innerHTML = "Incorect Credentials, please try again.";
+            data = {
+                // _token: csrf_field,
+                email: email_input,
+                password: password_input
+            };
+            // console.log(data);
+            axios.post('/login', {
+                    data: data
+                })
+                .then(function(response) {
+                    // console.log(response.data);
+                    if (response.data === false) {
+                        // console.log(response);
+                        login_error.innerHTML = "Incorect Credentials, please try again.";
 
-					} else {
-						userData = response.data;
-						// console.log(userData);
-						redirect(self, userData);
-					}
-				})
-				.catch(function(error) {
-					// console.log(error);
-				});
+                    } else {
+                        userData = response.data;
+                        // console.log(userData);
+                        redirect(self, userData);
+                    }
+                })
+                .catch(function(error) {
+                    // console.log(error);
+                });
 
-			function redirect(self, userData) {
-				// console.log(self.$store);
-				//Set User Data
-				self.$store.commit('set', userData);
-				// console.log(userData.team[0]);
+            function redirect(self, userData) {
+                // console.log(self.$store);
+                //Set User Data
+                self.$store.commit('set', userData);
+                // console.log(userData);
 
-				// Get Users Team Information
-				axios.post('/api/teams/getOne', {
-					id: userData.team
-				}).then(function(response) {
-					self.$store.commit('set_userDataTeam', response.data);
-				})
+                // Get Users Team Information
+                axios.post('/api/teams/getOne', {
+                    id: userData.team
+                }).then(function(response) {
+                    self.$store.commit('set_userDataTeam', response.data);
+                })
 
-				//Get players from the same team
-				axios.post('/api/users/teamMates', {
-					id: userData.team
-				}).then(function(response) {
-					// console.log(response.data);
-					self.$store.commit('set_userDataTeamMates', response.data);
-					// console.log(self.$store.state.userData.type);
+                //Get players from the same team
+                axios.post('/api/users/teamMates', {
+                    id: userData.team
+                }).then(function(response) {
+                    // console.log(response.data);
+                    self.$store.commit('set_userDataTeamMates', response.data);
+                    // console.log(self.$store.state.userData.type);
 
-					//Set user type
-					if (self.$store.state.userData.type === 'admin') {
-						self.$store.commit('set_clientORcms', 'cms');
-						self.$router.push('/teams');
-					} else {
-						self.$store.commit('set_clientORcms', 'student');
-						self.$router.push('/fixtures');
-					}
-				}).catch((e) => {
-					console.log(e);
-				})
-			}
+                    //Set user type
+                    if (self.$store.state.userData.type === 'admin') {
+                        self.$store.commit('set_clientORcms', 'cms');
+                        self.$router.push('/teams');
+                    } else {
+                        self.$store.commit('set_clientORcms', 'student');
+                        self.$router.push('/fixtures');
+                    }
+                })
+            }
 
-		}
-	}
+        }
+    }
 }
 </script>
 
@@ -160,6 +158,7 @@ export default {
     top: 0;
     z-index: 100;
     border-radius: 2px;
+    
 
 }
 #myForm {

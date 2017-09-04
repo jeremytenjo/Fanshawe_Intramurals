@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from '~plugins/axios';
 
 export default {
     created() {
@@ -27,7 +27,7 @@ export default {
         var a_updateButton = document.querySelector('#a_updateButton'),
             self = this;
 
-
+       
 
     },
     data() {

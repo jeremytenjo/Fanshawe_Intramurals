@@ -8,10 +8,10 @@
             <img src="~assets/img/cancelBlack.svg" alt="" @click="closeModal" id="w_closemodal">
             <h2>{{ tournamentOne.sport }}</h2>
             <div id="m_information">
-                <!-- <div>
+                <div>
                     <p>Type</p>
                     <img :src="'/sportBanners/' + tournamentOne.genderIcon" alt="gender Icon" id="modalTypeImg">
-                </div> -->
+                </div>
                 <div>
                     <p>Start Date</p>
                     <p>{{ tournamentOne.startDateName }}</p>
@@ -153,29 +153,29 @@ export default {
 
             //if not registered show alert
             // console.log(self.userData);
-            // if (self.userData === false) {
-            //
-            //     //show Error
-            //     snackBar.innerHTML = 'Sign Up to join a sport'
-            //     if (w <= 600) {
-            //         TweenMax.to('#snackBar', .1, {
-            //             bottom: 0
-            //         });
-            //         TweenMax.to('#snackBar', .3, {
-            //             bottom: '-600px',
-            //             delay: 2
-            //         });
-            //     } else {
-            //         TweenMax.to('#snackBar', .4, {
-            //             bottom: 0,
-            //             delay: .2
-            //         });
-            //         TweenMax.to('#snackBar', .4, {
-            //             bottom: '-500px',
-            //             delay: 4
-            //         });
-            //     }
-            // } else {
+            if (self.userData === false) {
+
+                //show Error
+                snackBar.innerHTML = 'Sign Up to join a sport'
+                if (w <= 600) {
+                    TweenMax.to('#snackBar', .1, {
+                        bottom: 0
+                    });
+                    TweenMax.to('#snackBar', .3, {
+                        bottom: '-600px',
+                        delay: 2
+                    });
+                } else {
+                    TweenMax.to('#snackBar', .4, {
+                        bottom: 0,
+                        delay: .2
+                    });
+                    TweenMax.to('#snackBar', .4, {
+                        bottom: '-500px',
+                        delay: 4
+                    });
+                }
+            } else {
 
                 //Show MOdal
                 welcomeModal.style.display = 'grid';
@@ -197,7 +197,7 @@ export default {
                     self.teamList = '';
                     self.teamList = response.data;
                 })
-            // }
+            }
 
         },
         closeModal() {
@@ -205,33 +205,8 @@ export default {
         },
         teamPick(teamId) {
             var bundle = {},
-                self = this,
-                w = window.innerWidth;
-                //if not registered show alert
-                // console.log(self.userData);
-                if (self.userData === false) {
+                self = this;
 
-                    //show Error
-                    snackBar.innerHTML = 'Sign Up to join a sport'
-                    if (w <= 600) {
-                        TweenMax.to('#snackBar', .1, {
-                            bottom: 0
-                        });
-                        TweenMax.to('#snackBar', .3, {
-                            bottom: '-600px',
-                            delay: 2
-                        });
-                    } else {
-                        TweenMax.to('#snackBar', .4, {
-                            bottom: 0,
-                            delay: .2
-                        });
-                        TweenMax.to('#snackBar', .4, {
-                            bottom: '-500px',
-                            delay: 4
-                        });
-                    }
-                } else {
 
             //get tournament from selected team
             axios.post('/api/teams/getOne', {
@@ -252,7 +227,6 @@ export default {
                 // console.log(self.$store);
                 //Set User Data
                 // console.log(response.data);
-                self.$store.commit('set', '');
                 self.$store.commit('set', response.data);
                 // console.log(userData);
 
@@ -260,7 +234,6 @@ export default {
                 axios.post('/api/teams/getOne', {
                     id: response.data.team[0]
                 }).then(function(responsee) {
-                    self.$store.commit('set_userDataTeam', '');
                     self.$store.commit('set_userDataTeam', responsee.data);
                 })
 
@@ -269,7 +242,6 @@ export default {
                     id: response.data.team
                 }).then(function(responseee) {
                     // console.log(response.data);
-                    self.$store.commit('set_userDataTeamMates', '');
                     self.$store.commit('set_userDataTeamMates', responseee.data);
                     // console.log(self.$store.state);
                     self.$router.push('/account');
@@ -277,7 +249,6 @@ export default {
                 })
 
             })
-          }
 
         },
         freeAgent() {
@@ -368,7 +339,7 @@ export default {
         }
         #m_information {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             text-align: center;
         }
         #w_modalDesc {

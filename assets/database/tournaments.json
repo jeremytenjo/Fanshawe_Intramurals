@@ -1,4 +1,3 @@
-[
 { 
     "_id" : ObjectId("58c3689f83e0930e34bf79dc"), 
     "sport" : "Soccer", 
@@ -7,7 +6,7 @@
     "endDate" : ISODate("2017-03-11T00:00:00.000+0000"), 
     "amount" : NumberInt(4), 
     "banner" : "default_banner.png", 
-    "rules" : "This are the rules for Soccer and they are very important", 
+    "rules" : "This are the rules for Soccer", 
     "icon" : "soccer.png", 
     "teams" : [
 
@@ -18,7 +17,7 @@
     "genderIcon" : "coed.png", 
     "startDateName" : "2017-01-11", 
     "endDateName" : "2017-03-11"
-},
+}
 { 
     "_id" : ObjectId("58c36ae183e0930e34bf79dd"), 
     "sport" : "Volleyball", 
@@ -38,7 +37,7 @@
     "genderIcon" : "male.png", 
     "startDateName" : "2017-01-21", 
     "endDateName" : "2017-09-11"
-},
+}
 { 
     "_id" : ObjectId("58eabc0e53da742bdc4a2023"), 
     "sport" : "Basketballl", 
@@ -58,7 +57,7 @@
     "genderIcon" : "male.png", 
     "startDateName" : "2017-02-11", 
     "endDateName" : "2017-09-11"
-},
+}
 { 
     "_id" : ObjectId("58f50ad3faa7c82f40eaf937"), 
     "__v" : NumberInt(0), 
@@ -79,4 +78,3 @@
     "banner" : "enlarged-facebook-profile-picture1492459632122.jpg", 
     "genderIcon" : "male.png"
 }
-]

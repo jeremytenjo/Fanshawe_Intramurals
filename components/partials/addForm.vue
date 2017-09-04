@@ -138,7 +138,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from '~plugins/axios';
 // var addForm = require('./services/addForm.js');
 
 export default {

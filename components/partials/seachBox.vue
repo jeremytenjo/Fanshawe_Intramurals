@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from '~plugins/axios';
 
 var toggle = true;
 
@@ -137,7 +137,7 @@ export default {
                 TweenMax.to("#pageTitle", .5, {
                     left: '82px'
                 });
-                this.$refs.searchIcon.src = require('~/assets/img/closeIcon.png');
+                this.$refs.searchIcon.src = require('~assets/img/closeIcon.png');
 
                 searchIcon.style.top = '13px';
                 toggle = false;
@@ -148,7 +148,7 @@ export default {
                     var pageTitle = document.querySelector('#pageTitle');
                     pageTitle.style.display = 'block';
                 }
-                this.$refs.searchIcon.src = require('~/assets/img/searchIcon.png');
+                this.$refs.searchIcon.src = require('~assets/img/searchIcon.png');
                 searchInput.value = '';
 
                 TweenMax.to("#searchBox", .1, {

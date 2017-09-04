@@ -1,33 +1,33 @@
 <template>
 <div id="masterContainer">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <my-snackbar/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <my-snackBar-update/>
 
-  <!-- Header -->
-  <div v-if="clientORcms === 'student'">
-    <my-header/>
-    <my-nav/>
-  </div>
-
-  <div v-else>
-    <my-headercms/>
-    <my-Addform/>
-    <my-Navcms/>
-    <my-Inboxbox/>
-  </div>
-
-  <!-- Content Conainer -->
-  <div v-if="clientORcms === 'student'">
-    <div id="contentContainer">
-      <nuxt/>
+    <!-- Header -->
+    <div v-if="clientORcms === 'student'">
+        <my-header/>
+        <my-nav/>
     </div>
-  </div>
 
-  <div v-else>
-    <div id="contentContainer_cms">
-      <nuxt/>
+    <div v-else>
+        <my-header-cms/>
+        <my-addForm/>
+        <my-nav-cms/>
+        <my-inboxBox/>
     </div>
-  </div>
+
+    <!-- Content Conainer -->
+    <div v-if="clientORcms === 'student'">
+        <div id="contentContainer">
+            <nuxt/>
+        </div>
+    </div>
+
+    <div v-else>
+        <div id="contentContainer_cms">
+            <nuxt/>
+        </div>
+    </div>
 
 
 </div>
@@ -35,104 +35,88 @@
 
 <script>
 // Load Global Compoents
-// require('../components/index.js');
-import MySnackbar from '~/components/partials/snackbars/update.vue';
-import MyHeader from '~/components/partials/Header.vue';
-import MyHeadercms from '~/components/partials/Header_cms.vue';
-import MyNav from '~/components/partials/Nav.vue';
-import MyNavcms from '~/components/partials/Nav_cms.vue';
-import MyAddform from '~/components/partials/addForm.vue';
-import MyInboxbox from '~/components/partials/inboxBox.vue';
+require('../components/index.js');
+
 
 export default {
-  components: {
-    MySnackbar,
-    MyHeader,
-    MyNav,
-    MyNavcms,
-    MyHeadercms,
-    MyHeadercms,
-    MyAddform,
-    MyInboxbox,
-  },
-  data() {
-    return {
-      clientORcms: this.$store.state.clientORcms
-    }
-  },
-  mounted() {
-    var self = this,
-      masterContainer = document.querySelector('#masterContainer'),
-      pageTitle = document.querySelector('#pageTitle'),
-      backIcon = document.querySelector('#backIcon'),
-      header = document.querySelector('#header');
+    data() {
+        return {
+            clientORcms: this.$store.state.clientORcms
+        }
+    },
+    mounted() {
+        var self = this,
+            masterContainer = document.querySelector('#masterContainer'),
+            pageTitle = document.querySelector('#pageTitle'),
+            backIcon = document.querySelector('#backIcon'),
+            header = document.querySelector('#header');
 
 
-    //set master conainer settings
-    if (this.$store.state.clientORcms === 'student') {
-      // masterContainer.style.position = 'static';
-    } else if (this.$store.state.clientORcms === 'cms') {
-      // masterContainer.style.position = 'absolute';
-      // masterContainer.style.width = '100%';
-      // masterContainer.style.height = '100vh';
-      // masterContainer.style.zIndex = 3;
-    }
-
-    // console.log(self.$store.state.clientORcms);
-
-    if (self.$store.state.clientORcms === 'student') {
-      var x = document.getElementsByTagName("HTML")[0];
-      x.style.overflow = 'scroll';
-
-      if (matchMedia) {
-        var mq = window.matchMedia("(min-width: 600px)");
-        mq.addListener(WidthChange);
-        WidthChange(mq);
-      }
-
-      function WidthChange(mq) {
-        if (mq.matches) {
-          // console.log('Dashboard');
-          pageTitle.style.display = 'none';
-          backIcon.style.display = 'none';
-
-          // masterContainer.style.position = 'static';
-
-          // header.style.backgroundColor = 'none';
-
-          self.$router.push('/');
-        } else {
-          // console.log('Mobile');
-          // masterContainer.style.position = 'static';
+        //set master conainer settings
+        if (this.$store.state.clientORcms === 'student') {
+            // masterContainer.style.position = 'static';
+        }else if (this.$store.state.clientORcms === 'cms') {
+          // masterContainer.style.position = 'absolute';
+          // masterContainer.style.width = '100%';
+          // masterContainer.style.height = '100vh';
           // masterContainer.style.zIndex = 3;
-
-          pageTitle.style.display = 'block';
-          header.style.backgroundColor = 'red';
-          pageTitle.innerHTML = 'Account';
-          self.$router.push('/account');
         }
 
-      }
+        // console.log(self.$store.state.clientORcms);
 
-      //if user has no team redirect to no team page
-      // console.log("HERE!");
-      // console.log(self.$store.state.userData.team);
-      if (self.$store.state.userData.team.length === null) {
-        self.$router.push('/noTeam');
-      } else if (self.$store.state.userData.team === null) {
-        self.$router.push('/freeAgent');
-      }
-    } else if (self.$store.state.clientORcms === 'cms') {
+        if (self.$store.state.clientORcms === 'student') {
+            var x = document.getElementsByTagName("HTML")[0];
+            x.style.overflow = 'scroll';
 
-      var x = document.getElementsByTagName("HTML")[0];
-      x.style.overflow = 'hidden';
+            if (matchMedia) {
+                var mq = window.matchMedia("(min-width: 600px)");
+                mq.addListener(WidthChange);
+                WidthChange(mq);
+            }
 
-      self.$router.push('/users');
+            function WidthChange(mq) {
+                if (mq.matches) {
+                    // console.log('Dashboard');
+                    pageTitle.style.display = 'none';
+                    backIcon.style.display = 'none';
+
+                    // masterContainer.style.position = 'static';
+
+                    // header.style.backgroundColor = 'none';
+
+                    self.$router.push('/');
+                } else {
+                    // console.log('Mobile');
+                    // masterContainer.style.position = 'static';
+                    // masterContainer.style.zIndex = 3;
+
+                    pageTitle.style.display = 'block';
+                    header.style.backgroundColor = 'red';
+                    pageTitle.innerHTML = 'Account';
+                    self.$router.push('/account');
+                }
+
+            }
+
+            //if user has no team redirect to no team page
+            // console.log("HERE!");
+            // console.log(self.$store.state.userData.team);
+            if (self.$store.state.userData.tournaments.length === 0) {
+                self.$router.push('/noTeam');
+            } else if (self.$store.state.userData.team === null) {
+                self.$router.push('/freeAgent');
+            }
+        } else if (self.$store.state.clientORcms === 'cms') {
+
+            var x = document.getElementsByTagName("HTML")[0];
+            x.style.overflow = 'hidden';
+
+            self.$router.push('/users');
+        }
+
+
+
     }
-
-
-
-  }
 }
 </script>
 
@@ -150,21 +134,7 @@ select {
 ::-webkit-input-placeholder {
     color: white;
 }
-html {
-    overflow-x: hidden !important;
-}
-::-webkit-scrollbar {
-    width: 12px;
-}
 
-::-webkit-scrollbar-track {}
-
-::-webkit-scrollbar-thumb {
-    color: red;
-    background-color: #E0E0E0;
-    border-radius: 5px;
-
-}
 .hidden {
     display: none !important;
 }
@@ -191,13 +161,14 @@ html {
     text-align: center;
 }
 .md-theme-default.md-button:not([disabled]).md-primary:not(.md-icon-button) {
-    color: #009587 !important;
+  color: #009587 !important;
 }
 .btn {
-    height: 34px;
-    font-size: 12px;
-    min-width: 54px;
+  height: 34px;
+  font-size: 12px;
+  min-width: 54px;
 }
+
 
 #masterContainer {
     // z-index: 3;

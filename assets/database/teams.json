@@ -1,4 +1,3 @@
-[
 { 
     "_id" : ObjectId("58de5b9cbf8cb60d000af8bb"), 
     "file" : "Manchester_United_logo14909812845541492516850504.png", 
@@ -17,7 +16,7 @@
     "loses" : NumberInt(2), 
     "points" : NumberInt(3), 
     "group" : NumberInt(1)
-},
+}
 { 
     "_id" : ObjectId("58debc6f9942b0318ccc7e3d"), 
     "name" : "Arsenal", 
@@ -32,7 +31,7 @@
     "loses" : NumberInt(3), 
     "points" : NumberInt(4), 
     "group" : NumberInt(1)
-},
+}
 { 
     "_id" : ObjectId("58debca4420761383c43947a"), 
     "name" : "Real Madrid", 
@@ -47,7 +46,7 @@
     "loses" : NumberInt(1), 
     "points" : NumberInt(2), 
     "group" : NumberInt(1)
-},
+}
 { 
     "_id" : ObjectId("58e64cfd8617d71d2c87d2b2"), 
     "name" : "FC Barcelona", 
@@ -62,7 +61,7 @@
     "loses" : NumberInt(1), 
     "points" : NumberInt(1), 
     "group" : NumberInt(1)
-},
+}
 { 
     "_id" : ObjectId("58e6a5c28617d71d2c87d2bc"), 
     "name" : "Liverpool", 
@@ -77,7 +76,7 @@
     "loses" : NumberInt(1), 
     "points" : NumberInt(4), 
     "group" : NumberInt(2)
-},
+}
 { 
     "_id" : ObjectId("58e6a5c88617d71d2c87d2bd"), 
     "name" : "Chelsea", 
@@ -92,7 +91,7 @@
     "loses" : NumberInt(1), 
     "points" : NumberInt(3), 
     "group" : NumberInt(2)
-},
+}
 { 
     "_id" : ObjectId("58e6a5cd8617d71d2c87d2be"), 
     "name" : "Leister City", 
@@ -107,7 +106,7 @@
     "loses" : NumberInt(1), 
     "points" : NumberInt(2), 
     "group" : NumberInt(2)
-},
+}
 { 
     "_id" : ObjectId("58e6a5d08617d71d2c87d2bf"), 
     "name" : "Everton", 
@@ -122,7 +121,7 @@
     "loses" : NumberInt(1), 
     "points" : NumberInt(1), 
     "group" : NumberInt(2)
-},
+}
 { 
     "_id" : ObjectId("58e6a5d28617d71d2c87d2c0"), 
     "name" : "Sevilla", 
@@ -137,7 +136,7 @@
     "loses" : NumberInt(1), 
     "points" : NumberInt(4), 
     "group" : NumberInt(3)
-},
+}
 { 
     "_id" : ObjectId("58e6a5d58617d71d2c87d2c1"), 
     "name" : "Bayern", 
@@ -152,7 +151,7 @@
     "loses" : NumberInt(1), 
     "points" : NumberInt(3), 
     "group" : NumberInt(3)
-},
+}
 { 
     "_id" : ObjectId("58e6a5d78617d71d2c87d2c2"), 
     "name" : "Juventus", 
@@ -167,7 +166,7 @@
     "loses" : NumberInt(1), 
     "points" : NumberInt(2), 
     "group" : NumberInt(3)
-},
+}
 { 
     "_id" : ObjectId("58e6a5da8617d71d2c87d2c3"), 
     "name" : "Inter", 
@@ -182,7 +181,7 @@
     "loses" : NumberInt(1), 
     "points" : NumberInt(1), 
     "group" : NumberInt(3)
-},
+}
 { 
     "_id" : ObjectId("58e6a5dc8617d71d2c87d2c4"), 
     "name" : "Santa Fe", 
@@ -197,7 +196,7 @@
     "loses" : NumberInt(1), 
     "points" : NumberInt(4), 
     "group" : NumberInt(4)
-},
+}
 { 
     "_id" : ObjectId("58e6a5de8617d71d2c87d2c5"), 
     "name" : "Manchester City", 
@@ -212,7 +211,7 @@
     "loses" : NumberInt(1), 
     "points" : NumberInt(3), 
     "group" : NumberInt(4)
-},
+}
 { 
     "_id" : ObjectId("58e6a5e28617d71d2c87d2c6"), 
     "name" : "Dormunt", 
@@ -227,7 +226,7 @@
     "loses" : NumberInt(1), 
     "points" : NumberInt(2), 
     "group" : NumberInt(4)
-},
+}
 { 
     "_id" : ObjectId("58e6a5e48617d71d2c87d2c7"), 
     "name" : "Tottenham", 
@@ -242,7 +241,7 @@
     "loses" : NumberInt(1), 
     "points" : NumberInt(1), 
     "group" : NumberInt(4)
-},
+}
 { 
     "_id" : ObjectId("58f614c59853f8306cc943c2"), 
     "file" : "paris-saint-germain-fc-hd-logo1492522181891.png", 
@@ -257,7 +256,7 @@
         ObjectId("58c36ae183e0930e34bf79dd")
     ], 
     "__v" : NumberInt(0)
-},
+}
 { 
     "_id" : ObjectId("58f614fb9853f8306cc943c3"), 
     "file" : "Sangmu-Volleyball-Team-Logo1492522235566.png", 
@@ -272,7 +271,7 @@
         ObjectId("58c36ae183e0930e34bf79dd")
     ], 
     "__v" : NumberInt(0)
-},
+}
 { 
     "_id" : ObjectId("58f8c95a5ba069086c5db78f"), 
     "file" : "271492699499482.vresize", 
@@ -286,4 +285,3 @@
     "sport" : ObjectId("58eabc0e53da742bdc4a2023"), 
     "__v" : NumberInt(0)
 }
-]

@@ -1,60 +1,60 @@
 <template>
-<div fluid="fluid" id="nav">
+<v-container fluid="fluid" id="nav">
     <img src="~assets/img/triangle.svg" alt="search icon" class="navTriangle" />
-    <div class="navCons">
-        <div xs4="xs4" class="navItem" @click="closeMenu('Teams')">
+    <v-row class="navCons">
+        <v-col xs4="xs4" class="navItem" @click="closeMenu('Teams')">
             <router-link to="/teams">
                 <div class="navImgText">
                     <img src="~assets/img/team.svg" alt="search icon" class="navImg1" />
                     <p class="navText">Teams</p>
                 </div>
             </router-link>
-        </div>
-        <div xs4="xs4" class="navItem" @click="closeMenu('Tournaments')">
+        </v-col>
+        <v-col xs4="xs4" class="navItem" @click="closeMenu('Tournaments')">
             <router-link to="/tournaments">
                 <div class="navImgText2">
                     <img src="~assets/img/tournament.svg" alt="search icon" class="navImg2" />
                     <p class="navText">Tournament</p>
                 </div>
             </router-link>
-        </div>
-        <div xs4="xs4" class="navItem" @click="closeMenu('Users')">
+        </v-col>
+        <v-col xs4="xs4" class="navItem" @click="closeMenu('Users')">
             <router-link to="/users">
                 <div class="navImgText3">
                     <img src="~assets/img/users.svg" alt="search icon" class="navImg3" />
                     <p class="navText">Users</p>
                 </div>
             </router-link>
-        </div>
-    </div>
+        </v-col>
+    </v-row>
 
-    <div class="navCons">
-        <div xs4="xs4" class="navItem" @click="closeMenu('Inbox')">
+    <v-row class="navCons">
+        <v-col xs4="xs4" class="navItem" @click="closeMenu('Inbox')">
             <router-link to="/inbox_cms">
                 <div class="navImgText4">
                     <img src="~assets/img/inbox.svg" alt="search icon" class="navImg4" />
                     <p class="navText">Inbox</p>
                 </div>
             </router-link>
-        </div>
-        <div xs4="xs4" class="navItem" @click="closeMenu('Announcements')">
+        </v-col>
+        <v-col xs4="xs4" class="navItem" @click="closeMenu('Announcements')">
             <router-link to="/announcements">
                 <div class="navImgText5">
                     <img src="~assets/img/announce.svg" alt="search icon" class="navImg5" />
                     <p class="navText">Announce</p>
                 </div>
             </router-link>
-        </div>
-        <!-- <div xs4="xs4" class="navItem" @click="closeMenu('Account')">
+        </v-col>
+        <!-- <v-col xs4="xs4" class="navItem" @click="closeMenu('Account')">
             <router-link to="/account">
                 <div class="navImgText6">
                     <img src="~assets/img/settings.svg" alt="search icon" class="navImg6" />
                     <p class="navText">Account</p>
                 </div>
             </router-link>
-        </div> -->
-    </div>
-</div>
+        </v-col> -->
+    </v-row>
+</v-container>
 </template>
 
 <script  type="text/javascript">
@@ -67,8 +67,8 @@ export default {
     methods: {
         closeMenu(title) {
             pageTitle.innerHTML = title;
-            nav.style.display = 'block';
-            menuIcon.src = require('~/assets/img/menuIcon.png');
+            nav.style.display = 'none';
+            menuIcon.src = require('~assets/img/menuIcon.png');
             self.$store.commit('setUrlPage', title);
 
         }
@@ -88,19 +88,16 @@ export default {
     width: 100%;
     position: fixed;
     height: 250px;
-    // display: none;
+    display: none;
     box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.3);
     top: 42px;
     z-index: 4;
     background-color: white;
-    // grid-template-columns: 1px 1fr ;
 }
 .navCons {
-  // margin: 0;
-  // width: 100%;
-  // margin-left: 0 !important;
-  display: grid;
-grid-template-columns: 1fr 1fr 1fr;
+  margin: 0;
+  width: 100%;
+  margin-left: 0 !important;
 }
 .navItem {
     border-style: solid;

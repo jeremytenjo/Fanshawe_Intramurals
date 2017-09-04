@@ -1,17 +1,13 @@
 <template lang="html">
 <div class="chatContainer_page">
-  <chat />
+  <master-chat />
 </div>
 </template>
 
 <script>
-import chat from '~/components/master/chat.vue';
+middleware: 'auth'
 
 export default {
-  components: {
-    chat
-  },
-  middleware: 'auth'
 
 }
 </script>

@@ -1,15 +1,11 @@
 <template lang="html">
 <div class="accountContainer_page">
-  <account />
+  <master-account />
 </div>
 </template>
 
 <script>
-import account from '~/components/master/account.vue';
 export default {
-  components: {
-    account
-  },
   middleware: 'auth'
 
 }

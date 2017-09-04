@@ -1,4 +1,3 @@
-[
 { 
     "_id" : ObjectId("58c3657183e0930e34bf79d8"), 
     "fname" : "Jeremy", 
@@ -21,7 +20,7 @@
         "time2", 
         "time3"
     ]
-},
+}
 { 
     "_id" : ObjectId("58f279ed4d87820d1001366d"), 
     "__v" : NumberInt(0), 
@@ -42,7 +41,7 @@
         "time3"
     ], 
     "number" : "5198903454"
-},
+}
 { 
     "_id" : ObjectId("58c366a983e0930e34bf79d9"), 
     "fname" : "Archer", 
@@ -59,7 +58,7 @@
     "schedule" : [
         "time1"
     ]
-},
+}
 { 
     "_id" : ObjectId("58c366ca83e0930e34bf79da"), 
     "fname" : "Natalia", 
@@ -76,7 +75,7 @@
     "schedule" : [
         "time3"
     ]
-},
+}
 { 
     "_id" : ObjectId("58c3672983e0930e34bf79db"), 
     "fname" : "Bally", 
@@ -94,7 +93,7 @@
         "time2", 
         "time3"
     ]
-},
+}
 { 
     "_id" : ObjectId("58d86f7e83e09312209e9fa1"), 
     "fname" : "Jerold", 
@@ -114,7 +113,7 @@
         "time4", 
         "time5"
     ]
-},
+}
 { 
     "_id" : ObjectId("58e93bd453da742bdc4a201c"), 
     "fname" : "Matt", 
@@ -130,7 +129,7 @@
     "schedule" : [
         "time3"
     ]
-},
+}
 { 
     "_id" : ObjectId("58e93bd753da742bdc4a201d"), 
     "fname" : "Parala", 
@@ -150,7 +149,7 @@
         "time4", 
         "time5"
     ]
-},
+}
 { 
     "_id" : ObjectId("58e93bda53da742bdc4a201e"), 
     "fname" : "Mine", 
@@ -166,7 +165,7 @@
     "schedule" : [
 
     ]
-},
+}
 { 
     "_id" : ObjectId("58e93bdd53da742bdc4a201f"), 
     "fname" : "Paka", 
@@ -182,7 +181,7 @@
     "schedule" : [
         "time3"
     ]
-},
+}
 { 
     "_id" : ObjectId("58e93beb53da742bdc4a2020"), 
     "fname" : "Jeremy", 
@@ -200,7 +199,7 @@
         "time2", 
         "time3"
     ]
-},
+}
 { 
     "_id" : ObjectId("58e93bee53da742bdc4a2021"), 
     "fname" : "Jerold", 
@@ -216,7 +215,7 @@
     "schedule" : [
         "time2"
     ]
-},
+}
 { 
     "_id" : ObjectId("58e93bf153da742bdc4a2022"), 
     "fname" : "Jerold", 
@@ -235,7 +234,7 @@
         "time3", 
         "time4"
     ]
-},
+}
 { 
     "_id" : ObjectId("58ee9e8cb1a49724dc0cec45"), 
     "__v" : NumberInt(0), 
@@ -259,7 +258,7 @@
         "time4", 
         "time5"
     ]
-},
+}
 { 
     "_id" : ObjectId("58f3b8a788945731748f1841"), 
     "__v" : NumberInt(0), 
@@ -283,7 +282,7 @@
     "schedule" : [
 
     ]
-},
+}
 { 
     "_id" : ObjectId("58f3c49e614f9030fcbc85f7"), 
     "__v" : NumberInt(0), 
@@ -303,7 +302,7 @@
     "schedule" : [
 
     ]
-},
+}
 { 
     "_id" : ObjectId("58f58b1f3ed24a32b4647af5"), 
     "__v" : NumberInt(0), 
@@ -326,7 +325,7 @@
         "time2"
     ], 
     "number" : "3424234"
-},
+}
 { 
     "_id" : ObjectId("58f608d05cb5b6303c1e9d67"), 
     "__v" : NumberInt(0), 
@@ -350,7 +349,7 @@
     "schedule" : [
 
     ]
-},
+}
 { 
     "_id" : ObjectId("58f616429853f8306cc943c8"), 
     "__v" : NumberInt(0), 
@@ -372,7 +371,7 @@
 
     ], 
     "number" : "undefined"
-},
+}
 { 
     "_id" : ObjectId("58f6195a602fb80fa079698b"), 
     "__v" : NumberInt(0), 
@@ -393,4 +392,3 @@
     ], 
     "number" : "undefined"
 }
-]

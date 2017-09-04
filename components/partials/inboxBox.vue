@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from '~plugins/axios';
 
 export default {
 
@@ -27,7 +27,7 @@ export default {
     },
     methods: {
 
-        showInbox() {
+        showInbox() {       
 
             if (mc_inbox.style.display != 'block') {
                 mc_inbox.style.display = 'block';

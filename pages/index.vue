@@ -5,53 +5,41 @@
 
 <div id="dashboardContent">
 
+
+
 	<div id="mc_fixtures">
-		<fixtures />
+		<master-fixtures />
 	</div>
 
 	<div id="mc_chat">
-		<chat />
+		<master-chat />
 	</div>
 
 	<div id="mc_standings">
-		<standings />
+		<master-standings />
 	</div>
 </div>
 
 	<div id="mc_account">
 		<img src="~assets/img/cancelIcon.svg" alt="Cancel Icon" id="cancelIcon2" @click="closeAccount">
-		<account />
+		<master-account />
 	</div>
 
 	<div id="mc_inbox">
 		<img src="~assets/img/cancelIcon.svg" alt="Cancel Icon" id="cancelIconInbox" @click="closeInbox">
   <img src="~assets/img/backArrow.svg" alt="Back icon" id="backIconInbox" @click="goBack">
-		<inbox />
+		<master-inbox />
 	</div>
 
 </div>
 </template>
 
 <script>
-import axios from 'axios'
+require('../components/index.js');
 
-// require('../components/index.js');
-import fixtures from '~/components/master/fixtures.vue'
-import chat from '~/components/master/chat.vue'
-import standings from '~/components/master/standings.vue'
-import account from '~/components/master/account.vue'
-import inbox from '~/components/master/inbox.vue'
-
-
+import axios from '~plugins/axios'
 
 export default {
-	components: {
-	  fixtures,
-		chat,
-		standings,
-		account,
-		inbox
-	},
     middleware: 'auth',
     mounted() {
         var mc_account = document.querySelector('#mc_account'),
@@ -94,8 +82,6 @@ export default {
 }
 </script>
 <style lang="scss">@media (min-width: 600px) {
-
-
 
     #DarkOverlay {
         background: black;

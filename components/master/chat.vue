@@ -64,8 +64,8 @@
 </template>
 
 <script>
-import socket from '~/plugins/socket.io.js';
-import axios from 'axios';
+import socket from '~plugins/socket.io.js';
+import axios from '~plugins/axios';
 
 export default {
     data() {
@@ -78,7 +78,7 @@ export default {
         }
     },
     mounted: function mounted() {
-
+        //do something after mounting vue instance
         // console.log('this.$store.state.userData.team[0]');
         var self = this,
             chatMessage_input = document.querySelector('#chatMessage_input'),

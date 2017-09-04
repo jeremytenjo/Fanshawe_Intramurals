@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from '~plugins/axios';
 
 export default {
 
@@ -110,8 +110,6 @@ export default {
                     self.$store.commit('set', userData);
                     // console.log(self.$store.state.userData);
                     self.$router.push('/welcome');
-
-
                 }
 
             }

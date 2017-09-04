@@ -1,6 +1,6 @@
 <template lang="html">
   <div id="accountContainer">
-<snackbar/>
+<my-snackBar-update/>
 		<div id="backgroundAccenutn">
       <img src="~assets/img/studentPhotos/1.png" alt="Profile Picture" id="progilePhoto">
 		</div>
@@ -22,13 +22,7 @@
     <label for="password">Change Password</label>
     <input type="text" name="password" placeholder="First name"value="" id="password" class="accountInputs">
 
-   <!-- <input type="file" name="" value="" id="file"> -->
-   <md-input-container>
-  <label>Profile Picture</label>
-  <!-- <input type="file" name="" value="" id="file"> -->
-  <md-file id="file" v-model="single"></md-file>
-</md-input-container>
-
+   <input type="file" name="" value="" id="file">
 
    <div id="scheduleCon" >
      <h6>Schedule</h6>
@@ -82,157 +76,153 @@
 </template>
 
 <script>
-import axios from 'axios'
-import snackbar from '~/components/partials/snackbars/update.vue';
+import axios from '~plugins/axios';
 
 export default {
-  components: {
-    snackbar
-  },
-  middleware: 'auth',
-  data() {
-    return {
-      userData: ''
-    }
-  },
-  mounted() {
-
-    var progilePhoto = document.querySelector('#progilePhoto'),
-      self = this,
-      time1 = document.querySelector('#time1'),
-      time2 = document.querySelector('#time2'),
-      time3 = document.querySelector('#time3'),
-      time4 = document.querySelector('#time4'),
-      time5 = document.querySelector('#time5'),
-      file = document.querySelector('#file'),
-      fname = document.querySelector('#fname').value = this.$store.state.userData.fname,
-      number = document.querySelector('#number').value = this.$store.state.userData.number,
-      lname = document.querySelector('#lname').value = this.$store.state.userData.lname,
-      email = document.querySelector('#email').value = this.$store.state.userData.email,
-      password = document.querySelector('#password'),
-      currentTeam = document.querySelector('#currentTeam'),
-      matesContainer = document.querySelector('#matesContainer'),
-      profilePhoto = document.querySelector('#profilePhoto'),
-      schedule = this.$store.state.userData.schedule,
-      progilePhoto = document.querySelector('#progilePhoto');
-
-    // console.log(this.$store.state.userData.schedule);
-    progilePhoto.src = '/userPhotos/' + this.$store.state.userData.photo;
-    currentTeam.src = '/teamLogos/' + this.$store.state.userDataTeam[0].file;
-    this.userData = this.$store.state.userData.photo;
-
-    for (var a = 0; a < schedule.length; a++) {
-      // console.log(schedule[a]);
-      if (schedule[a] === 'time1') {
-        time1.checked = true;
-      } else if (schedule[a] === 'time2') {
-        time2.checked = true;
-      } else if (schedule[a] === 'time3') {
-        time3.checked = true;
-      } else if (schedule[a] === 'time4') {
-        time4.checked = true;
-      } else if (schedule[a] === 'time5') {
-        time5.checked = true;
-      }
-    }
-
-
-  },
-  methods: {
-    onSubmit() {
-      var bundle = {},
-        formData = new FormData(),
-        times = [this.$store.state.userData._id],
-        accountInputs = document.querySelectorAll('.accountInputs'),
-        w = window.innerWidth,
-        self = this,
-        snackBar_update = document.querySelector('#snackBar_update'),
-        timesArray = [time1, time2, time3, time4, time5];
-
-      formData.append('id', this.$store.state.userData._id);
-
-      //Schedule
-      // console.log(timesArray);
-      for (var a = 0; a < timesArray.length; a++) {
-        // console.log(timesArray[a].checked);
-        if (timesArray[a].checked === true) {
-          times.push(timesArray[a].value);
+    middleware: 'auth',
+    data() {
+        return {
+            userData: ''
         }
-      }
-      // console.log(times);
-      if (times.length != 0) {
-        axios.post('/api/users/schedule', times).then(function(response) {
-          // console.log(response);
-          self.$store.commit('set', response.data);
+    },
+    mounted() {
 
-        })
-      }
+        var progilePhoto = document.querySelector('#progilePhoto'),
+            self = this,
+            time1 = document.querySelector('#time1'),
+            time2 = document.querySelector('#time2'),
+            time3 = document.querySelector('#time3'),
+            time4 = document.querySelector('#time4'),
+            time5 = document.querySelector('#time5'),
+            file = document.querySelector('#file'),
+            fname = document.querySelector('#fname').value = this.$store.state.userData.fname,
+            number = document.querySelector('#number').value = this.$store.state.userData.number,
+            lname = document.querySelector('#lname').value = this.$store.state.userData.lname,
+            email = document.querySelector('#email').value = this.$store.state.userData.email,
+            password = document.querySelector('#password'),
+            currentTeam = document.querySelector('#currentTeam'),
+            matesContainer = document.querySelector('#matesContainer'),
+            profilePhoto = document.querySelector('#profilePhoto'),
+            schedule = this.$store.state.userData.schedule,
+            progilePhoto = document.querySelector('#progilePhoto');
 
+        // console.log(this.$store.state.userData.schedule);
+        progilePhoto.src = '/userPhotos/' + this.$store.state.userData.photo;
+        currentTeam.src = '/teamLogos/' + this.$store.state.userDataTeam[0].file;
+        this.userData = this.$store.state.userData.photo;
 
-      //password
-      // console.log(password.value);
+        for (var a = 0; a < schedule.length; a++) {
+            // console.log(schedule[a]);
+            if (schedule[a] === 'time1') {
+                time1.checked = true;
+            } else if (schedule[a] === 'time2') {
+                time2.checked = true;
+            } else if (schedule[a] === 'time3') {
+                time3.checked = true;
+            } else if (schedule[a] === 'time4') {
+                time4.checked = true;
+            } else if (schedule[a] === 'time5') {
+                time5.checked = true;
+            }
+        }
 
-      if (file.value === '') {
-        formData.append('photo', this.$store.state.userData.photo);
-      } else {
-        formData.append('photo', file.files[0]);
-      }
-      for (var i = 0; i < accountInputs.length; i++) {
-        formData.append(accountInputs[i].name, accountInputs[i].value);
-      }
-
-      // for (var value of formData.values()) {
-      //     console.log(value);
-      // }
-      axios.post('/api/users/update', formData).then(function(response) {
-        // console.log(response.data[0]);
-        self.$store.state.userData = response.data[0];
-        // console.log(self.$store.state.userData.photo);
-        progilePhoto.src = '/userPhotos/' + self.$store.state.userData.photo;
-        profilePhoto.src = '/userPhotos/' + self.$store.state.userData.photo;
-        currentTeam.src = '/teamLogos/' + self.$store.state.userDataTeam[0].file;
-        self.userData = self.$store.state.userData.photo;
-        // matesContainer.children[0].src = '/userPhotos/' + self.$store.state.userData.photo;
-        // console.log(matesContainer.children[0]);
-      })
-
-
-      // console.log(self);
-
-
-
-
-
-
-
-
-
-      //snackBar
-      if (w <= 600) {
-        TweenMax.to(snackBar_update, .4, {
-          bottom: 42,
-          delay: .2
-        });
-        TweenMax.to(snackBar_update, .3, {
-          bottom: '-60px',
-          delay: 2
-        });
-      } else {
-        TweenMax.to(snackBar_update, .4, {
-          bottom: 0,
-          delay: .2
-        });
-        TweenMax.to(snackBar_update, .4, {
-          bottom: '-500px',
-          delay: 2
-        });
-      }
 
     },
-    toWelcome() {
-      this.$router.push('welcome');
+    methods: {
+        onSubmit() {
+            var bundle = {},
+                formData = new FormData(),
+                times = [this.$store.state.userData._id],
+                accountInputs = document.querySelectorAll('.accountInputs'),
+                w = window.innerWidth,
+                self = this,
+                snackBar_update = document.querySelector('#snackBar_update'),
+                timesArray = [time1, time2, time3, time4, time5];
+
+            formData.append('id', this.$store.state.userData._id);
+
+            //Schedule
+            // console.log(timesArray);
+            for (var a = 0; a < timesArray.length; a++) {
+                // console.log(timesArray[a].checked);
+                if (timesArray[a].checked === true) {
+                    times.push(timesArray[a].value);
+                }
+            }
+            // console.log(times);
+            if (times.length != 0) {
+                axios.post('/api/users/schedule', times).then(function(response) {
+                    // console.log(response);
+                    self.$store.commit('set', response.data);
+
+                })
+            }
+
+
+            //password
+            // console.log(password.value);
+
+            if (file.value === '') {
+                formData.append('photo', this.$store.state.userData.photo);
+            } else {
+                formData.append('photo', file.files[0]);
+            }
+            for (var i = 0; i < accountInputs.length; i++) {
+                formData.append(accountInputs[i].name, accountInputs[i].value);
+            }
+
+            // for (var value of formData.values()) {
+            //     console.log(value);
+            // }
+            axios.post('/api/users/update', formData).then(function(response) {
+                // console.log(response.data[0]);
+                self.$store.state.userData = response.data[0];
+                // console.log(self.$store.state.userData.photo);
+                progilePhoto.src = '/userPhotos/' + self.$store.state.userData.photo;
+                profilePhoto.src = '/userPhotos/' + self.$store.state.userData.photo;
+                currentTeam.src = '/teamLogos/' + self.$store.state.userDataTeam[0].file;
+                self.userData = self.$store.state.userData.photo;
+                // matesContainer.children[0].src = '/userPhotos/' + self.$store.state.userData.photo;
+                // console.log(matesContainer.children[0]);
+            })
+
+
+            // console.log(self);
+
+
+
+
+
+
+
+
+
+            //snackBar
+            if (w <= 600) {
+                TweenMax.to(snackBar_update, .4, {
+                    bottom: 42,
+                    delay: .2
+                });
+                TweenMax.to(snackBar_update, .3, {
+                    bottom: '-60px',
+                    delay: 2
+                });
+            } else {
+                TweenMax.to(snackBar_update, .4, {
+                    bottom: 0,
+                    delay: .2
+                });
+                TweenMax.to(snackBar_update, .4, {
+                    bottom: '-500px',
+                    delay: 2
+                });
+            }
+
+        },
+        toWelcome() {
+            this.$router.push('welcome');
+        }
     }
-  }
 }
 </script>
 

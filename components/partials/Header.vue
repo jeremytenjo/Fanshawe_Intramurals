@@ -1,165 +1,101 @@
 <template>
 <div>
+    <header id="header">
+        <div id="logoCon">
+            <img src="~assets/img/dash.png" alt="dash image">
+            <p>ntramurals</p>
+        </div>
 
-  <div id="announcementBox">
-    <div id="annText">
-      <p>{{annList.message}}</p>
+        <h1><p id="teamName"></p></h1>
+
+        <p id="pageTitle"></p>
+        <img src="~assets/img/default_profile.png" alt="Profile Picture" id="profilePhoto" @click="showAccount">
+        <my-inboxBox/>
+        <p id="logoutBtn" @click="logout">Logout</p>
+    </header>
+    <div id="backDrop">
     </div>
-  </div>
-
-
-  <header id="header">
-    <div id="logoCon">
-      <img src="~assets/img/dash.png" alt="dash image">
-      <p>ntramurals</p>
-    </div>
-
-    <h1><p id="teamName"></p></h1>
-
-    <p id="pageTitle"></p>
-    <img src="~assets/img/default_profile.png" alt="Profile Picture" id="profilePhoto" @click="showAccount">
-    <inboxBox/>
-    <p id="logoutBtn" @click="logout">Logout</p>
-  </header>
-  <div id="backDrop">
-  </div>
-  <img src="~assets/img/backArrow.svg" alt="Back icon" id="backIcon" @click="goBack">
-  <img src="~assets/img/default_team_logo.png" alt="Team Logo" id="teamLogo">
-  <mates />
+    <img src="~assets/img/backArrow.svg" alt="Back icon" id="backIcon" @click="goBack">
+    <img src="~assets/img/default_team_logo.png" alt="Team Logo" id="teamLogo">
+    <my-mates />
 
 </div>
 </template>
 
 <script>
-import axios from 'axios'
-import inboxBox from '~/components/partials/inboxBox.vue';
-import mates from '~/components/partials/matesContainer.vue';
 export default {
-  components: {
-    inboxBox,
-    mates
-  },
-  data() {
-    return {
-      clientORcms: this.$store.state.clientORcms,
-      annList: ''
-    }
-  },
-  mounted() {
-    var self = this,
-      profilePhoto = document.querySelector('#profilePhoto'),
-      pageTitle = document.querySelector('#pageTitle'),
-      teamLogo = document.querySelector('#teamLogo'),
-      teamName = document.querySelector('#teamName'),
-      messageContainer = document.querySelector('#messageContainer'),
-      inboxlistContainer = document.querySelector('#inboxlistContainer'),
-      inboxListCon_inner = document.querySelector('#inboxListCon_inner'),
-      to_input = document.querySelector('#to_input'),
-      messageContainer = document.querySelector('#messageContainer'),
-      announcementBox = document.querySelector('#announcementBox'),
-      messageContainer_write = document.querySelector('#messageContainer_write'),
-      urlTitle = window.location.pathname,
-      self = this,
-      mc_account = document.querySelector('#mc_account'),
-      DarkOverlay = document.querySelector('#DarkOverlay');
-
-    urlTitle = urlTitle.substring(1);
-    urlTitle = urlTitle.charAt(0).toUpperCase() + urlTitle.slice(1);
-    (function sddsdd() {
-      pageTitle.innerHTML = urlTitle;
-    })();
-
-    //Set User Information
-    // console.log(this.$store.state.userDataTeam);
-
-    profilePhoto.src = '/userPhotos/' + this.$store.state.userData.photo;
-    // teamLogo.src = '/teamLogos/' + this.$store.state.userDataTeam[0].file; from dbs
-    teamLogo.src = '/teamLogos/' + this.$store.state.userDataTeam[0].file;
-    teamName.innerHTML = this.$store.state.userDataTeam[0].name;
-
-    //Get Announcements
-    axios.post('/api/annoucements/getAll').then(function(response) {
-      // console.log(response.data[0].seen);
-
-      if (response.data[0].seen === false) {
-        self.annList = response.data[0];
-
-        announcementBox.style.display = 'block';
-
-        //hide message
-        TweenMax.to('#announcementBox', .3, {
-          top: '-100',
-          delay: 4
-        });
-
-        //change message status to seen
-        axios.post('/api/annoucements/setSeen', {
-          id: response.data[0]._id
-        }).then(function(response) {})
-      }
-
-    })
-
-  },
-  methods: {
-    showAccount() {
-      mc_account.style.display = 'block';
-      DarkOverlay.style.display = 'block';
+    data() {
+        return {
+            clientORcms: this.$store.state.clientORcms
+        }
     },
-    goBack() {
-      // console.log("HERE!!!!!");
-      var messageInput = document.querySelector('#messageInput');
-      var w = window.innerWidth;
+    mounted() {
+        var profilePhoto = document.querySelector('#profilePhoto'),
+            pageTitle = document.querySelector('#pageTitle'),
+            teamLogo = document.querySelector('#teamLogo'),
+            teamName = document.querySelector('#teamName'),
+            messageContainer = document.querySelector('#messageContainer'),
+            inboxlistContainer = document.querySelector('#inboxlistContainer'),
+            inboxListCon_inner = document.querySelector('#inboxListCon_inner'),
+            to_input = document.querySelector('#to_input'),
+            messageContainer = document.querySelector('#messageContainer'),
+            messageContainer_write = document.querySelector('#messageContainer_write'),
+            urlTitle = window.location.pathname,
+            self = this,
+            mc_account = document.querySelector('#mc_account'),
+            DarkOverlay = document.querySelector('#DarkOverlay');
 
-      messageInput.value = '';
-      newSubject.value = '';
-      sendMessageCon.value = '';
-      backIcon.style.display = 'none';
-      messabeButtons.style.display = 'none';
-      inboxlistContainer.style.display = 'block';
-      // inboxListCon_inner.style.display = 'block';
+        urlTitle = urlTitle.substring(1);
+        urlTitle = urlTitle.charAt(0).toUpperCase() + urlTitle.slice(1);
+        (function sddsdd() {
+            pageTitle.innerHTML = urlTitle;
+        })();
 
-      if (w <= 600) {
-        messageContainer.style.display = 'none';
+        //Set User Information
+        // console.log(this.$store.state.userDataTeam);
 
-      }
-
+        profilePhoto.src = '/userPhotos/' + this.$store.state.userData.photo;
+        // teamLogo.src = '/teamLogos/' + this.$store.state.userDataTeam[0].file; from dbs
+        teamLogo.src = '/teamLogos/' + this.$store.state.userDataTeam[0].file;
+        teamName.innerHTML = this.$store.state.userDataTeam[0].name;
     },
-    logout() {
-      location.reload(true);
-      // this.$store.commit('set', false);
-      // this.$store.commit('set_userDataTeam', '');
-      // this.$store.commit('set_userDataTeamMates', '');
-      // // console.log(this.$store.state);
-      // this.$router.push('/login');
+    methods: {
+        showAccount() {
+            mc_account.style.display = 'block';
+            DarkOverlay.style.display = 'block';
+        },
+        goBack() {
+            console.log("HERE!!!!!");
+            var messageInput = document.querySelector('#messageInput');
+            var w = window.innerWidth;
+
+            messageInput.value = '';
+            newSubject.value = '';
+            sendMessageCon.value = '';
+            backIcon.style.display = 'none';
+            messabeButtons.style.display = 'none';
+            inboxlistContainer.style.display = 'block';
+            // inboxListCon_inner.style.display = 'block';
+
+            if (w <= 600) {
+                messageContainer.style.display = 'none';
+
+            }
+
+        },
+        logout() {
+            location.reload(true);
+            // this.$store.commit('set', false);
+            // this.$store.commit('set_userDataTeam', '');
+            // this.$store.commit('set_userDataTeamMates', '');
+            // // console.log(this.$store.state);
+            // this.$router.push('/login');
+        }
     }
-  }
 }
 </script>
 
 <style lang="scss" scoped>
-#announcementBox {
-    position: fixed;
-    display: none;
-    width: 300px;
-    height: auto;
-    top: 0;
-    z-index: 10;
-    margin: auto;
-    left: 0;
-    right: 0;
-    border-radius: 2px;
-    color: white;
-    text-align: center;
-    #annText {
-        margin-top: 10px;
-        background-color: #333;
-        p {
-            padding: 10px;
-        }
-    }
-}
-
 #header {
     background-image: none;
     background-color: red;

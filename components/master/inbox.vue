@@ -1,30 +1,30 @@
 <template lang="html">
   <div id="inboxContainer">
-    <snackBar/>
+    <my-snackBar-send/>
 
 <div id="inboxlistContainer">
 
 <!-- <div id="inboxListCon_inner"> -->
 <div id="listMessagess">
    <div v-for="result in inboxMessages">
-    <div id="messageList_items">
-  <ul two-line>
-    <li-item @click="loadMessage(result._id, result.from[0]._id, result.subject)" >
-      <li-tile avatar ripple>
-        <li-tile-content>
-          <li-tile-title>{{result.from[0].fname}} {{result.from[0].lname}}</li-tile-title>
-          <li-tile-sub-title class="grey--text text--darken-4">{{result.subject}}</li-tile-sub-title>
-          <!-- <li-tile-sub-title>{{result.message}}</li-tile-sub-title> -->
-          <li-tile-sub-title><p id="pShort">{{result.message}}</p></li-tile-sub-title>
-        </li-tile-content>
-        <li-tile-action>
-          <li-tile-action-text>{{result.dateName}}</li-tile-action-text>
-        </li-tile-action>
-      </li-tile>
-    </li-item>
+    <v-card id="messageList_items">
+  <v-list two-line>
+    <v-list-item @click="loadMessage(result._id, result.from[0]._id, result.subject)" >
+      <v-list-tile avatar ripple>
+        <v-list-tile-content>
+          <v-list-tile-title>{{result.from[0].fname}} {{result.from[0].lname}}</v-list-tile-title>
+          <v-list-tile-sub-title class="grey--text text--darken-4">{{result.subject}}</v-list-tile-sub-title>
+          <!-- <v-list-tile-sub-title>{{result.message}}</v-list-tile-sub-title> -->
+          <v-list-tile-sub-title><p id="pShort">{{result.message}}</p></v-list-tile-sub-title>
+        </v-list-tile-content>
+        <v-list-tile-action>
+          <v-list-tile-action-text>{{result.dateName}}</v-list-tile-action-text>
+        </v-list-tile-action>
+      </v-list-tile>
+    </v-list-item>
 
-  </ul>
-</div>
+  </v-list>
+</v-card>
 </div>
 </div>
 
@@ -92,181 +92,177 @@
 </template>
 
 <script>
-import axios from 'axios';
-import snackbar from '~/components/partials/snackbars/send.vue';
+import axios from '~plugins/axios';
 
 export default {
-  components: {
-    snackbar
-  },
-  data() {
-    return {
-      inboxMessages: '',
-      openedMessage: '',
-      openedMessageID: ''
-    }
-  },
-  mounted() {
-    //do something after mounting vue instance
-    var self = this,
-      // sendCon = document.querySelector('#sendCon'),
-      // to_input = document.querySelector('#to_input'),
-      messageContainer = document.querySelector('#messageContainer'),
-      messageContainer_write = document.querySelector('#messageContainer_write'),
-      fromhfourone = document.querySelector('#fromhfourone'),
-      fromsubject = document.querySelector('#fromsubject'),
-      inboxlistContainer = document.querySelector('#inboxlistContainer'),
-      fromMessage = document.querySelector('#fromMessage'),
-      backIcon = document.querySelector('#backIcon');
-
-    // if (this.$store.state.userData.type === 'admin') {
-    //     to_input.style.display = 'block';
-    // }
-
-    axios.post('/api/inbox/getAllBy', {
-      id: this.$store.state.userData._id
-    }).then(function(response) {
-      self.inboxMessages = response.data;
-      // console.log(self.inboxMessages);
-    })
-  },
-  methods: {
-    loadMessage(id, fromID, subject) {
-      // console.log(id);
-      // console.log("HERE!");
-      // console.log(subject);
-      var messageInput = document.querySelector('#messageInput');
-      messageInput.value = '';
-
-      this.$store.commit('setfromID', fromID);
-      this.$store.commit('setinboxSubject', subject);
-
-      var w = window.innerWidth;
-      this.openedMessageID = id;
-      // console.log(w);
-      messageContainer.style.display = 'grid';
-      backIcon.style.display = 'block';
-      if (w <= 600) {
-        inboxlistContainer.style.display = 'none';
-      }
-
-      //Get Inbox Message
-      axios.post('/api/inbox/getOne', {
-        id: id
-      }).then(function(response) {
-        // console.log(response.data[0]);
-        fromhfourone.innerHTML = 'From: ' + response.data[0].from[0].fname + ' ' + response.data[0].from[0].lname;
-        fromsubject.innerHTML = 'Subject: ' + response.data[0].subject;
-        fromMessage.innerHTML = response.data[0].message;
-
-      })
+    data() {
+        return {
+            inboxMessages: '',
+            openedMessage: '',
+            openedMessageID: ''
+        }
     },
-    sendMessage() {
-      // console.log(this.$store.state.fromID);
-      var messageInput = document.querySelector('#messageInput'),
-        bundle = {};
-      // console.log(messageInput.value);
-      bundle.from = this.$store.state.userData._id;
-      bundle.to = '58c3657183e0930e34bf79d8';
-      bundle.message = messageInput.value;
-      bundle.subject = this.$store.state.inboxSubject;
-      if (messageInput.value != '') {
-        // console.log(bundle);
-        axios.post('/api/inbox/send', {
-          data: bundle
+    mounted() {
+        //do something after mounting vue instance
+        var self = this,
+            // sendCon = document.querySelector('#sendCon'),
+            // to_input = document.querySelector('#to_input'),
+            messageContainer = document.querySelector('#messageContainer'),
+            messageContainer_write = document.querySelector('#messageContainer_write'),
+            fromhfourone = document.querySelector('#fromhfourone'),
+            fromsubject = document.querySelector('#fromsubject'),
+            inboxlistContainer = document.querySelector('#inboxlistContainer'),
+            fromMessage = document.querySelector('#fromMessage'),
+            backIcon = document.querySelector('#backIcon');
+
+        // if (this.$store.state.userData.type === 'admin') {
+        //     to_input.style.display = 'block';
+        // }
+
+        axios.post('/api/inbox/getAllBy', {
+            id: this.$store.state.userData._id
         }).then(function(response) {
-          console.log(response);
+            self.inboxMessages = response.data;
+            // console.log(self.inboxMessages);
         })
-      }
     },
-    sendMessage_new() {
-      var newTo = document.querySelector('#newTo'),
-        newSubject = document.querySelector('#newSubject'),
-        snackBar_update = document.querySelector('#snackBar_update'),
-        sendMessageCon = document.querySelector('#sendMessageCon'),
-        bundle = {},
-        w = window.innerWidth;
+    methods: {
+        loadMessage(id, fromID, subject) {
+            // console.log(id);
+            // console.log("HERE!");
+            // console.log(subject);
+            var messageInput = document.querySelector('#messageInput');
+            messageInput.value = '';
 
-      if (newSubject.value != '' && sendMessageCon.value != '') {
+            this.$store.commit('setfromID', fromID);
+            this.$store.commit('setinboxSubject', subject);
 
-        bundle.from = this.$store.state.userData._id;
-        bundle.message = sendMessageCon.value;
-        bundle.to = '58c3657183e0930e34bf79d8';
-        bundle.subject = newSubject.value;
-        if (sendMessageCon.value != '') {
-          // console.log(bundle);
-          axios.post('/api/inbox/send', {
-            data: bundle
-          }).then(function(response) {
-            // console.log('response');
-            messageContainer_write.style.display = 'none';
+            var w = window.innerWidth;
+            this.openedMessageID = id;
+            // console.log(w);
+            messageContainer.style.display = 'grid';
+            backIcon.style.display = 'block';
+            if (w <= 600) {
+                inboxlistContainer.style.display = 'none';
+            }
+
+            //Get Inbox Message
+            axios.post('/api/inbox/getOne', {
+                id: id
+            }).then(function(response) {
+                // console.log(response.data[0]);
+                fromhfourone.innerHTML = 'From: ' + response.data[0].from[0].fname + ' ' + response.data[0].from[0].lname;
+                fromsubject.innerHTML = 'Subject: ' + response.data[0].subject;
+                fromMessage.innerHTML = response.data[0].message;
+
+            })
+        },
+        sendMessage() {
+            // console.log(this.$store.state.fromID);
+            var messageInput = document.querySelector('#messageInput'),
+                bundle = {};
+            // console.log(messageInput.value);
+            bundle.from = this.$store.state.userData._id;
+            bundle.to = '58c3657183e0930e34bf79d8';
+            bundle.message = messageInput.value;
+            bundle.subject = this.$store.state.inboxSubject;
+            if (messageInput.value != '') {
+                // console.log(bundle);
+                axios.post('/api/inbox/send', {
+                    data: bundle
+                }).then(function(response) {
+                    console.log(response);
+                })
+            }
+        },
+        sendMessage_new() {
+            var newTo = document.querySelector('#newTo'),
+                newSubject = document.querySelector('#newSubject'),
+                snackBar_update = document.querySelector('#snackBar_update'),
+                sendMessageCon = document.querySelector('#sendMessageCon'),
+                bundle = {},
+                w = window.innerWidth;
+
+            if (newSubject.value != '' && sendMessageCon.value != '') {
+
+                bundle.from = this.$store.state.userData._id;
+                bundle.message = sendMessageCon.value;
+                bundle.to = '58c3657183e0930e34bf79d8';
+                bundle.subject = newSubject.value;
+                if (sendMessageCon.value != '') {
+                    // console.log(bundle);
+                    axios.post('/api/inbox/send', {
+                        data: bundle
+                    }).then(function(response) {
+                        // console.log('response');
+                        messageContainer_write.style.display = 'none';
+                        inboxlistContainer.style.display = 'block';
+                        inboxContainer.style.display = 'grid';
+                        newSubject.value = '';
+                        sendMessageCon.value = '';
+                    })
+                }
+            }
+
+            //snackBar
+            snackBar_update.innerHTML = 'Message Sent';
+            if (w <= 600) {
+                TweenMax.to('#snackBar_update', .4, {
+                    bottom: 42,
+                    delay: .2
+                });
+                TweenMax.to('#snackBar_update', .3, {
+                    bottom: '-600px',
+                    delay: 2
+                });
+            } else {
+                TweenMax.to('#snackBar_update', .4, {
+                    bottom: 0,
+                    delay: .2
+                });
+                TweenMax.to('#snackBar_update', .4, {
+                    bottom: '-500px',
+                    delay: 2
+                });
+            }
+        },
+        writeMessage() {
+
+            var w = window.innerWidth,
+                backIconInbox = document.querySelector('#backIconInbox'),
+                inboxListCon_inner = document.querySelector('#inboxListCon_inner'),
+                messabeButtons = document.querySelector('#messabeButtons'),
+                inboxContainer = document.querySelector('#inboxContainer');
+
+
+            backIcon.style.display = 'block';
+            messabeButtons.style.display = 'block';
+            inboxlistContainer.style.display = 'none';
+            // inboxListCon_inner.style.display = 'none';
+
+            if (w <= 600) {
+                // sendCon.style.display = 'block';
+            } else {
+                inboxContainer.style.display = 'block';
+                messageContainer_write.style.display = 'grid';
+                messageContainer.style.display = 'none';
+                backIconInbox.style.display = 'block';
+            }
+
+        },
+        cancelMessage() {
+            var messageInput = document.querySelector('#messageInput');
+            messageInput.value = '';
+        },
+        cancelMessage_new() {
+            // console.log("HERE!");
+            messageContainer_write.style.display = 'grid';
+            messageContainer.style.display = 'block';
             inboxlistContainer.style.display = 'block';
             inboxContainer.style.display = 'grid';
-            newSubject.value = '';
-            sendMessageCon.value = '';
-          })
+
         }
-      }
-
-      //snackBar
-      snackBar_update.innerHTML = 'Message Sent';
-      if (w <= 600) {
-        TweenMax.to('#snackBar_update', .4, {
-          bottom: 42,
-          delay: .2
-        });
-        TweenMax.to('#snackBar_update', .3, {
-          bottom: '-600px',
-          delay: 2
-        });
-      } else {
-        TweenMax.to('#snackBar_update', .4, {
-          bottom: 0,
-          delay: .2
-        });
-        TweenMax.to('#snackBar_update', .4, {
-          bottom: '-500px',
-          delay: 2
-        });
-      }
-    },
-    writeMessage() {
-
-      var w = window.innerWidth,
-        backIconInbox = document.querySelector('#backIconInbox'),
-        inboxListCon_inner = document.querySelector('#inboxListCon_inner'),
-        messabeButtons = document.querySelector('#messabeButtons'),
-        inboxContainer = document.querySelector('#inboxContainer');
-
-
-      backIcon.style.display = 'block';
-      messabeButtons.style.display = 'block';
-      inboxlistContainer.style.display = 'none';
-      // inboxListCon_inner.style.display = 'none';
-
-      if (w <= 600) {
-        // sendCon.style.display = 'block';
-      } else {
-        inboxContainer.style.display = 'block';
-        messageContainer_write.style.display = 'grid';
-        messageContainer.style.display = 'none';
-        backIconInbox.style.display = 'block';
-      }
-
-    },
-    cancelMessage() {
-      var messageInput = document.querySelector('#messageInput');
-      messageInput.value = '';
-    },
-    cancelMessage_new() {
-      // console.log("HERE!");
-      messageContainer_write.style.display = 'grid';
-      messageContainer.style.display = 'block';
-      inboxlistContainer.style.display = 'block';
-      inboxContainer.style.display = 'grid';
-
     }
-  }
 }
 </script>
 
